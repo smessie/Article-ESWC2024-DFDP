@@ -1,0 +1,23 @@
+---
+title: "A Three-Part View on Solid Web Forms"
+---
+<header markdown="1">
+# <%= @item[:title] %>
+
+{:#authors}
+- <%= person 'Ieben Smessaert', 'https://smessaert.be', 'https://solid.smessie.com/profile/card#me' %>
+
+{:#affiliations}
+- {:#myaffiliation} Ghent University.
+
+<%= section 'abstract' %>
+</header>
+
+<main>
+  <!-- Add sections by specifying their file name, excluding the '.md' suffix. -->
+  <%= section 'introduction' %>
+  <%= section 'evaluation' %>
+  <%= section 'appendices' %>
+</main>
+
+<footer></footer>
