@@ -13,13 +13,11 @@ This makes it possible to use the same description for different applications, e
 This, along with the execution of the footprint tasks, is done using reasoning.
 
 Therefore, we propose an architecture that splits the Solid web forms into 3 parts and implements proof-of-concept applications to show how this can be done in practice.
-In this paper, the following three research questions are examined:
+In this paper, the following two research questions are examined:
 
 - RQ1: How can machines be controlled in a declarative way to create forms for producing RDF in **multiple viewing environments** (such as the web and text-based via a command line)?
 
 - RQ2: How can machines be controlled in a declarative way to perform **schema alignment and footprint tasks** by the use of reasoning?
-
-- RQ3: How can an **abstraction** be made to **run reasoning** in the browser or remotely?
 
 Refer to different upcoming sections in paper
 {:.todo}

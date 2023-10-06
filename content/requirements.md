@@ -9,7 +9,7 @@ human interpretable nodig zodat mensen de gerenderde form kunnen verstaan om zel
 declarative description zorgt ervoor dat het makkelijk te updaten is, je kunt gewoon de bestaande parsen, aanpassingen maken en de description accordingly updaten
 
 
-<figure id="requirements" class="table" markdown="1">
+<figure id="requirements-table" class="table" markdown="1">
 
 | N° | Category                       | Requirement                                                            |
 |----|--------------------------------|------------------------------------------------------------------------|

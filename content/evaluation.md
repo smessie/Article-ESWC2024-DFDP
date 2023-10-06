@@ -9,7 +9,7 @@ This user study will be split up into two parts: form editing (for which the For
 ### Conformance to the Requirements
 {:#requirements-conformance}
 
-In this section, we analyze the conformance of the implemented apps to the requirements defined in [](#requirements) under [](#introduction).
+In this section, we analyze the conformance of the implemented apps to the requirements defined in [](#requirements-table) under [](#requirements).
 
 #### Multiple Viewing Environments
 
@@ -26,15 +26,6 @@ The second research question of this paper was the following: "How can machines 
 It is possible to pass along a set of N3 conversion rules such that the form description will automatically be translated thanks to the reasoning into the ontology the app understands (R6).
 The form description describes, next to what should be displayed, in a declarative way what should happen in case of a certain action (R5).
 Because this is described in a machine-readable way using RDF, a machine can interpret this and execute the right actions (R7).
-
-#### Uniform Reasoner Interface
-
-In [`link to section`{:.todo}](#interface/architecture) an interface was proposed with the data and query parameters and an additional options parameter containing all other options that are part of the reasoner implementation (R8).
-Given the successful implementation of this interface in the EYE mock and EYE-JS libraries, it is now possible to easily switch between these two libraries (R9).
-This is demonstrated in the Reasoner app, where the user can switch between the two libraries by simply clicking a toggle button.
-As a developer, this switching between the 2 reasoners was extremely easy to implement, as the only thing that had to be changed was the import statement.
-This shows the power of the uniform interface and what is possible with it in the future if other reasoning libraries follow the same proposed standard.
-The posed question "How can an **abstraction** be made to **run reasoning** in the browser or remotely?" can thus be successfully answered.
 
 
 ### User Study
