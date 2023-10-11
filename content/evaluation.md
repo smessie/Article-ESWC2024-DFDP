@@ -3,8 +3,6 @@
 
 In this section, the proposed architecture and implementation in order to answer the research questions will be evaluated.
 This evaluation will be divided into two major parts: first in [](#requirements-conformance) the conformance to the requirements from [](#introduction) will be analyzed, and second in [](#user-study) a user study will be conducted to see if next to the functional requirements, the implementations are also comprehensible for users.
-We define "comprehensible for users" as the ability for users to understand the application in such a way that they can use the application correctly (i.e. accurately) without getting frustrated or giving up (i.e. in a reasonable time) and with a qualitative evaluation by the use of open-ended interviews.
-This user study will be split up into two parts: form editing (for which the FormGenerator will be evaluated) and form usage (for which the FormRenderer will be evaluated).
 
 ### Conformance to the Requirements
 {:#requirements-conformance}
@@ -27,14 +25,20 @@ It is possible to pass along a set of N3 conversion rules such that the form des
 The form description describes, next to what should be displayed, in a declarative way what should happen in case of a certain action (R5).
 Because this is described in a machine-readable way using RDF, a machine can interpret this and execute the right actions (R7).
 
+Add a conclusion paragraph where you explicitly state that you cover all requirements
+{:.todo}
+
 
 ### User Study
 {:#user-study}
 
 In what follows, the user experience of the two apps that are part of the more complex scenario will be discussed by doing a qualitative analysis [](cite:cites Creswell_Creswell_2018).
 These are the apps that are relevant to the end goal with the three-part view on Solid Web Forms, being the FormGenerator and the FormRenderer app.
-The FormCli app is not considered as this is just another more complex version of the FormRenderer app where one interacts with the app through the command line instead of a graphical user interface.
-This requires the user to have a certain level of technical knowledge which is an assumption that does not want to be made here for the form rendering part.
+The FormCli app is not considered as this is a more complex version of the FormRenderer app where one interacts with the app through the command line instead of a graphical user interface.
+This requires the user to have a certain level of technical knowledge which is an assumption here for the form rendering part.
+The goal of this user study is to see if next to the functional requirements, the implementations are also comprehensible for users.
+We define "comprehensible for users" as the ability for users to understand the application in such a way that they can use the application correctly (i.e. accurately) without getting frustrated or giving up (i.e. in a reasonable time) and with a qualitative evaluation by the use of open-ended interviews.
+This user study will be split up into two parts: form editing (for which the FormGenerator will be evaluated) and form usage (for which the FormRenderer will be evaluated).
 
 #### Method
 
@@ -50,21 +54,26 @@ During the last step, an open-ended exit survey was taken which asked each parti
 Potential participants were directly contacted by the author.
 19 people participated in our study. The FormGenerator app was evaluated by 8 participants. The FormRenderer app was evaluated by 11 participants.
 For the first group, only people with some technical background were asked to participate in this evaluation. That is because the FormGenerator also targets more technically proficient users just as creating a form with Google Forms is also not meant for everyone.
-Therefore, computer science students were mostly targeted as participants for this part.
+To make sure this requirement is satisfied, computer science students were mostly targeted as participants for this part.
 The 11 participants for the FormRenderer user study were people both with and without technical backgrounds with their ages ranging from 18 to 52 years.
-This lies in line with the target group of this and other similar traditional applications because we have to assume that the users of the app can already work with a computer and the Web.
+This lies in line with the target group of this and other similar traditional applications (according to Statista, in 2021, 87.2% of worldwide internet users were aged between 18 and 54 [](cite:cites petrosyan2023distribution)) because we have to assume that the users of the app can already work with a computer and the Web.
 
 ##### Data
 
-For the FormGenerator app, the users are provided with a list of bindings that they could use to create the form. Here, the assumption is thus made that users interacting with this app would have some knowledge of Linked Data and the Semantic Web.
-For the FormRenderer app, two assumptions according to the data hold and are made sure to be satisfied.
-First, the conversion rules to go from the form description vocabulary to the form rendering app vocabulary (Solid-UI) exist and are defined in the FormRenderer app. This is done by providing the URL to the conversion rules resource by using the `?rules=` query parameter (which then automatically fills in that input field).
+For the FormGenerator app, the users are provided with a list of bindings that they could use to create the form.
+Here, the assumption is made that users interacting with this app would have some knowledge of Linked Data and the Semantic Web.
+For the FormRenderer app, first, the conversion rules to go from the form description vocabulary to the form rendering app vocabulary (Solid-UI) exist and are defined in the FormRenderer app. This is done by providing the URL to the conversion rules resource by using the `?rules=` query parameter (which then automatically fills in that input field).
 Second, the form description resource exists and is accessible by the FormRenderer app. This is done by providing the URL to the form description resource by using the `?form=` query parameter (also automatically filling in that input field).
+
+Make sure "bindings" is explained somewhere earlier.
+{:.todo}
 
 ##### Tasks
 
-The tasks are kept simple to scenarios that could occur on a normal day.
-The exact scenarios that the participants are provided with and are asked to perform are included under [](#scenarios).
+The tasks are kept simple to scenarios that we modeled to mimick normal day tasks.
+
+Double-check: I've now removed the link to the user study scenarios appendix. No link is okay?
+{:.todo}
 
 #### Threats to Validity
 
@@ -108,7 +117,6 @@ Additionally, after mistyping the binding, someone expressed the wish to have so
 While this would be a nice feature to have, this would require having all bindings be defined and then having the app check if the binding is correct.
 For cases where the binding definition does not exist, e.g. when the `ex:` namespace is used, this would not be possible. 
 By just returning a warning message when the binding is not correct, the user can still continue to create the form, so this should not be a big issue.
-This, together with automatically suggesting a binding based on the entered field name, is out of scope but is a useful idea for future work.
 Next to bindings, the choice of vocabulary was also confusing for the users. They did not understand why they had to choose between SHACL, Solid-UI, and RDF-Form and on what this choice was based.
 This is a valid remark as this choice is not based on anything and is just a remnant of the initial idea to have the FormGenerator app be able to generate forms based on different vocabularies.
 However, this option could still be useful for people with more technical knowledge who want to create a form based on a specific vocabulary.
