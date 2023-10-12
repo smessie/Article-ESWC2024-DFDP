@@ -1,12 +1,13 @@
 ## Requirements
 {:#requirements}
 
-Bespreek XForms 2.0 en Solid-UI Forms toegepast op scenario en vermeld waar ze te kort schieten, bv voor schema alignment en hoe dit vertaald wordt in de requirements van deze paper.
+Bespreek XForms 2.0 en Solid-UI Forms toegepast op scenario en vermeld waar ze te kort schieten, bv voor schema alignment en hoe dit vertaald wordt in de requirements van deze paper (link back naar N°).
 {:.todo}
 
-machine interpretable nodig zodat machines gebruikt kunnen worden om automatisch te prefillen met reeds bestaande data
-human interpretable nodig zodat mensen de gerenderde form kunnen verstaan om zelf de verwachte informatie kunnen invullen in de form
-declarative description zorgt ervoor dat het makkelijk te updaten is, je kunt gewoon de bestaande parsen, aanpassingen maken en de description accordingly updaten
+machine interpretable nodig zodat machines gebruikt kunnen worden om automatisch te prefillen met reeds bestaande data.
+human interpretable nodig zodat mensen de gerenderde form kunnen verstaan om zelf de verwachte informatie kunnen invullen in de form.
+declarative description zorgt ervoor dat het makkelijk te updaten is, je kunt gewoon de bestaande parsen, aanpassingen maken en de description accordingly updaten.
+{:.todo}
 
 
 <figure id="requirements-table" class="table" markdown="1">
