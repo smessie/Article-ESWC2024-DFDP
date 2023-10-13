@@ -9,6 +9,21 @@ human interpretable nodig zodat mensen de gerenderde form kunnen verstaan om zel
 declarative description zorgt ervoor dat het makkelijk te updaten is, je kunt gewoon de bestaande parsen, aanpassingen maken en de description accordingly updaten.
 {:.todo}
 
+Therefore, we propose an architecture that splits the Solid web forms into 3 parts and implements proof-of-concept applications to show how this can be done in practice.
+<span class="comment" data-author="RT">Not sure if this is the right place to introduce RQs. Might be better to do that after related work, right before you dive into the details of your approach.</span>
+In this paper, the following two research questions are examined:
+
+- RQ1: How can machines be controlled in a declarative way to create forms for producing RDF in **multiple viewing environments** (such as the web and text-based via a command line)?
+
+- RQ2: How can machines be controlled in a declarative way to **translate form descriptions** decoupled from the application into a vocabulary that the application understands?
+
+- RQ3: How can machines be controlled in a declarative way to **perform actions** on the filled out data?
+
+<span class="comment" data-author="RT">Is there no decoupling of storage and app requirement?</span>
+
+Refer to different upcoming sections in paper
+{:.todo}
+
 
 <figure id="requirements-table" class="table" markdown="1">
 
