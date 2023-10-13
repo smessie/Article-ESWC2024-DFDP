@@ -23,3 +23,6 @@ These 3 parts provide a fully declarative description of the form, leaving no as
 With the use of [Solid](cite:cites solid) and Linked Data, several solutions have been proposed, but none of them fully describe a declarative form semantically from elements to actions.
 An exception to this is the [Design Issue authored by Berners-Lee](cite:cites berners-lee_linked_2019) and the [blog post on *Shaping Linked Data apps* written by Verborgh](cite:cites shapes). However, these works are solely theoretical approaches to the problem.
 In addition, to fully decouple the description from the application, schema alignment is required to map the description to the vocabulary of the application.
+
+Refer to different upcoming sections in paper
+{:.todo}
