@@ -2,7 +2,7 @@
 {:#evaluation}
 
 In this section, the proposed architecture and implementation in order to answer the research questions will be evaluated.
-This evaluation will be divided into two major parts: first in [](#requirements-conformance) the conformance to the requirements from [](#introduction) will be analyzed, and second in [](#user-study) a user study will be conducted to see if next to the functional requirements, the implementations are also comprehensible for users.
+This evaluation will be divided into three major parts: first in [](#requirements-conformance) the conformance to the requirements from [](#introduction) will be analyzed, second the adherence to the FAIR principles will be evaluated in [](#adherence-fair-principles), and third in [](#user-study) a user study will be conducted to see if next to the functional requirements, the implementations are also comprehensible for users.
 
 ### Conformance to the Requirements
 {:#requirements-conformance}
@@ -18,14 +18,25 @@ The form was described in a declarative way (R1) as the display part is fully de
 By making form descriptions portable and not tight to one rendering environment or one rendering logic, machines can be controlled to create forms for producing RDF in multiple viewing environments.
 It is possible to pass along data and a machine can automatically prefill your form by using the bindings attached to form fields (R2), and a user can interpret the title of the form field to manually enter a value (R3).
 
-#### Schema Alignment and Footprint
+#### Schema Alignment Tasks
 
-The second research question of this paper was the following: "How can machines be controlled in a declarative way to perform **schema alignment and footprint tasks** by the use of reasoning?".
-It is possible to pass along a set of N3 conversion rules such that the form description will automatically be translated thanks to the reasoning into the ontology the app understands (R6).
-The form description describes, next to what should be displayed, in a declarative way what should happen in case of a certain action (R5).
+The second research question of this paper was the following: "How can machines be controlled in a declarative way to **translate form descriptions** decoupled from the application into a vocabulary that the application understands?".
+It is possible to pass along a set of N3 conversion rules such that the form description will automatically be translated thanks to the reasoning into the ontology the app understands (R5).
+
+#### Footprint Tasks
+
+The third research question was: "How can machines be controlled in a declarative way to **perform actions** on the filled out data?".
+The form description describes, next to what should be displayed, in a declarative way what should happen in case of a certain trigger (R6).
 Because this is described in a machine-readable way using RDF, a machine can interpret this and execute the right actions (R7).
 
 Add a conclusion paragraph where you explicitly state that you cover all requirements
+{:.todo}
+
+
+### Adherence to the FAIR Principles
+{:#adherence-fair-principles}
+
+Write
 {:.todo}
 
 
