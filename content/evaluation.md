@@ -2,7 +2,7 @@
 {:#evaluation}
 
 In this section, the proposed architecture and implementation in order to answer the research questions will be evaluated.
-This evaluation will be divided into three major parts: first in [](#requirements-conformance) the conformance to the requirements from [](#introduction) will be analyzed, second the adherence to the FAIR principles will be evaluated in [](#adherence-fair-principles), and third in [](#user-study) a user study will be conducted to see if next to the functional requirements, the implementations are also comprehensible for users.
+This evaluation will be divided into two major parts: first in [](#requirements-conformance) the conformance to the requirements from [](#introduction) will be analyzed, and second in [](#user-study) a user study will be conducted to see if next to the functional requirements, the implementations are also comprehensible for users.
 
 ### Conformance to the Requirements
 {:#requirements-conformance}
@@ -30,44 +30,6 @@ The form description describes, next to what should be displayed, in a declarati
 Because this is described in a machine-readable way using RDF, a machine can interpret this and execute the right actions (R7).
 
 Add a conclusion paragraph where you explicitly state that you cover all requirements
-{:.todo}
-
-
-### Adherence to the FAIR Principles
-{:#adherence-fair-principles}
-
-In this section, we review the adherence to the [FAIR principles](cite:cites wilkinson2016fair) of our solution.
-Each (sub-)principle is denoted between brackets (e.g. "(F1)").
-
-#### Findable
-
-As we make use of the Linked Data principles, we assign globally unique and persistent identifiers (F1).
-Existing ontologies are reused, each offering more information by dereferencing the properties (F2).
-Using the binding property (exact predicate URI depending on the used vocabulary), the meaning of the form field is included (F3).
-The URI to the binding property is always defined using a unique predicate per vocabulary (F4).
-
-#### Accessible
-
-The standard HTTP protocol, REST and SPARQL are used for resource retrieval (A1, A1.1).
-Authentication and authorization is complementary, and is achieved by using the Solid protocol, which uses other protocols such as Solid-OIDC for authentication and WAC for authorization (A1.2).
-Descriptions of the used properties remain available, even when the form description is no longer available, and vice versa (A2).
-
-#### Interoperable
-
-The form descriptions are described using [Turtle](cite:cites turtle), a textual syntax for the standardized language RDF to represent data on the Web (I1).
-The used vocabularies follow the FAIR principles by design as they adhere to the Linked Data principles (I2).
-Using the bindings on the form elements, references to metadata about the form fields exist (I3).
-
-#### Reusable
-
-One of the main goals of the form descriptions is to enable reuse of data.
-The conformance of the form descriptions to the requirements is analyzed in the previous section and as a result they are described with sufficient attributes (R1).
-By reusing and extending existing vocabularies to describe forms, we improve the reusability and follow community standards (R3).
-
-No (clear and accessible) data usage license
-{:.todo}
-
-No (detailed) provenance
 {:.todo}
 
 
