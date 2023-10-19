@@ -9,6 +9,9 @@ To be able to define a form, a vocabulary or ontology is needed that functions a
 Most of the existing approaches to describe a form in RDF are based on one ontology to express the in this paper called display part.
 In the following, first, some standalone technologies are discussed, after that some notable ontologies are discussed. Finally, some state of the art SHACL validation tools are discussed.
 
+mention the gaps
+{:.todo}
+
 
 ### Standalone Technologies
 
@@ -18,7 +21,7 @@ For the reasoning part, a language is needed to express what actions should happ
 
 One existing specification seeming useful for this problem is [XForms 2.0](cite:cites xforms).
 This language to define forms is a W3C specification.
-It is based on XML and also has a split architecture that separates presentation, content, and purpose, closely relating to the three parts: display, validation, and reasoning which are used to tackle the problem in this paper.
+It is based on XML and also has a split architecture that separates presentation, content, and purpose, closely relating to the three parts: display, shape, and reasoning which are used to tackle the problem in this paper.
 In XForms 2.0, a model defines what data is needed, then one can have XML data defined concerning the model to become submitted data.
 Values can be constrained by defining bindings. A bind element can be defined by referring to an XML element which is part of a model. By adding attributes to that bind element, the type can be specified and other constraints can be set.
 A submission XML element can be added to define the destination of the data. Next to that, the HTTP method can also be specified.
