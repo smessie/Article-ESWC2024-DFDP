@@ -7,7 +7,7 @@ With traditional centralized forms, users cannot decide where to store the submi
 <!-- Task         -->
 To achieve reusability, we need to describe the form and its actions, i.e. what to do with the submitted data, independently of the app, so that we can edit and copy this description.
 To achieve decentralization, we need to decouple the app from the storage, for which we will focus on the Solid environment.
-By allowing one to easily change the location of that storage location in the declarative form description, we achieve controllability.
+By allowing the user to easily change the location of that storage location in the declarative form description, we achieve controllability.
 We created a three-part view on Solid Web Forms by decoupling a form description into the display, shape, and reasoning parts. These parts declaratively define how the form should look element-wise, the expected data structure, and how to handle filled-in information to achieve the desired features.
 <!-- Object       -->
 In this paper, we introduce and explain how such a declarative form description can be created and used without making assumptions about the viewing environment or data storage.
