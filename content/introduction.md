@@ -14,7 +14,7 @@ They are built for one specific use case.
 Fourth, reusing data across multiple applications is not feasible because data from one application can not be written or read by another.
 A first requirement for solving these problems is to decouple the data from the application.
 To accomplish this, [Solid](cite:cites solid) is used.
-Even after this problem is solved and data reuse between applications becomes possible, the data format needs to be independent of the application, i.e., different applications use the same form description, even if they use different languages.
+Even after this problem is solved and data reuse between applications becomes possible, the data format needs to be independent of the application, i.e., different applications use the same form description, even if they understand different languages.
 Only then will the data and the app be fully decoupled, as it cannot be assumed that all apps will use the same language to define data.
 
 This problem is tackled in this paper by introducing a solution by looking at Solid Web forms as a whole of 3 separate parts: *display*, *shape*, and *reasoning*.
