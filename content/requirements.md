@@ -6,10 +6,10 @@ We review the current state of the art and summarize what features are missing b
 
 Suppose Alice goes to a Google Forms form, she can only use that form to save data to the Google Drive and nowhere else.
 However, we want Alice to be able to choose for herself where to store the data, e.g. she might want to store it in her Solid pod, so she keeps ownership of the data she enters.
-Next, as forms worldwide have display logic for humans, but not for machines, you still need a human being like Alice to interpret the fields in the form and to know which and how to fill in the fields.
-Alice can thus not rely on a machine to help her fill in the form with data she for example already entered once before in her Solid pod.
-However, it could make Alice's life way easier if it can tick the checkbox automatically saying she eats vegetarian while filling out a form to register for an event, based on what she specified once earlier in her own pod.
-Moreover, if Bob sends Alice a form to fill out that he created using Google Forms, Alice has no choice but to use Google Forms to fill out the form, even if she prefers the interface of e.g. Microsoft Forms and would like to use that application. Perhaps Alice dislikes GUIs and wants to fill out the form using a text-based command-line interface, but she cannot do so because Bob has made a different choice that affects Alice's options.
+Next, as forms worldwide have display logic for humans, but not for machines, you still need a human being like Alice to interpret the fields and to know how to fill them in.
+However, it could make Alice's life way easier if it can tick the checkbox automatically saying she eats vegetarian while filling out a form to register for an event, if she specified that earlier in her own pod.
+Moreover, if Bob sends Alice a form to fill out that he created using Google Forms, Alice has no choice but to use Google Forms to fill out the form, even if she prefers the interface of e.g. Microsoft Forms and would like to use that application.
+Perhaps Alice dislikes GUIs and wants to fill out the form using a text-based command-line interface, but she cannot do so because Bob has made a different choice that affects Alice's options.
 In addition, Bob may have created a form that Alice is very interested in.
 She wants to reuse it for another workflow, but she needs to tweak the form a bit to fit her needs.
 Now she is lost because she cannot get the form description to do this.
