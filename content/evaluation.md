@@ -75,9 +75,8 @@ Make sure "bindings" is explained somewhere earlier.
 ##### Tasks
 
 The tasks are kept simple to scenarios that we modeled to mimick normal day tasks.
+The scenarios provided to the users can be found on the GitHub Wiki at [https://github.com/SolidLabResearch/FormGenerator/wiki/User-Experience-Scenarios](https://github.com/SolidLabResearch/FormGenerator/wiki/User-Experience-Scenarios).
 
-Double-check: I've now removed the link to the user study scenarios appendix. No link is okay?
-{:.todo}
 
 #### Threats to Validity
 
