@@ -15,6 +15,7 @@ Therefore, this paper proposes a three-part view on Solid Web forms.
 This shift from a single structure to a three-part view is shown schematically in [](#fig:eaen-currently-to-goal).
 On the left, the current situation with the data stored in a single structure and the application built on top of it.
 On the right, the goal of this research with the division into three parts: a form (for display), shape (for validation), and footprint (for reasoning) part.
+As considerable research has been conducted on RDF data validation [](cite:cites slabbinck_communitysolidservershape-validator-component_nodate) [](cite:cites zazuko_rdf-validate-shacl_2023) [](cite:cites bergwinkl_shacl-engine_2023), this part is not covered in this paper.
 
 The architecture can also be viewed from a different angle.
 In traditional centralized Web apps, different users interact with the same centralized Web server using different interfaces, all written for and working only with that server.

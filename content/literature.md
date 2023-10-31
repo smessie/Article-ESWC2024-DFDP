@@ -74,18 +74,3 @@ then
 Example of a policy with FnO.
 </figcaption>
 </figure>
-
-
-### Validation
-
-Considerable research has been conducted on RDF data validation, with SHACL being the most prevalent approach.
-In Slabbinck's thesis about cross-application interoperability [](cite:cites slabbinck_interoperabiliteit_2021), data validation using Shape Trees is discussed.
-[Shape Trees](cite:cites prudhommeaux_shape_2021) are a way to describe the shape of data in a way that is independent of the actual data.
-Slabbinck also made a [shape validator component](cite:cites slabbinck_communitysolidservershape-validator-component_nodate) implementing such a Shape Tree validator using SHACL shapes.
-This component, made for the Community Solid Server, allows validating data on the server side against a Shape Tree using a SHACL shape to make sure that all the resources in the containers conform to that shape.
-Client-side validation has also been researched before.
-One example is the [rdf-validate-shacl package by Zazuko](cite:cites zazuko_rdf-validate-shacl_2023).
-This is a JavaScript package that implements the SHACL specification on top of the RDFJS stack.
-Thomas Bergwinkl found a bottleneck in this package and decided to create a new implementation that would be faster.
-In his [*shacl-engine* package](cite:cites bergwinkl_shacl-engine_2023), a compile step is introduced to eliminate the need for fetching all properties and values from the Dataset object each time a shape is processed.
-A comparison of the performance of the two implementations shows that the `shacl-engine` package is 15 times faster than the `rdf-validate-shacl` package [](cite:cites bergwinkl_implementing_2023).
