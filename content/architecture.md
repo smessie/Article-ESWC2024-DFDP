@@ -4,7 +4,7 @@
 <figure id="fig:eaen-currently-to-goal" class="halfwidth">
 <img src="img/currently-to-goal.png" alt="[Figure of shift from single structure to a three-part view]" />
 <figcaption markdown="block">
-Transition from the traditional single structure where all the data is defined using a single vocabulary, to a three-part view, consisting of a form (for display), shape (for validation), and footprint (for reasoning) part.
+Transition from traditional single structure with all the data defined using a single vocabulary, to a three-part view: form (for display), shape (for validation), and footprint (for reasoning).
 </figcaption>
 </figure>
 
@@ -17,20 +17,17 @@ On the left, the current situation with the data stored in a single structure an
 On the right, the goal of this research with the division into three parts: a form (for display), shape (for validation), and footprint (for reasoning) part.
 As considerable research has been conducted on RDF data validation [](cite:cites slabbinck_communitysolidservershape-validator-component_nodate) [](cite:cites zazuko_rdf-validate-shacl_2023) [](cite:cites bergwinkl_shacl-engine_2023), this part is not covered in this paper.
 
+<figure id="fig:renderer-architecture">
+<img src="img/stage-2.svg" alt="[Figure of high level architecture of declarative Solid apps]" />
+<figcaption markdown="block">
+A generic form renderer app can dynamically build an app for multiple viewing environments without assuming the interface and app design using the 3 inputs on the right and a reasoner to apply schema alignment and footprint tasks.
+</figcaption>
+</figure>
+
 The architecture can also be viewed from a different angle.
 In traditional centralized Web apps, different users interact with the same centralized Web server using different interfaces, all written for and working only with that server.
 Additionally, the data is stored on the server of the application, outside the user's control.
 The [Solid protocol](cite:cites solid-protocol) provides a standardized interface, tackling that problem, but still many apps are being built with assumptions about the data that is stored in the pod, and they are designed for one specific use case.
-
-<figure id="fig:renderer-architecture">
-<img src="img/stage-2.svg" alt="[Figure of high level architecture of declarative Solid apps]" />
-<figcaption markdown="block">
-Users interact with a dynamically generated app built by a form renderer using the 3 inputs displayed on the right.
-This generic renderer app can build for multiple viewing environments without making assumptions about the interface and app itself.
-It uses a reasoner to apply the schema alignment and footprint tasks.
-</figcaption>
-</figure>
-
 This paper pushes this decentralized architecture a step further with the introduction of a declarative Solid app that makes no assumptions about the interface and app itself.
 A schematic overview of the architecture is shown in [](#fig:renderer-architecture).
 
@@ -40,7 +37,7 @@ A schematic overview of the architecture is shown in [](#fig:renderer-architectu
 <figure id="fig:FormRenderer" class="halfwidth">
 <img src="img/FormRenderer.png" alt="[Screenshot of FormRenderer application]" />
 <figcaption markdown="block">
-Screenshot of the implemented FormRenderer.
+Implemented FormRenderer app.
 </figcaption>
 </figure>
 
@@ -84,7 +81,7 @@ The renderer app needs to apply these rules onto the form description using a re
 <figure id="fig:FormGenerator" class="halfwidth">
 <img src="img/FormGenerator.png" alt="[Screenshot of FormGenerator application]" />
 <figcaption markdown="block">
-Screenshot of the implemented FormGenerator.
+Implemented FormGenerator app.
 </figcaption>
 </figure>
 
@@ -97,7 +94,7 @@ This is the same language that is used to describe the conversion rules in the s
 Policies should describe the client-side operations that need to be performed when a certain event occurs.
 This can be much more than just performing an HTTP request to the server.
 As the [FnO ontology](cite:cites fno-paper) allows to describe any kind of operation, a basic version of this existing ontology is reused to describe the policy.
-[](#lst:n3-form-policies-example) contains two examples of such footprint tasks.
+[](#lst:n3-form-policies-example) contains an example of a footprint task sending an HTTP request.
 The arguments of these policies, such as the URL to send the HTTP request to or to redirect to, should be defined by the user.
 In [](#fig:FormGenerator) you can see a screenshot of the FormGenerator application where the user can provide these values, next to the ability to define form fields.
 
@@ -118,17 +115,8 @@ In [](#fig:FormGenerator) you can see a screenshot of the FormGenerator applicat
     ex:contentType "application/ld+json"
   ] .
 } .
-{
-  ?id ex:event ex:Submit.
-} => {
-  ex:RedirectPolicy pol:policy [
-    a fno:Execution ;
-    fno:executes ex:redirect ;
-    ex:url <https://smessaert.be>
-  ] .
-} .
 </code></pre>
 <figcaption markdown="block">
-Example of N3 rules describing different policies to be executed on the form submission event.
+Example of N3 rule describing HTTP request policy to be executed on the form submission event.
 </figcaption>
 </figure>

@@ -6,8 +6,8 @@ This section covers related work, including research with similar focuses and re
 
 ### Standalone Technologies
 
-A first standalone technology is [XForms 2.0](cite:cites xforms), a W3C specification language to define forms.
-It is based on XML and also has a split architecture that separates presentation, content, and purpose, closely relating to the three parts display, shape, and reasoning introduced in this paper.
+A first standalone technology is [XForms 2.0](cite:cites xforms).
+It is a W3C specification language to define forms based on XML and also has a split architecture that separates presentation, content, and purpose, closely relating to the three parts display, shape, and reasoning introduced in this paper.
 A model specifies required data and can limit values by referencing an XML element, which can have attributes to define type and other constraints.
 While an XML element for submission can specify the data destination and HTTP method, enabling actual reasoning within it is not feasible.
 Furthermore, XForms 2.0 is not an ideal choice, given its XML nature compared to the predominant use of RDF in this field.
@@ -15,16 +15,15 @@ Furthermore, XForms 2.0 is not an ideal choice, given its XML nature compared to
 A technology using RDF is [RDForms](cite:cites metasolutions_rdforms_nodate), allowing form-based editing and presentation of RDF.
 It consists of 2 main components: the *RDForms library* and the *RDForms templates*.
 The first one is responsible for the parsing, serializing, and manipulation of RDF graphs, while the latter makes sure the right RDF expression is produced and manipulated.
-Although this system successfully provides form-based editing and presentation of RDF data, it lacks reasoning capabilities, schema alignment tasks, or event-driven actions as introduced in the paper's concept.
+Although this system successfully provides form-based editing and presentation of RDF data, it lacks reasoning capabilities, schema alignment tasks, and event-driven actions as introduced in the paper's concept.
 
 
 ### Ontologies
 
-A first ontology is [SHACL](cite:cites shacl), short for Shapes Constraint Language, which is a W3C recommendation.
-It is a vocabulary used to define and validate RDF graphs based on a set of conditions, which are declared in shapes and consist of constraints.
+[SHACL](cite:cites shacl), short for Shapes Constraint Language, is a W3C recommendation vocabulary used to define and validate RDF graphs based on a set of conditions, which are declared in shapes and consist of constraints.
 These shapes can also be viewed as a description of the data graphs they validate.
 Besides validation, such descriptions can also be used for user interface building, or thus to define the form's display part.
-A property shape comprises non-validating properties, which SHACL processors ignore, and validating properties that represent validation conditions.
+A property shape comprises non-validating properties, ignored by SHACL processors, and validating properties that represent validation conditions.
 The former can be utilized to provide supplementary information, such as for form construction, while the latter specify constraints on the values of the properties of the focus node.
 Examples are `sh:datatype` and `sh:minCount`.
 
@@ -36,7 +35,7 @@ Extra properties can be specified to define the field's behavior.
 The blog post by Hochstenbach, Wright, and Turdean on [*RDF forms for Solid*](cite:cites hochstenbach_rdf_2022) discusses the utilization of the Solid-UI ontology to define forms in RDF and presents a state-of-the-art declarative form renderer using this ontology.
 
 [RDF-Form](cite:cites rdf-form) is another vocabulary that can be used to define forms in RDF.
-In contrast to SHACL and Solid-UI, RDF-Form has no way to link the fields to the form object.
+In contrast to SHACL and Solid-UI, it has no way to link the fields to the form object.
 As a result, all fields defined within the same resource file as the form are automatically associated with that form.
 This approach contradicts the Linked Data principles, which encourages linking everything together and supports multiple form definitions within a single resource file.
 The field type can be specified using the `form:widget` predicate, while the `form:binding` predicate is used to define a binding, similar to the previous ontologies.

@@ -29,9 +29,9 @@ The requirements for each research question are discussed, and finally the summa
 ### Multiple Viewing Environments
 
 Forms should have declarative descriptions (R1) to enable simple reusability.
-This streamlines the process of making some adjustments, as you can parse the existing one, make the adjustments, and update the description accordingly.
+This streamlines the process of making some adjustments by parsing, adjusting and updating the description accordingly.
 XForms 2.0 does this by declaratively specifying the form in XML.
-Solid-UI Forms also succeeds in having a declarative form description by expressing the form using Linked Data in the Turtle format.
+Solid-UI Forms also succeeds in (R1) by expressing the form using Linked Data in the Turtle format.
 
 The declarative form description should be machine-interpretable (R2), allowing machines to interpret the form and automatically prefill data. 
 Additionally, it should be human-interpretable (R3) so that humans can manually fill out the form.
@@ -62,11 +62,6 @@ Solid-UI Forms cannot execute or specify any footprint tasks.
 
 ### Requirements Summary
 
-The scenario shows the need to FAIRly describe the form description independent of the application context.
-The review of the adherence to the [FAIR principles](cite:cites wilkinson2016fair) can be found at the Wiki of the GitHub repository at [https://github.com/SolidLabResearch/FormGenerator/wiki/Adherence-to-the-FAIR-Principles](https://github.com/SolidLabResearch/FormGenerator/wiki/Adherence-to-the-FAIR-Principles).
-The requirements of the previous scenario are grouped into three categories and summarized in [](#requirements-table).
-
-
 <figure id="requirements-table" class="table" markdown="1">
 
 | N° | Category                       | Requirement                                                            |
@@ -83,3 +78,7 @@ The requirements of the previous scenario are grouped into three categories and 
 Summarized requirements based on the research questions.
 </figcaption>
 </figure>
+
+The scenario shows the need to FAIRly describe the form description independent of the application context.
+The review of the adherence to the [FAIR principles](cite:cites wilkinson2016fair) can be found at the Wiki of the GitHub repository at [https://github.com/SolidLab<wbr />Research/FormGenerator/wiki/Adherence-to-the-FAIR-Principles](https://github.com/SolidLabResearch/FormGenerator/wiki/Adherence-to-the-FAIR-Principles).
+The requirements of the previous scenario are grouped into three categories and summarized in [](#requirements-table).
