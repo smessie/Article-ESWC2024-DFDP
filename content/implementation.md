@@ -1,33 +1,26 @@
 ## Implementation
 {:#implementation}
 
-- reasoning: EYE en EYE-JS
-- querying: Comunica
-- frameworks: EmberJS (drag-and-drop) and VueJS
-
 Three proof-of-concept apps are implemented in TypeScript/JavaScript.
-The FormGenerator app is an application programmed in the [Ember framework](cite:cites emberjs) that generates a form description based on the form that the user builds using drag-and-drop.
-The FormRenderer and FormCli are two apps that render a given form description in respectively a Web browser using HTML or a text-based command-line interface.
+The FormGenerator app is an application programmed in the [Ember framework](cite:cites emberjs) generating a form description based on the form the user builds using drag-and-drop.
+The FormRenderer app and FormCli app are two apps that render a given form description in respectively a Web browser using HTML or a text-based command-line interface.
 
 ### FormGenerator
 {:#implementation-formgenerator}
 
-The FormGenerator is developed using Redpencil's [ember-solid library](cite:cites ember-solid) and [rdflib.js](cite:cites rdflibjs).
-Not all possible form elements are supported as it only functions as a proof of concept.
-Additional field types can be added similarly to the existing ones.
+The FormGenerator app is developed using Redpencil's [ember-solid library](cite:cites ember-solid) and [rdflib.js](cite:cites rdflibjs).
+Not all possible form elements are supported as it only functions as a proof of concept, but additional field types can be added similarly to the existing ones.
 The drag-and-drop functionality is implemented using the [ember-drag-drop add-on](cite:cites ember-drag-drop-addon).
 Authentication is managed by ember-solid, redirecting users to the Solid IDP for login when accessing the app.
 
 The policies are implemented using N3 rules.
-However, some limitations required additional workarounds in the implementation.
-Rdflib.js doesn't support N3 rules, preventing it from parsing a resource containing such rules.
-This is not the only problem with N3 rules though; inserting and deleting N3 rules in and from a resource is unable with both SPARQL Update and N3 Patch.
-This is because N3 rules are not standard triples, but a N3 statement where the subject and object constitute quoted graphs [](cite:cites n3) that are not supported in any of the former and current Solid data manipulation protocols.
+Some limitations necessitate workarounds in the implementation, such as rdflib.js lacking support for N3 rules, preventing parsing of resources containing such rules.
+The issue with N3 rules extends beyond rdflib.js; inserting and deleting N3 rules from a resource is also problematic.
+N3 rules are distinct from standard triples as they involve quoted graphs in the subject and object [](cite:cites n3), a feature not supported in existing Solid data manipulation protocols, including SPARQL Update and N3 Patch.
 The only way to insert and delete N3 rules appears to be using an HTTP PUT request with the newly updated resource as the body.
-To insert a new N3 rule, the resource is retrieved, the new N3 rule is locally added to the resource, and the resource is PUT back to the server.
-Deleting and updating N3 rules is done similarly.
-To implement this, the N3 rules in the retrieved resource must be parsed to identify existing rules for potential updates or deletions.
-This is accomplished using a RegEx to match N3 rules in the resource, as shown in [](#lst:match-n3-rules-regex).
+Inserting, deleting, and updating N3 rules involves retrieving the resource, locally modifying it with the new N3 rule, and then performing a PUT operation to update the server-held resource.
+To implement this, the N3 rules within the retrieved resource must be parsed to identify existing rules that may require updates or deletions.
+This is achieved through a RegEx pattern, as shown in [](#lst:match-n3-rules-regex).
 It will however also match N3 statements that use a different namespace than the `log` vocabulary used in the N3 rules' predicates as it does not check the prefix of `:implies`.
 Viewed as a feature, the N3 parser may have issues with both actual N3 rules and similar-looking N3 statements with different predicates.
 
@@ -52,7 +45,7 @@ As an example, `ex:MyField` will become `http://example.org/MyField`.
 
 ### FormRenderer
 
-The FormRenderer is created in the [Vue.js framework](cite:cites vue).
+The FormRenderer app is created in the [Vue.js framework](cite:cites vue).
 Authentication is implemented using the [`@inrupt/solid-client-authn-browser`](https://www.npmjs.com/package/@inrupt/solid-client-authn-browser) library ensuring that the user's Solid pod does not need to be publicly readable and writable.
 This allows a user to authenticate with their Solid pod and then the app can read and write to the pod on behalf of the user.
 However, authentication is not necessary if the user only wants to render a publicly accessible form.
@@ -61,7 +54,7 @@ Schema alignment tasks are performed by applying the N3 rules from the conversio
 The output of this reasoning step is the equivalent form description in the Solid-UI vocabulary.
 The form description is then parsed by the Comunica engine using SPARQL queries.
 
-When dealing with a resource containing pre-existing data for form filling, it's straightforward to determine the subject URI for writing new data—it can be reused from the existing data.
+When dealing with a resource containing pre-existing data for form filling, it's straightforward to determine the subject URI for writing new data — it can be reused from the existing data.
 Furthermore, when no resource is provided or when multiple subjects within the resource conform to the form's structure and target class, determining the subject URI becomes ambiguous.
 Various solutions were explored to address this problem.
 
@@ -92,9 +85,9 @@ Parsing the policies is done in the same was as in the FormGenerator app, descri
 
 ### FormCli
 
-Just like the previously discussed FormRenderer app, FormCli is also a form renderer application.
-The difference is that this application is a command line application, meaning that it can be used without a graphical user interface.
-This application is written in JavaScript and uses the Node.js runtime environment.
+Just like the previously discussed FormRenderer app, the FormCli app is also a form renderer application.
+The difference is that this is a command line application, meaning that it can be used without a GUI.
+It is written in JavaScript and uses the Node.js runtime environment.
 It uses the same library as the FormRenderer app to query the different resources, namely Comunica.
 The architecture and implementation of this application are very similar to the FormRenderer app.
 
