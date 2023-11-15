@@ -9,9 +9,17 @@ The FormRenderer app and FormCli app are two apps that render a given form descr
 {:#implementation-formgenerator}
 
 The FormGenerator app is developed using Redpencil's [ember-solid library](cite:cites ember-solid) and [rdflib.js](cite:cites rdflibjs).
+In [](#fig:FormGenerator) you can see a screenshot of the app where the user can provide policy values, next to the ability to define form fields.
 Not all possible form elements are supported as it only functions as a proof of concept, but additional field types can be added similarly to the existing ones.
 The drag-and-drop functionality is implemented using the [ember-drag-drop add-on](cite:cites ember-drag-drop-addon).
 Authentication is managed by ember-solid, redirecting users to the Solid IDP for login when accessing the app.
+
+<figure id="fig:FormGenerator" class="halfwidth">
+<img src="img/FormGenerator.png" alt="[Screenshot of FormGenerator application]" />
+<figcaption markdown="block">
+Implemented FormGenerator app.
+</figcaption>
+</figure>
 
 The policies are implemented using N3 rules.
 Some limitations necessitate workarounds in the implementation, such as rdflib.js lacking support for N3 rules, preventing parsing of resources containing such rules.
@@ -45,14 +53,21 @@ As an example, `ex:MyField` will become `http://example.org/MyField`.
 
 ### FormRenderer
 
+<figure id="fig:FormRenderer" class="halfwidth">
+<img src="img/FormRenderer.png" alt="[Screenshot of FormRenderer application]" />
+<figcaption markdown="block">
+Implemented FormRenderer app.
+</figcaption>
+</figure>
+
 The FormRenderer app is created in the [Vue.js framework](cite:cites vue).
+A screenshot of this app is shown in [](#fig:FormRenderer).
 Authentication is implemented using the [`@inrupt/solid-client-authn-browser`](https://www.npmjs.com/package/@inrupt/solid-client-authn-browser) library ensuring that the user's Solid pod does not need to be publicly readable and writable.
 This allows a user to authenticate with their Solid pod and then the app can read and write to the pod on behalf of the user.
 However, authentication is not necessary if the user only wants to render a publicly accessible form.
 
 Schema alignment tasks are performed by applying the N3 rules from the conversion rules resource over the form description using the EYE-JS reasoner library mentioned before.
-The output of this reasoning step is the equivalent form description in the Solid-UI vocabulary.
-The form description is then parsed by the Comunica engine using SPARQL queries.
+The output of this reasoning step is the equivalent form description in the Solid-UI vocabulary, which is then parsed by the Comunica engine using SPARQL queries.
 
 When dealing with a resource containing pre-existing data for form filling, it's straightforward to determine the subject URI for writing new data — it can be reused from the existing data.
 Furthermore, when no resource is provided or when multiple subjects within the resource conform to the form's structure and target class, determining the subject URI becomes ambiguous.
@@ -70,7 +85,7 @@ Various solutions were explored to address this problem.
 
 6. Specifying the subject URI in the form description.
 
-Blank nodes are often an unsuitable solution since they lack a URI, making it impossible to reference the data using a valid URI or to link from other resources.
+Blank nodes are often an unsuitable solution since they lack a URI, making it impossible to reference the data using a valid URI or to link to from other resources.
 Using the URI to which the data is posted is also not a good solution, as this URI is not necessarily meaningful or even a unique URI.
 Not all ontologies for describing forms do have a property to define the subject URI, eliminating option 6.
 This leaves us with options 1, 2, and 4 as the viable choices.
@@ -85,17 +100,15 @@ Parsing the policies is done in the same was as in the FormGenerator app, descri
 
 ### FormCli
 
-Just like the previously discussed FormRenderer app, the FormCli app is also a form renderer application.
-The difference is that this is a command line application, meaning that it can be used without a GUI.
+Similar to the FormRenderer app, the FormCli app is also a form renderer, but it operates as a command-line application, allowing usage without a GUI.
 It is written in JavaScript and uses the Node.js runtime environment.
-It uses the same library as the FormRenderer app to query the different resources, namely Comunica.
-The architecture and implementation of this application are very similar to the FormRenderer app.
+Its architecture and implementation closely resemble that of the FormRenderer app, and also uses Comunica for querying various resources.
 
 The [Inquirer.js](cite:cites boudrias_sboudriasinquirerjs_2013) library is used to prompt the user interactively with the different questions contained in the form.
 Based on the field type, a different kind of prompt is used.
 To support easy input of dates, the [inquirer-date-prompt](cite:cites havermale_haversnailinquirer-date-prompt_2021) plugin is used.
 
-The FormCli app lacks authentication support with a Solid identity provider, as the Solid protocol does not currently offer proper authentication for command-line applications.
-Inrupt has a Solid authentication library for the CLI, it necessitates manual setup of prerequisites such as refresh tokens and client credentials [](cite:cites inrupt_authenticate_nodate).
-As this is out of scope, there is no authentication implemented.
-The primary focus is demonstrating the feasibility of a form renderer app without a GUI, which does not require authentication.
+The FormCli app does not support authentication with a Solid identity provider, as the Solid protocol lacks proper authentication for command-line applications.
+Although Inrupt has a Solid authentication library for the CLI, it requires manual setup of prerequisites like refresh tokens and client credentials [](cite:cites inrupt_authenticate_nodate).
+Authentication is not implemented as it falls outside the scope of this project.
+The main emphasis is on demonstrating the feasibility of a form renderer app without a GUI, not requiring authentication.

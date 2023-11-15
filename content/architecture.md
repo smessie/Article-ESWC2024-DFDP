@@ -34,32 +34,23 @@ A schematic overview of the architecture is shown in [](#fig:renderer-architectu
 
 ### Description of the Display Part
 
-<figure id="fig:FormRenderer" class="halfwidth">
-<img src="img/FormRenderer.png" alt="[Screenshot of FormRenderer application]" />
-<figcaption markdown="block">
-Implemented FormRenderer app.
-</figcaption>
-</figure>
-
 The previous problem of needing a separate app for each use case is solved by describing the user interface in a declarative way in the *form description resource*.
 This RDF resource contains both the display part and the footprint for the reasoning part.
 The display part is the part that is responsible for rendering the form to the user.
-There already exist ontologies that can be used for this purpose, such as [SHACL](cite:cites shacl), [Solid-UI](cite:cites solid-ui), and [RDF-Form](cite:cites rdf-form).
 Web forms are typically HTML, while RDF represents the semantics of the form, not how you represent it in HTML.
 By declaratively describing the form in RDF, we achieve the ability to render the same form description in any environment.
+There already exist ontologies that can be used for this purpose, such as [SHACL](cite:cites shacl), [Solid-UI](cite:cites solid-ui), and [RDF-Form](cite:cites rdf-form).
+By reusing these ontologies for the display part, we achieve maximum compatibility with existing form descriptions.
 To prove that the display part is unrelated to the viewing environment, two proof-of-concept applications are implemented and discussed in [](#implementation), each rendering the same form description in a different viewing environment.
-The first app is the *FormRenderer* which renders the form description in a web browser using HTML.
-A screenshot of this app is shown in [](#fig:eaen-FormRenderer).
-The second app is the *FormCli* which renders the form description in a text-based command-line interface.
+One app renders the form description in a Web browser using HTML, while the other app renders the same form description in a text-based command-line interface.
 The architecture and implementation of these apps are very similar to each other.
 The main difference is that the FormCli app does not have a graphical user interface and uses a text-based terminal instead.
-The implementation of these apps provides us with proof that the display part is unrelated to the viewing environment as the same form description can be rendered with the two apps.
-Another benefit of the semantic and declarative description is that machines can interpret the meaning of the form, allowing forms to be prefilled by machines.
-This is achieved with the binding property on each form field, linking to a semantic meaning of that field.
+Semantic and declarative descriptions also enable machines to interpret the form's meaning, facilitating machine-driven prefilling of forms.
+This is achieved with the binding property on each form field, linking to the semantic meaning of that field.
 The already existing predicates in the UI ontologies are reused for that, e.g. `ui:property` for Solid-UI, `form:binding` for RDF-Form, and `sh:path` for SHACL.
-The binding on the form describes the meaning of the form and will therefore be used as type for the subject of the resulting data after filling out the form.
-The bindings on the form fields will be used as predicates on that subject, with as object the values filled in for these fields, as they describe the semantic meaning of these fields.
-In the same way that the filled-out form's output is structured, the *data resource* is structured to automatically prefill the form.
+The form's binding, describing its meaning, serves as the type for the resulting data subject after form completion.
+The form field's bindings will serve as predicates on that subject, describing the semantic meaning of these fields, with the filled-in values for these fields as objects.
+The *data resource* structure mirrors the filled-out form's output, enabling automatic prefilling of the form.
 
 
 ### Description of the Schema Alignment Tasks
@@ -68,9 +59,8 @@ Unfortunately, the move to decentralization and decoupling comes with its own ch
 Two main challenges need to be tackled before this can be achieved.
 To make the app understand any ontology and achieve a real decoupled solution, *schema alignment tasks* are introduced translating the form description into an ontology the app understands.
 The *N3 conversion rules resource* from [](#fig:renderer-architecture) is used by the renderer app to perform this mapping.
-This resource consists of rules structured using the Notation3 language.
-It uses the N3 rules with as premise the part of the form description in the ontology the form description resource is written in.
-This can be any ontology that is equivalent to the one the app understands.
+This resource consists of rules structured using the [Notation3 language](cite:cites n3).
+It employs N3 rules, using the part of the form description in the ontology equivalent to the one understood by the app as a premise.
 The rule conclusion contains the equivalent expression in the ontology the app understands -- Solid-UI in this case.
 By passing along this resource to the app, the app does not need to understand the ontology the form description is written in, and any ontology can be used for which a mapping can be provided.
 The renderer app needs to apply these rules onto the form description using a reasoner to retrieve the form description in the language it understands.
@@ -78,25 +68,18 @@ The renderer app needs to apply these rules onto the form description using a re
 
 ### Description of the Footprint Tasks
 
-<figure id="fig:FormGenerator" class="halfwidth">
-<img src="img/FormGenerator.png" alt="[Screenshot of FormGenerator application]" />
-<figcaption markdown="block">
-Implemented FormGenerator app.
-</figcaption>
-</figure>
-
 In addition to describing how the form should look, the form description should also declaratively describe what should happen in certain events such as submission.
 Therefore, the form description is extended with *policies*.
 The process of executing these policies is called the *footprint tasks* and is the second half of the reasoning part of the three-part view.
 To describe policies, two languages are needed: a *rule language* and a *policy language* describing what actually should happen when a policy is executed.
 As rule language, [N3](cite:cites n3) is used.
 This is the same language that is used to describe the conversion rules in the schema alignment tasks and their N3 rules do exactly what is needed.
+The rule premise contains the event, the rule conclusion the policy.
 Policies should describe the client-side operations that need to be performed when a certain event occurs.
 This can be much more than just performing an HTTP request to the server.
 As the [FnO ontology](cite:cites fno-paper) allows to describe any kind of operation, a basic version of this existing ontology is reused to describe the policy.
 [](#lst:n3-form-policies-example) contains an example of a footprint task sending an HTTP request.
 The arguments of these policies, such as the URL to send the HTTP request to or to redirect to, should be defined by the user.
-In [](#fig:FormGenerator) you can see a screenshot of the FormGenerator application where the user can provide these values, next to the ability to define form fields.
 
 <figure id="lst:n3-form-policies-example" class="listing">
 <pre><code>

@@ -45,7 +45,7 @@ To describe the HTTP request that needs to take place, we can use Hydra.
 [Hydra](cite:cites hydra) is a vocabulary to describe Web APIs in Linked Data. Its intended use is to describe the server side of the API in a machine-readable way.
 By doing this, a client can use this description to talk to the API without the need to hard code how to talk to the API.
 Even though this is already a step in the right direction, the focus of Hydra is on the server side, and not on the client side.
-Additionally, only HTTP requests can be described, but there is a need of a more extensive vocabulary to also describe other actions, such as redirects or N3 Patches on existing resources.
+Additionally, only HTTP requests can be described, but there is a need for a more extensive vocabulary to also describe other actions, such as redirects or N3 Patches on existing resources.
 
 Since Hydra falls short in achieving these tasks, we explored alternative ontologies.
 The Function Ontology (FnO) [](cite:cites fno-paper) [](cite:cites fno-spec) is used to semantically define and describe implementation-independent functions, including their relations to related concepts such as parameters, and mappings to specific implementations and executions.
@@ -57,13 +57,10 @@ In this case, it will send a notification to Bob. This is done by executing the 
 
 <figure id="lst:policy-example" class="listing">
 <pre><code>rule "Notify Bob about newly created artifacts"
-
 when
    ?notification a as:Create .
-
 then
    ?notification as:target <http://bob.institution.org/profile/card#me> .
-
    [ a fno:Execution ;
      fno:executed ex:sendNotification
         ex:notification ?notification

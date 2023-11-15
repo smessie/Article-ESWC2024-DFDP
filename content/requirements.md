@@ -19,7 +19,7 @@ In this paper, we examine the following three research questions to address the 
 In the remainder of this section, each research question will be further explained and compared to the current state of the art.
 The requirements for each research question are discussed, and finally the summarized requirements are presented in [](#requirements-table).
 
-- RQ1: How can machines be controlled in a declarative way to create forms for producing RDF in **multiple viewing environments** (such as the web and text-based via a command line)?
+- RQ1: How can machines be controlled in a declarative way to create forms for producing RDF in **multiple viewing environments** (such as the Web and text-based via a command line)?
 
 - RQ2: How can machines be controlled in a declarative way to **translate form descriptions** decoupled from the application into a vocabulary that the application understands?
 
