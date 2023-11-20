@@ -46,10 +46,11 @@ Potential participants were directly contacted by the author out of which 19 too
 To meet this requirement, computer science students were primarily sought as participants.
 The 11 participants for the form usage part were people both with and without technical backgrounds with ages spanning from 18 to 52 years.
 This aligns with the target group of this and similar traditional apps [](cite:cites petrosyan2023distribution), assuming users are familiar with a computer and the Web.
-Both groups were provided with simple scenarios instructing them to either generate a form for a restaurant review or fill out an earlier generated form, modeled to mimic normal day tasks.
-They can be found at [https://github.com/SolidLabResearch/FormGenerator/wiki/<wbr />User-Experience-Scenarios](https://github.com/SolidLabResearch/FormGenerator/wiki/User-Experience-Scenarios).
+Both groups were provided with simple scenarios instructing them to either generate a form for a restaurant review or fill out an earlier generated form, modeled to mimic normal day tasks.[^UserStudies]
 The FormGenerator participants were given a list of bindings to be used to create the form, fulfilling the assumption that they have knowledge of Linked Data.
 All necessary data elements were put in place for the FormRenderer app by giving the users a specific link autopopulating the input fields.
+
+[^UserStudies]: The user study scenarios can be found at [https://github.com/SolidLabResearch/FormGenerator/wiki/User-Experience-Scenarios](https://github.com/SolidLabResearch/FormGenerator/wiki/User-Experience-Scenarios).
 
 
 #### Threats to Validity

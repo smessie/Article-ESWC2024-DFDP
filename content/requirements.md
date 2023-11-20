@@ -38,7 +38,7 @@ Additionally, it should be human-interpretable (R3) so that humans can manually 
 This requirement is straightforward, and all state-of-the-art applications, such as XForms 2.0 and Solid-UI Forms, fulfill it.
 Machine interpretability is attained in Solid-UI Forms because Linked Data is used with the Solid-UI vocabulary, which semantically describes the elements' meanings.
 XForms 2.0 also allows containing semantics in the form description using vocabularies, making it possible for machines to interpret the form.
-Other applications that are mostly used by the wide public nowadays like Google Forms and Microsoft Forms, however, do not allow you to contain semantics in the form. This makes them not machine-interpretable.
+Other applications that are mostly used by the wide public nowadays like Google Forms and Microsoft Forms, however, do not allow the user to contain semantics in the form. This makes them not machine-interpretable.
 Moreover, there are no declarative descriptions of the form available to the user.
 
 To give Alice the possibility to choose the application she wants to fill out the form, independent of the environment, the form description should be renderable in multiple viewing environments (R4).
@@ -57,7 +57,7 @@ Similarly, Solid-UI Forms only works with its Solid-UI vocabulary.
 To ensure that the form is entirely declarative, it is essential to provide declarative descriptions not only for the form's elements but also for the actions triggered by certain events.
 Therefore, a declarative description of the policies (R6) together with the execution of these footprint tasks (R7) is required.
 XForms 2.0 only allows specifying the submission endpoint using the Submission XML element, but no other policies can be specified.
-Solid-UI Forms cannot execute or specify any footprint tasks.
+Solid-UI Forms has only limited support to execute or specify any footprint tasks by the use of the extra layer [solid-ui-components](cite:cites zucker_solid_2023) currently being developed by Jeff Zucker.
 
 
 ### Requirements Summary

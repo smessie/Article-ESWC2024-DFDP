@@ -24,12 +24,15 @@ A generic form renderer app can dynamically build an app for multiple viewing en
 </figcaption>
 </figure>
 
-The architecture can also be viewed from a different angle.
 In traditional centralized Web apps, different users interact with the same centralized Web server using different interfaces, all written for and working only with that server.
 Additionally, the data is stored on the server of the application, outside the user's control.
 The [Solid protocol](cite:cites solid-protocol) provides a standardized interface, tackling that problem, but still many apps are being built with assumptions about the data that is stored in the pod, and they are designed for one specific use case.
 This paper pushes this decentralized architecture a step further with the introduction of a declarative Solid app that makes no assumptions about the interface and app itself.
 A schematic overview of the architecture is shown in [](#fig:renderer-architecture).
+First, a user that wants to create a form should build a declarative form description using a form generator.
+Then, it can send that form description to another user to fill it out.
+The user wanting to fill out the form should use a form renderer to render the declarative form description.
+The user can additionally provide a conversion rules resource to map the form description onto another ontology and a data resource to automatically prefill the form.
 
 
 ### Description of the Display Part
@@ -41,13 +44,9 @@ Web forms are typically HTML, while RDF represents the semantics of the form, no
 By declaratively describing the form in RDF, we achieve the ability to render the same form description in any environment.
 There already exist ontologies that can be used for this purpose, such as [SHACL](cite:cites shacl), [Solid-UI](cite:cites solid-ui), and [RDF-Form](cite:cites rdf-form).
 By reusing these ontologies for the display part, we achieve maximum compatibility with existing form descriptions.
-To prove that the display part is unrelated to the viewing environment, two proof-of-concept applications are implemented and discussed in [](#implementation), each rendering the same form description in a different viewing environment.
-One app renders the form description in a Web browser using HTML, while the other app renders the same form description in a text-based command-line interface.
-The architecture and implementation of these apps are very similar to each other.
-The main difference is that the FormCli app does not have a graphical user interface and uses a text-based terminal instead.
 Semantic and declarative descriptions also enable machines to interpret the form's meaning, facilitating machine-driven prefilling of forms.
 This is achieved with the binding property on each form field, linking to the semantic meaning of that field.
-The already existing predicates in the UI ontologies are reused for that, e.g. `ui:property` for Solid-UI, `form:binding` for RDF-Form, and `sh:path` for SHACL.
+The already existing predicates in the UI ontologies can be reused for that, e.g. `ui:property` for Solid-UI, `form:binding` for RDF-Form, and `sh:path` for SHACL.
 The form's binding, describing its meaning, serves as the type for the resulting data subject after form completion.
 The form field's bindings will serve as predicates on that subject, describing the semantic meaning of these fields, with the filled-in values for these fields as objects.
 The *data resource* structure mirrors the filled-out form's output, enabling automatic prefilling of the form.
@@ -58,10 +57,8 @@ The *data resource* structure mirrors the filled-out form's output, enabling aut
 Unfortunately, the move to decentralization and decoupling comes with its own challenges.
 Two main challenges need to be tackled before this can be achieved.
 To make the app understand any ontology and achieve a real decoupled solution, *schema alignment tasks* are introduced translating the form description into an ontology the app understands.
-The *N3 conversion rules resource* from [](#fig:renderer-architecture) is used by the renderer app to perform this mapping.
-This resource consists of rules structured using the [Notation3 language](cite:cites n3).
-It employs N3 rules, using the part of the form description in the ontology equivalent to the one understood by the app as a premise.
-The rule conclusion contains the equivalent expression in the ontology the app understands -- Solid-UI in this case.
+The *conversion rules resource* from [](#fig:renderer-architecture) is used by the renderer app to perform this mapping.
+This resource consists of rules defining how to go from a part of the form description in the ontology equivalent to the one understood by the app, to the equivalent expression in that ontology the app understands.
 By passing along this resource to the app, the app does not need to understand the ontology the form description is written in, and any ontology can be used for which a mapping can be provided.
 The renderer app needs to apply these rules onto the form description using a reasoner to retrieve the form description in the language it understands.
 
@@ -72,34 +69,6 @@ In addition to describing how the form should look, the form description should 
 Therefore, the form description is extended with *policies*.
 The process of executing these policies is called the *footprint tasks* and is the second half of the reasoning part of the three-part view.
 To describe policies, two languages are needed: a *rule language* and a *policy language* describing what actually should happen when a policy is executed.
-As rule language, [N3](cite:cites n3) is used.
-This is the same language that is used to describe the conversion rules in the schema alignment tasks and their N3 rules do exactly what is needed.
 The rule premise contains the event, the rule conclusion the policy.
 Policies should describe the client-side operations that need to be performed when a certain event occurs.
 This can be much more than just performing an HTTP request to the server.
-As the [FnO ontology](cite:cites fno-paper) allows to describe any kind of operation, a basic version of this existing ontology is reused to describe the policy.
-[](#lst:n3-form-policies-example) contains an example of a footprint task sending an HTTP request.
-The arguments of these policies, such as the URL to send the HTTP request to or to redirect to, should be defined by the user.
-
-<figure id="lst:n3-form-policies-example" class="listing">
-<pre><code>
-@prefix ex:   <http://example.org/> .
-@prefix pol: <https://www.example.org/ns/policy#> .
-@prefix fno: <https://w3id.org/function/ontology#>.
-
-{
-  ?id ex:event ex:Submit.
-} => {
-  ex:HttpPolicy pol:policy [
-    a fno:Execution ;
-    fno:executes ex:httpRequest ;
-    ex:method "POST" ;
-    ex:url <https://httpbin.org/post> ;
-    ex:contentType "application/ld+json"
-  ] .
-} .
-</code></pre>
-<figcaption markdown="block">
-Example of N3 rule describing HTTP request policy to be executed on the form submission event.
-</figcaption>
-</figure>

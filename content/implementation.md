@@ -1,18 +1,18 @@
 ## Implementation
 {:#implementation}
 
-Three proof-of-concept apps are implemented in TypeScript/JavaScript.
+We implemented three proof-of-concept apps in TypeScript/JavaScript.
 The FormGenerator app is an application programmed in the [Ember framework](cite:cites emberjs) generating a form description based on the form the user builds using drag-and-drop.
 The FormRenderer app and FormCli app are two apps that render a given form description in respectively a Web browser using HTML or a text-based command-line interface.
 
 ### FormGenerator
 {:#implementation-formgenerator}
 
-The FormGenerator app is developed using Redpencil's [ember-solid library](cite:cites ember-solid) and [rdflib.js](cite:cites rdflibjs).
-In [](#fig:FormGenerator) you can see a screenshot of the app where the user can provide policy values, next to the ability to define form fields.
+The first app in the declarative form description pipeline is to generate the declarative form description.[^ImplementationFormGenerator]
+In [](#fig:FormGenerator) a screenshot of the implemented app can be seen where the user can provide policy values, next to the ability to define form fields using drag-and-drop.
 Not all possible form elements are supported as it only functions as a proof of concept, but additional field types can be added similarly to the existing ones.
-The drag-and-drop functionality is implemented using the [ember-drag-drop add-on](cite:cites ember-drag-drop-addon).
-Authentication is managed by ember-solid, redirecting users to the Solid IDP for login when accessing the app.
+
+[^ImplementationFormGenerator]: The source code of the FormGenerator app can be found at [https://github.com/SolidLabResearch/FormGenerator](https://github.com/SolidLabResearch/FormGenerator).
 
 <figure id="fig:FormGenerator" class="halfwidth">
 <img src="img/FormGenerator.png" alt="[Screenshot of FormGenerator application]" />
@@ -21,37 +21,49 @@ Implemented FormGenerator app.
 </figcaption>
 </figure>
 
-The policies are implemented using N3 rules.
-Some limitations necessitate workarounds in the implementation, such as rdflib.js lacking support for N3 rules, preventing parsing of resources containing such rules.
-The issue with N3 rules extends beyond rdflib.js; inserting and deleting N3 rules from a resource is also problematic.
-N3 rules are distinct from standard triples as they involve quoted graphs in the subject and object [](cite:cites n3), a feature not supported in existing Solid data manipulation protocols, including SPARQL Update and N3 Patch.
-The only way to insert and delete N3 rules appears to be using an HTTP PUT request with the newly updated resource as the body.
-Inserting, deleting, and updating N3 rules involves retrieving the resource, locally modifying it with the new N3 rule, and then performing a PUT operation to update the server-held resource.
-To implement this, the N3 rules within the retrieved resource must be parsed to identify existing rules that may require updates or deletions.
-This is achieved through a RegEx pattern, as shown in [](#lst:match-n3-rules-regex).
-It will however also match N3 statements that use a different namespace than the `log` vocabulary used in the N3 rules' predicates as it does not check the prefix of `:implies`.
-Viewed as a feature, the N3 parser may have issues with both actual N3 rules and similar-looking N3 statements with different predicates.
+As mentioned earlier, describing policies requires a rules language and a policy language.
+As rule language, [Notation3 (N3)](cite:cites n3) is used.
+Their N3 rules does exactly what is needed.
+The rule premise allows for defining the event, while the rule conclusion defines the policy.
+We chose for N3 as they proved to be a working solution for our use case and the reasoning engine EYE implementing N3 is being developed at our lab.
+We therefore also made the decision to use the [EYE-JS library](cite:cites eye-js), a browser and node-distributed EYE reasoner via WebAssembly.
+By the use of reasoning, we obtain the rule conclusion which is then being parsed using a SPARQL query.
+Querying is done using [Comunica](cite:cites taelman_iswc_resources_comunica_2018), a knowledge graph querying framework.
 
-<figure id="lst:match-n3-rules-regex" class="listing">
+The policy we obtain is defined using a policy language.
+As the [FnO ontology](cite:cites fno-paper) allows to describe any kind of operation unlike e.g. Hydra which only allows for describing HTTP requests, a basic version of this existing ontology is reused to describe the policy.
+[](#lst:n3-form-policies-example) contains an example of a footprint task sending an HTTP request.
+The arguments of these policies, such as the URL to send the HTTP request to or to redirect to, should be defined by the user.
+
+<figure id="lst:n3-form-policies-example" class="listing">
 <pre><code>
-/\{[^{}]*}\s*(=>|[^\s{}:]*:implies|
-<http:\/\/www.w3.org\/2000\/10\/swap\/log#implies>)\s*{[^{}]*}\s*\./g
+@prefix ex:   <http://example.org/> .
+@prefix pol: <https://www.example.org/ns/policy#> .
+@prefix fno: <https://w3id.org/function/ontology#>.
+
+{
+  ?id ex:event ex:Submit.
+} => {
+  ex:HttpPolicy pol:policy [
+    a fno:Execution ;
+    fno:executes ex:httpRequest ;
+    ex:method "POST" ;
+    ex:url <https://httpbin.org/post> ;
+    ex:contentType "application/ld+json"
+  ] .
+} .
 </code></pre>
 <figcaption markdown="block">
-RegEx to match N3 rules.
+Example of N3 rule describing HTTP request policy to be executed on the form submission event.
 </figcaption>
 </figure>
-
-Reasoning and querying are employed to parse existing rules, enabling user display and editing.
-Reasoning is performed by the [EYE-JS library](cite:cites eye-js), a browser and node-distributed EYE reasoner via WebAssembly.
-Querying of the retrieved form conclusion to actually parse the policy is done by [Comunica](cite:cites taelman_iswc_resources_comunica_2018), a knowledge graph querying framework.
 
 When constructing the form, users must specify bindings for each field, which are URIs semantically describing the fields.
 Users must manually enter these bindings. To simplify this process, they can utilize prefixes, which are automatically expanded to full URIs via the [prefix.cc](https://prefix.cc) API.
 As an example, `ex:MyField` will become `http://example.org/MyField`.
 
 
-### FormRenderer
+### FormRenderer and FormCli
 
 <figure id="fig:FormRenderer" class="halfwidth">
 <img src="img/FormRenderer.png" alt="[Screenshot of FormRenderer application]" />
@@ -60,13 +72,21 @@ Implemented FormRenderer app.
 </figcaption>
 </figure>
 
-The FormRenderer app is created in the [Vue.js framework](cite:cites vue).
+The next application in the pipeline is to render the declarative form description and let the user fill out that form.
+We implemented two versions in two different viewing environments to prove that the display part of the form description is independent of the viewing environment.[^ImplementationFormRenderer] [^ImplementationFormCli]
+The FormRenderer app is created in the [Vue.js framework](cite:cites vue) and functions in the Web browser.
 A screenshot of this app is shown in [](#fig:FormRenderer).
-Authentication is implemented using the [`@inrupt/solid-client-authn-browser`](https://www.npmjs.com/package/@inrupt/solid-client-authn-browser) library ensuring that the user's Solid pod does not need to be publicly readable and writable.
-This allows a user to authenticate with their Solid pod and then the app can read and write to the pod on behalf of the user.
-However, authentication is not necessary if the user only wants to render a publicly accessible form.
+The FormCli app operates as a command-line application, allowing usage without a GUI.
+The form questions are prompted to the user one after each other.
+While the FormRenderer app supports authenticating with a Solid identity provider, authentication is not implemented in the FormCli app as the Solid protocol lacks proper authentication for command-line applications.
+We therefore consider this outside the scope of this research.
 
-Schema alignment tasks are performed by applying the N3 rules from the conversion rules resource over the form description using the EYE-JS reasoner library mentioned before.
+[^ImplementationFormRenderer]: The source code of the FormRenderer app can be found at [https://github.com/SolidLabResearch/FormRenderer](https://github.com/SolidLabResearch/FormRenderer).
+[^ImplementationFormCli]: The source code of the FormCli app can be found at [https://github.com/SolidLabResearch/FormCli](https://github.com/SolidLabResearch/FormCli).
+
+Solid-UI is chosen as display ontology that the app understands as this is an ontology that is especially made for the purpose of defining user interfaces.
+Schema alignment tasks are performed by applying the conversion rules over the form description.
+N3 rules are used again to implement this together with the EYE-JS reasoner to apply them.
 The output of this reasoning step is the equivalent form description in the Solid-UI vocabulary, which is then parsed by the Comunica engine using SPARQL queries.
 
 When dealing with a resource containing pre-existing data for form filling, it's straightforward to determine the subject URI for writing new data — it can be reused from the existing data.
@@ -97,18 +117,3 @@ With multiple subjects, selection becomes a challenge for users unfamiliar with 
 We propose and implement a combination of the three last feasible options.
 Use a random UUID as the default subject URI, while enabling user selection from existing subjects or manual subject URI entry.
 Parsing the policies is done in the same was as in the FormGenerator app, described earlier in [](#implementation-formgenerator).
-
-### FormCli
-
-Similar to the FormRenderer app, the FormCli app is also a form renderer, but it operates as a command-line application, allowing usage without a GUI.
-It is written in JavaScript and uses the Node.js runtime environment.
-Its architecture and implementation closely resemble that of the FormRenderer app, and also uses Comunica for querying various resources.
-
-The [Inquirer.js](cite:cites boudrias_sboudriasinquirerjs_2013) library is used to prompt the user interactively with the different questions contained in the form.
-Based on the field type, a different kind of prompt is used.
-To support easy input of dates, the [inquirer-date-prompt](cite:cites havermale_haversnailinquirer-date-prompt_2021) plugin is used.
-
-The FormCli app does not support authentication with a Solid identity provider, as the Solid protocol lacks proper authentication for command-line applications.
-Although Inrupt has a Solid authentication library for the CLI, it requires manual setup of prerequisites like refresh tokens and client credentials [](cite:cites inrupt_authenticate_nodate).
-Authentication is not implemented as it falls outside the scope of this project.
-The main emphasis is on demonstrating the feasibility of a form renderer app without a GUI, not requiring authentication.

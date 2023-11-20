@@ -2,9 +2,9 @@
 {:#introduction}
 
 Web forms are a part of our daily lives, whether we are taking a survey, filling out shipping information for an online order, or filling out an administrative request.
-If a user requires a form similar to an existing one, created by someone else or with another application, they must build a new form from the ground up without the ability to copy and modify an existing form.
-Moreover, he cannot automatically prefill the similar form with pre-existing data.
+Users regularly have to re-enter the same data again, without the ability to prefill a similar form with pre-existing data.
 In addition, the data will almost always be stored on the server of the service provider, and the user cannot access it again or choose to store it somewhere else (footprint).
+If a user requires a form similar to an existing one, created by someone else or with another application, they must build a new form from the ground up without the ability to copy and modify an existing form.
 Current Web forms are meant to be used against one endpoint (1), often used for one (Web) display (2), with one particular workflow in mind (3), without a means to send and receive the data in another way (4).
 First, this means that when a form is submitted, the data is always sent to the same location, and the user has no control over where the data is stored.
 Each application typically has a custom-built, non-standardized API, hindering operability between apps.
@@ -12,6 +12,7 @@ Second, it is not feasible for form filling to use an alternative environment, l
 Third, form applications designed for customers to input their shipping information during a purchase cannot usually be repurposed to e.g. allow them to submit a support request.
 They are built for one specific use case.
 Fourth, reusing data across multiple applications is not feasible because data from one application can not be written or read by another.
+
 A first requirement for solving these problems is to decouple the data from the application.
 To accomplish this, [Solid](cite:cites solid) is used.
 Even after this problem is solved and data reuse between applications becomes possible, the data format needs to be independent of the application, i.e., different applications use the same form description, even if they understand different languages.
