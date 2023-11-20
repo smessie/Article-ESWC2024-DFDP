@@ -12,7 +12,7 @@ The first app in the declarative form description pipeline is to generate the de
 In [](#fig:FormGenerator) a screenshot of the implemented app can be seen where the user can provide policy values, next to the ability to define form fields using drag-and-drop.
 Not all possible form elements are supported as it only functions as a proof of concept, but additional field types can be added similarly to the existing ones.
 
-[^ImplementationFormGenerator]: The source code of the FormGenerator app can be found at [https://github.com/SolidLabResearch/FormGenerator](https://github.com/SolidLabResearch/FormGenerator).
+[^ImplementationFormGenerator]: The source code of the FormGenerator app can be found at [https://github.com/<wbr/>SolidLabResearch/FormGenerator](https://github.com/SolidLabResearch/FormGenerator).
 
 <figure id="fig:FormGenerator" class="halfwidth">
 <img src="img/FormGenerator.png" alt="[Screenshot of FormGenerator application]" />
@@ -81,8 +81,8 @@ The form questions are prompted to the user one after each other.
 While the FormRenderer app supports authenticating with a Solid identity provider, authentication is not implemented in the FormCli app as the Solid protocol lacks proper authentication for command-line applications.
 We therefore consider this outside the scope of this research.
 
-[^ImplementationFormRenderer]: The source code of the FormRenderer app can be found at [https://github.com/SolidLabResearch/FormRenderer](https://github.com/SolidLabResearch/FormRenderer).
-[^ImplementationFormCli]: The source code of the FormCli app can be found at [https://github.com/SolidLabResearch/FormCli](https://github.com/SolidLabResearch/FormCli).
+[^ImplementationFormRenderer]: The source code of the FormRenderer app can be found at [https://github.com/<wbr/>SolidLabResearch/FormRenderer](https://github.com/SolidLabResearch/FormRenderer).
+[^ImplementationFormCli]: The source code of the FormCli app can be found at [https://github.com/<wbr/>SolidLabResearch/FormCli](https://github.com/SolidLabResearch/FormCli).
 
 Solid-UI is chosen as display ontology that the app understands as this is an ontology that is especially made for the purpose of defining user interfaces.
 Schema alignment tasks are performed by applying the conversion rules over the form description.

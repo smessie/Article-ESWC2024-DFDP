@@ -79,6 +79,7 @@ Summarized requirements based on the research questions.
 </figcaption>
 </figure>
 
-The scenario shows the need to FAIRly describe the form description independent of the application context.
-The review of the adherence to the [FAIR principles](cite:cites wilkinson2016fair) can be found at the Wiki of the GitHub repository at [https://github.com/SolidLab<wbr />Research/FormGenerator/wiki/Adherence-to-the-FAIR-Principles](https://github.com/SolidLabResearch/FormGenerator/wiki/Adherence-to-the-FAIR-Principles).
+The scenario shows the need to FAIRly describe the form description independent of the application context. [^FAIR]
 The requirements of the previous scenario are grouped into three categories and summarized in [](#requirements-table).
+
+[^FAIR]: The review of the adherence to the [FAIR principles](cite:cites wilkinson2016fair) can be found at the Wiki of the GitHub repository at [https://github.com/SolidLabResearch/FormGenerator/wiki/<wbr/>Adherence-to-the-FAIR-Principles](https://github.com/SolidLabResearch/FormGenerator/wiki/Adherence-to-the-FAIR-Principles).
