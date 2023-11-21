@@ -18,7 +18,7 @@ To accomplish this, [Solid](cite:cites solid) is used.
 Even after this problem is solved and data reuse between applications becomes possible, the data format needs to be independent of the application, i.e., different applications use the same form description, even if they understand different languages.
 Only then will the data and the app be fully decoupled, as it cannot be assumed that all apps will use the same language to define data.
 
-This problem is tackled in this paper by introducing a solution by looking at Web forms as a whole of 3 separate parts: *display*, *shape*, and *reasoning*.
+This problem is tackled in this paper by introducing a DFDP (Declarative Form Description Pipeline) by looking at Web forms as a whole of 3 separate parts: *display*, *shape*, and *reasoning*.
 The display part defines how the form should look element-wise. The shape part defines the expected data structure.
 Lastly, the reasoning part describes what to do with the filled in data at certain events such as submission.
 These 3 parts provide a fully declarative description of the form, leaving no assumptions to be made by the application.

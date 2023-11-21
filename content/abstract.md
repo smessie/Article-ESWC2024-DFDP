@@ -8,7 +8,7 @@ Traditional centralized forms lack data reuse across apps and user control over 
 Reusability necessitates form and action descriptions independently of the app.
 Similarly, decentralization requires decoupling the app from the storage, for which we will focus on Solid.
 We achieve controllability by user-editable declarative form descriptions.
-We create a three-part view on Solid Web Forms by decoupling a form description into the display, shape, and reasoning parts.
+We create a Declarative Form Description Pipeline (DFDP) that employs a three-part view on Web Forms by decoupling a form description into the display, shape, and reasoning parts.
 These parts declaratively define the form's elements, expected data structure, and how to handle filled-in information, to achieve the lacking features.
 <!-- Object       -->
 In this paper, we introduce and explain how such a declarative form description can be created and used without making assumptions about the viewing environment or data storage.

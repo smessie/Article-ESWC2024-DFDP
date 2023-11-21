@@ -1,7 +1,7 @@
 ## Conclusion
 {:#conclusion}
 
-In this paper, we introduced decentralized Web forms considered as three parts.
+In this paper, we introduced decoupled Web forms considered as three parts by creating a Declarative Form Description Pipeline (DFDP).
 This work is not solely a theoretical approach.
 The implementations of the FormRenderer and FormCli prove that the display part is not tight to one rendering environment.
 The FormGenerator shows how such declarative form descriptions can be produced.

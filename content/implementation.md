@@ -116,4 +116,4 @@ Using an existing subject is a good option, especially when there's a single sub
 With multiple subjects, selection becomes a challenge for users unfamiliar with the concept.
 We propose and implement a combination of the three last feasible options.
 Use a random UUID as the default subject URI, while enabling user selection from existing subjects or manual subject URI entry.
-Parsing the policies is done in the same was as in the FormGenerator app, described earlier in [](#implementation-formgenerator).
+Parsing the policies is done in the same way as in the FormGenerator app, described earlier in [](#implementation-formgenerator).
