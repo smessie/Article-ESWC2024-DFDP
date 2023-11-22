@@ -1,19 +1,35 @@
-## Requirements
+## Motivation and Requirements
 {:#requirements}
 
-In this section, we discuss the main requirements for decentralized and declarative forms on the Web.
-We review the current state of the art and summarize what features are missing by examining some relevant use cases.
+In this section, we discuss the main requirements for decentralized and declarative forms on the Web using a use case involving two personas, "Alice" and "Bob", each with their own objectives about the forms they like to publish, but both requiring full control over where and how the resulting RDF is stored.
 
-Suppose Alice goes to a Google Forms form, she can only use that form to save data to the Google Drive and nowhere else.
-However, we want Alice to be able to choose for herself where to store the data, e.g. she might want to store it in her Solid pod, so she keeps ownership of the data she enters.
-Next, as forms worldwide have display logic for humans, but not for machines, you still need a human being like Alice to interpret the fields and to know how to fill them in.
-However, it could make Alice's life way easier if it can tick the checkbox automatically saying she eats vegetarian while filling out a form to register for an event, if she specified that earlier in her own pod.
-Moreover, if Bob sends Alice a form to fill out that he created using Google Forms, Alice has no choice but to use Google Forms to fill out the form, even if she prefers the interface of e.g. Microsoft Forms and would like to use that application.
-Perhaps Alice dislikes GUIs and wants to fill out the form using a text-based command-line interface, but she cannot do so because Bob has made a different choice that affects Alice's options.
-In addition, Bob may have created a form that Alice is very interested in.
-She wants to reuse it for another workflow, but she needs to tweak the form a bit to fit her needs.
-Now she is lost because she cannot get the form description to do this.
-Any information about the data model, the display model, and the reasoning is now all centralized at Google, and it is impossible to reuse this form with a different application.
+Alice, a Web-savvy user, owns a Solid pod she wants to fill with RDF data.
+She uses her favorite Web app *AliceForms* to create a form description she will use to produce RDF.
+*AliceForms* resembles Google Forms: the app allows creating forms in a user-friendly way with a limited data model but provides Alice the freedom where to publish the form description and the RDF data it produces, so she can keep ownership of the data she enters (in Google Forms this is all centralized).
+Alice chooses to store her form description and the produced RDF data on her own Solid pod.
+
+When Alice wants to create RDF data, she opens the form description in a renderer app *HtmlForms* providing her with an HTML rendered version of the form description.
+When Alice fills out all the fields, the RDF data will be stored on her Solid pod.
+The *HtmlForms* app can be automatically pre-filled with RDF data to save Alice from repeatedly entering the same data.
+
+Bob, a friend of Alice, wants to invite her for lunch and tries to find an appropriate date.
+Bob uses his own Web app *BobForms* to create a form description he will send to Alice.
+Bob configures the form description to send the resulting RDF data to his own Solid pod.
+Alice receives a link to Bob's form description and prefers command-line tools to perform tasks with low cognitive load.
+She uses her command-line app *TextForms* to open the form description.
+*TextForms* creates a text-based rendering of Bob's form description.
+She fills out the form and as a result the data as RDF data is sent to Bob's pod.
+
+Alice likes Bob's form and wants to use it for her own use case.
+She opens the form description in her *AliceForms* and edits the RDF data model.
+She also adds logic that any submission should send RDF data to her own Solid pod and to the LDN Inbox of Bob's pod as a notification.
+On top of that, she configures a redirect to a page she created.
+Now the form description contains extra fields and logic.
+
+In a perfect world, Alice and Bob can use a single ontology that describes the RDF data model and the form definitions.
+However, many RDF data models describing the same type of data can exist.
+For instance, dates and titles can be expressed using many vocabularies.
+To be truly declarative, applications such as *HtmlForms* and *TextForms* should contain some schema alignment capabilities to provide a translation between differences in expressing a data model and form definition.
 
 In this paper, we examine the following three research questions to address the issues raised by the above scenario.
 In the remainder of this section, each research question will be further explained and compared to the current state of the art.

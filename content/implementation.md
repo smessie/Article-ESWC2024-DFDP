@@ -12,7 +12,7 @@ The first app in the declarative form description pipeline is to generate the de
 In [](#fig:FormGenerator) a screenshot of the implemented app can be seen where the user can provide policy values, next to the ability to define form fields using drag-and-drop.
 Not all possible form elements are supported as it only functions as a proof of concept, but additional field types can be added similarly to the existing ones.
 
-[^ImplementationFormGenerator]: The source code of the FormGenerator app can be found at [https://github.com/<wbr/>SolidLabResearch/FormGenerator](https://github.com/SolidLabResearch/FormGenerator).
+[^ImplementationFormGenerator]: The source code of the FormGenerator app can be found at [https://github.com/SolidLabResearch/FormGenerator](https://github.com/SolidLabResearch/FormGenerator).
 
 <figure id="fig:FormGenerator" class="halfwidth">
 <img src="img/FormGenerator.png" alt="[Screenshot of FormGenerator application]" />
@@ -21,7 +21,7 @@ Implemented FormGenerator app.
 </figcaption>
 </figure>
 
-As mentioned earlier, describing policies requires a rules language and a policy language.
+As mentioned earlier, describing footprints requires a rules language and a policy language.
 As rule language, [Notation3 (N3)](cite:cites n3) is used.
 Their N3 rules does exactly what is needed.
 The rule premise allows for defining the event, while the rule conclusion defines the policy.
@@ -31,7 +31,14 @@ By the use of reasoning, we obtain the rule conclusion which is then being parse
 Querying is done using [Comunica](cite:cites taelman_iswc_resources_comunica_2018), a knowledge graph querying framework.
 
 The policy we obtain is defined using a policy language.
-As the [FnO ontology](cite:cites fno-paper) allows to describe any kind of operation unlike e.g. Hydra which only allows for describing HTTP requests, a basic version of this existing ontology is reused to describe the policy.
+There are already existing ontologies that can be reused to describe policies, even though they were not designed for this purpose.
+[Hydra](cite:cites hydra) is an ontology that can be used to describe HTTP requests to be made.
+It is a vocabulary to describe Web APIs in Linked Data and its intended use is to describe the server side of the API in a machine-readable way.
+A major limitation of this vocabulary for our research is that it can only describe HTTP requests, while policies go beyond that.
+It should be possible to also describe other actions, such as redirects or N3 Patches on existing resources.
+
+The Function Ontology (FnO) [](cite:cites fno-paper) [](cite:cites fno-spec) is used to semantically define and describe implementation-independent functions, including their relations to related concepts such as parameters, and mappings to specific implementations and executions.
+As FnO allows to describe any kind of operation unlike e.g. Hydra which only allows for describing HTTP requests, a basic version of this existing ontology is reused to describe the policy.
 [](#lst:n3-form-policies-example) contains an example of a footprint task sending an HTTP request.
 The arguments of these policies, such as the URL to send the HTTP request to or to redirect to, should be defined by the user.
 
