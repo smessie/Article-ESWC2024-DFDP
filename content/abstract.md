@@ -23,8 +23,6 @@ and rule ontology.
 Furthermore, we prove how our approach solves the shortcomings of traditional Web forms.
 <!-- Conclusion   -->
 Our proposed pipeline allows forms to be controllable, to be reused, and data to be stored in a decentralized way.
-<span class="comment" data-author="RT">The next sentence feels a bit out of place. Maybe we can remove it from the abstract?</span>
-Forms can be pre-filled with existing data thanks to the machine readability provided by the semantics contained in RDF.
 As such, DFDP empowers users to modify form descriptions, restoring their authority over the data.
 <!-- Perspectives -->
 <span class="comment" data-author="RT">Not sure I understand the next sentence. But perhaps the previous one is a good one to end on.</span>
