@@ -25,4 +25,4 @@ Furthermore, we prove how our approach solves the shortcomings of traditional We
 Our proposed pipeline allows forms to be controllable, to be reused, and data to be stored in a decentralized way.
 As such, DFDP empowers users to modify form descriptions, restoring their authority over the data.
 <!-- Perspectives -->
-User study results provided insights to further improve usability by automatically suggesting semantic bindings based on field labels entered.
+User study results provided insights to further improve usability by providing automatic suggestions based on field labels entered.
