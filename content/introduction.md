@@ -19,6 +19,7 @@ With the use of [Solid](cite:cites solid) and Linked Data, several solutions hav
 An exception to this is the [Design Issue authored by Berners-Lee](cite:cites berners-lee_linked_2019) and the [blog post on *Shaping Linked Data apps* written by Verborgh](cite:cites shapes). However, these works are solely theoretical approaches to the problem.
 
 This paper tackles this problem by introducing a DFDP (Declarative Form Description Pipeline) by looking at Web forms as a whole of 3 separate parts: *display*, *shape*, and *reasoning*.
+In the DFDP, a form generator outputs the form description that serves as input to a form renderer.
 To accomplish decentralization, the decentralized data storage technology [Solid](cite:cites solid) is used.
 The display part defines how the form should look element-wise. The shape part defines the expected data structure.
 Lastly, the reasoning part describes what to do with the filled-in data at certain events such as submission.
