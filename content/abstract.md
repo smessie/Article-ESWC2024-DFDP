@@ -38,5 +38,4 @@ Furthermore, we prove how this approach solves the shortcomings of traditional W
 <del class="comment" data-author="RV">As such, DFDP empowers users to modify form descriptions, restoring their authority over the data.</del>
 <span class="comment" data-author="RV">That wasn't a goal, was it?</span>
 <!-- Perspectives -->
-<span class="comment" data-author="RT">Not sure I understand the next sentence. But perhaps the previous one is a good one to end on.</span>
-Further research on auto-suggesting bindings based on user input should clarify the impact on Linked Data knowledge requirements.
+User study results provided insights to further improve usability by providing automatic suggestions based on field labels entered.
