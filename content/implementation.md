@@ -36,6 +36,7 @@ There are already existing ontologies that can be reused to describe policies, e
 It is a vocabulary to describe Web APIs in Linked Data and its intended use is to describe the server side of the API in a machine-readable way.
 A major limitation of this vocabulary for our research is that it can only describe HTTP requests, while policies go beyond that.
 It should be possible to also describe other actions, such as redirects or N3 Patches on existing resources.
+<span class="comment" data-author="RT">Wait, so do you use Hydra or not? If not, then maybe you can omit it here, or at least make it more concise. (could be part of related work though if needed)</span>
 
 The Function Ontology (FnO) [](cite:cites fno-paper) [](cite:cites fno-spec) is used to semantically define and describe implementation-independent functions, including their relations to related concepts such as parameters, and mappings to specific implementations and executions.
 As FnO allows to describe any kind of operation unlike e.g. Hydra which only allows for describing HTTP requests, a basic version of this existing ontology is reused to describe the policy.
@@ -60,6 +61,7 @@ The arguments of these policies, such as the URL to send the HTTP request to or 
   ] .
 } .
 </code></pre>
+<span class="comment" data-author="RT">The ex: prefix in here, does this mean that this is just a theoretical example? Or is it actually possible to send such an HTTP request in your solution?</span>
 <figcaption markdown="block">
 Example of N3 rule describing HTTP request policy to be executed on the form submission event.
 </figcaption>
@@ -68,6 +70,7 @@ Example of N3 rule describing HTTP request policy to be executed on the form sub
 When constructing the form, users must specify bindings for each field, which are URIs semantically describing the fields.
 Users must manually enter these bindings. To simplify this process, they can utilize prefixes, which are automatically expanded to full URIs via the [prefix.cc](https://prefix.cc) API.
 As an example, `ex:MyField` will become `http://example.org/MyField`.
+<span class="comment" data-author="RT">I'm pretty sure there is some related work around guessing proper predicates for human-written labels. It would be good to look for those, and cite them if applicable in any way.</span>
 
 
 ### FormRenderer and FormCli
@@ -95,6 +98,8 @@ Solid-UI is chosen as display ontology that the app understands as this is an on
 Schema alignment tasks are performed by applying the conversion rules over the form description.
 N3 rules are used again to implement this together with the EYE-JS reasoner to apply them.
 The output of this reasoning step is the equivalent form description in the Solid-UI vocabulary, which is then parsed by the Comunica engine using SPARQL queries.
+
+<span class="comment" data-author="RT">I would consider placing the following in a dedicates sub(sub)section (but still within FormRenderer and FormCli).</span>
 
 When dealing with a resource containing pre-existing data for form filling, it's straightforward to determine the subject URI for writing new data — it can be reused from the existing data.
 Furthermore, when no resource is provided or when multiple subjects within the resource conform to the form's structure and target class, determining the subject URI becomes ambiguous.
