@@ -10,6 +10,8 @@ Second, a user study will be conducted in [](#user-study).
 
 In this section, we analyze the conformance of the implemented apps to the requirements defined in [](#requirements-table) under [](#requirements).
 
+<span class="comment" data-author="RT">Since the following sections have just one paragraph each, and they nicely start with "first", "second", etc., I would consider removing the section titles.</span>
+
 #### Multiple Viewing Environments
 
 The first research question was: "How can machines be controlled in a declarative way to create forms for producing RDF in **multiple viewing environments** (such as the Web and text-based via a command line)?".
