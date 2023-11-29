@@ -22,20 +22,20 @@ She fills out the form and as a result the data as RDF data is sent to Bob's pod
 
 Alice likes Bob's form and wants to use it for her own use case.
 She opens the form description in her *AliceForms* and edits the RDF data model.
-She also adds logic that any submission should send RDF data to her own Solid pod and to the LDN Inbox of Bob's pod as a notification.
+She also adds logic that any submission should send RDF data to her own Solid pod and to the LDN Inbox <span class="comment" data-author="RT">LDN hasn't been mentioned yet so far. Either make sure to explain this somewhere beforehand, or just about a general "Inbox".</span> of Bob's pod as a notification.
 On top of that, she configures a redirect to a page she created.
 Now the form description contains extra fields and logic.
 
 In a perfect world, Alice and Bob can use a single ontology that describes the RDF data model and the form definitions.
 However, many RDF data models describing the same type of data can exist.
 For instance, dates and titles can be expressed using many vocabularies.
-To be truly declarative, applications such as *HtmlForms* and *TextForms* should contain some schema alignment capabilities to provide a translation between differences in expressing a data model and form definition.
+To be truly declarative <span class="comment" data-author="RT">Not sure if "declarative" is the right argument here. Isn't this schema alignment more of an interoperability issue?</span>, applications such as *HtmlForms* and *TextForms* should contain some schema alignment capabilities to provide a translation between differences in expressing a data model and form definition.
 
 In this paper, we examine the following three research questions to address the issues raised by the above scenario.
 In the remainder of this section, each research question will be further explained and compared to the current state of the art.
 The requirements for each research question are discussed, and finally the summarized requirements are presented in [](#requirements-table).
 
-- RQ1: How can machines be controlled in a declarative way to create forms for producing RDF in **multiple viewing environments** (such as the Web and text-based via a command line)?
+- RQ1: How can machines be controlled in a declarative way to create forms <span class="comment" data-author="RT">Is it the machine creating the form? Or the agent (human or automated) controlling the machine?</span> for producing RDF in **multiple viewing environments** (such as the Web <span class="comment" data-author="RT">I would refer to Web *pages* here, to be more specific</span> and text-based via a command line)?
 
 - RQ2: How can machines be controlled in a declarative way to **translate form descriptions** decoupled from the application into a vocabulary that the application understands?
 
@@ -90,6 +90,8 @@ Solid-UI Forms has only limited support to execute or specify any footprint task
 | R6 | Footprint Tasks                | Declarative description of the policies                                |
 | R7 |                                | Footprint execution                                                    |
 
+<span class="comment" data-author="RT">Is there a reason why not all reqs have a category?</span>
+
 <figcaption markdown="block">
 Summarized requirements based on the research questions.
 </figcaption>
@@ -97,5 +99,7 @@ Summarized requirements based on the research questions.
 
 The scenario shows the need to FAIRly describe the form description independent of the application context. [^FAIR]
 The requirements of the previous scenario are grouped into three categories and summarized in [](#requirements-table).
+
+<span class="comment" data-author="RT">I would recommend citing FAIR in the main text, not just in the footnote.</span>
 
 [^FAIR]: The review of the adherence to the [FAIR principles](cite:cites wilkinson2016fair) can be found at the Wiki of the GitHub repository at [https://github.com/SolidLabResearch/FormGenerator/wiki/<wbr/>Adherence-to-the-FAIR-Principles](https://github.com/SolidLabResearch/FormGenerator/wiki/Adherence-to-the-FAIR-Principles).
