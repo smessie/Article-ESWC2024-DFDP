@@ -8,14 +8,15 @@ Transition from traditional single structure with all the data defined using a s
 </figcaption>
 </figure>
 
-A common way how Web applications store their data is by using one single structure <span class="comment" data-author="RT">Could you define more precisely what you mean exactly by this structure? I assume you refer to specific schemas, storage location, ...</span>.
+A common way how Web applications store their data is by using one single structure.
+This means that the data is stored in a fixed structure - a specific schema chosen by the app - as a hard-coupled part of the app, leaving it up to the app developer to decide where and how to store the data.
 As a result, it is not possible to use the data with another application that uses a different structure.
 This is even the case for many Solid apps that assume the data is stored in a fixed location in the pod and assuming a specific vocabulary is used.
 Therefore, this paper proposes a three-part view on Solid Web forms.
 This shift from a single structure to a three-part view is shown schematically in [](#fig:eaen-currently-to-goal).
-On the left, the current situation with the data stored in a single structure and the application built on top of it <span class="comment" data-author="RT">Is it built on top, or is it a hard-coupled part of it?</span>.
+On the left, the current situation with the data stored in a single structure as a hard-coupled part of the application.
 On the right, we propose a division into three parts: a form (for display), shape (for validation), and footprint (for reasoning) part.
-As considerable research has been conducted on RDF data validation <span class="comment" data-author="RT">Be careful; the citations here refer to implementations, not research papers. I recommend citing actual research papers on RDF validation (there are plenty), and then mentioning that there are several implementations of those.</span>[](cite:cites slabbinck_communitysolidservershape-validator-component_nodate) [](cite:cites zazuko_rdf-validate-shacl_2023) [](cite:cites bergwinkl_shacl-engine_2023), this part is not covered in this paper.
+As considerable research has been conducted on RDF data validation [](cite:cites tomaszuk2017rdf) [](cite:cites prud2014shape) [](cite:cites arndt2017using) [](cite:cites boneva2017semantics) and several implementations exist [](cite:cites slabbinck_communitysolidservershape-validator-component_nodate) [](cite:cites zazuko_rdf-validate-shacl_2023) [](cite:cites bergwinkl_shacl-engine_2023), this part is not covered in this paper.
 
 <figure id="fig:renderer-architecture">
 <img src="img/stage-2.svg" alt="[Figure of high level architecture of declarative Solid apps]" />
@@ -26,7 +27,10 @@ A generic form renderer app can dynamically build an app for multiple viewing en
 
 In traditional centralized Web apps, different users interact with the same centralized Web server using different interfaces, all written for and working only with that server.
 Additionally, the data is stored on the server of the application, outside the user's control.
-The [Solid protocol](cite:cites solid-protocol) provides a standardized interface, tackling that problem <span class="comment" data-author="RT">Could you clarify a bit more what this interface is, and how the problem is solved?</span>, but still many apps are being built with assumptions about the data that is stored in the pod <span class="comment" data-author="RT">If not in the pod, where should it be stored instead? Do you mean that there is the assumption of storage in a specific location?</span>, and they are designed for one specific use case.
+The [Solid protocol](cite:cites solid-protocol) provides a standardized interface by providing a set of standard, open, and interoperable data formats and protocols [](cite:cites solid).
+As a result, different applications can use this set of protocols to work with the same data, overcoming the problem of each app using its own interface only working with that server.
+Because Solid stores data in a personal data vault called a Solid pod, it solves the issue of data storage outside the user's control.
+However, many apps are still being built with assumptions about the data that is stored in the pod, and they are designed for one specific use case.
 In this work, we push this decentralized architecture a step further with the introduction of a declarative Solid app that makes no assumptions about the interface and app itself.
 A schematic overview of the architecture is shown in [](#fig:renderer-architecture).
 First, a user that wants to create a form should build a declarative form description using a form generator.
@@ -37,7 +41,7 @@ The user can additionally provide a conversion rules resource to map the form de
 
 ### Description of the Display Part
 
-The previous problem of needing a separate app for each use case is solved by describing the user interface in a declarative way <span class="comment" data-author="RT">I see you often write "in a declarative way". A more fluent form would be to just say "declaratively".</span> in the *form description resource*.
+The previous problem of needing a separate app for each use case is solved by describing the user interface declaratively in the *form description resource*.
 This RDF resource contains both the display part and the footprint for the reasoning part.
 The display part is the part that is responsible for rendering the form to the user.
 Web forms are typically HTML, while RDF represents the semantics of the form, not how you represent it in HTML.

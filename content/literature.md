@@ -41,5 +41,8 @@ The blog post by Hochstenbach, Wright, and Turdean on [*RDF forms for Solid*](ci
 There were also other attempts to describe forms in RDF such as Daniël Beeke's [RDF-Form](cite:cites rdf-form).
 All these ontologies allow for describing the fields contained in a form in a semantic way.
 This corresponds to the display and shape parts of the three-part view.
-In addition, we want to describe footprints, i.e. what actions to perform in case of certain events like submission. <span class="comment" data-author="RT">Since you depend on this concept heavily, I would consider explaining footprints in more detail.</span>
+In addition, we want to describe footprints, i.e. what actions to perform in case of certain events like submission.
+Footprints outline the way the data entered into the form should be handled, such as where it should be stored or what updates to other documents are required [](cite:cites shapes).
+Describing this information as footprints allows machines to interpret it, and actions are not tied to applications.
+As a result, different apps will store the data in the same way and real interoperability is achieved.
 As these ontologies do not provide a way to describe such footprints, they do not provide a complete solution for a fully declarative form description.

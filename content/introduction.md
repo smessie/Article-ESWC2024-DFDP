@@ -3,7 +3,7 @@
 
 Web forms are a part of our daily lives, whether we are taking a survey, filling out shipping information for an online order, or filling out an administrative request.
 Users regularly have to re-enter the same data again, without the ability to prefill a similar form with pre-existing data.
-In addition, the data will almost always be stored on the service provider's server, and the user cannot access it again or choose to store it somewhere else (footprint) <span class="comment" data-author="RT">I would remove the footprint mention here. Most readers will not understand this, as it needs more explanation.</span>.
+In addition, the data will almost always be stored on the service provider's server, and the user cannot access it again or choose to store it somewhere else.
 If a user requires a form similar to an existing one, created by someone else or with another application, they will often have to build a new form from the ground up without the ability to copy and modify an existing form.
 
 Current Web forms are meant to be used against one endpoint (1), often used for one (Web) display (2), with one particular workflow in mind (3), without a means to send and receive the data in another way (4).

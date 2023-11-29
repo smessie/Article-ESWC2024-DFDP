@@ -14,19 +14,19 @@ In this section, we analyze the conformance of the implemented apps to the requi
 
 #### Multiple Viewing Environments
 
-The first research question was: "How can machines be controlled in a declarative way to create forms for producing RDF in **multiple viewing environments** (such as the Web and text-based via a command line)?".
+The first research question was: "How can agents create forms to declaratively control machines for producing RDF in **multiple viewing environments** (such as Web pages and text-based via a command line)?".
 The FormRenderer and FormCli apps showcase the feasibility of creating a form renderer application in multiple viewing environments (R4).
-The form was described in a declarative way (R1) as the display part is fully described using the already existing Solid-UI ontology.
+The form was described declaratively (R1) as the display part is fully described using the already existing Solid-UI ontology.
 Data can be passed along to automatically prefill a form by machines using the form fields' bindings (R2), and users can interpret the field title to manually enter a value (R3).
 
 #### Schema Alignment Tasks
 
-The second research question of this paper was the following: "How can machines be controlled in a declarative way to **translate form descriptions** decoupled from the application into a vocabulary that the application understands?".
+The second research question of this paper was the following: "How can machines be declaratively controlled to **translate form descriptions** decoupled from the application into a vocabulary that the application understands?".
 N3 conversion rules can be passed along allowing reasoning to automatically translate the form description into the ontology the app understands (R5).
 
 #### Footprint Tasks
 
-The third research question was: "How can machines be controlled in a declarative way to **perform actions** on the filled out data?".
+The third research question was: "How can machines be declaratively controlled to **perform actions** on the filled out data?".
 The form description also declaratively describes what should happen in case of a certain trigger (R6).
 Because this is described in a machine-readable way using RDF, a machine can interpret this and execute the right actions (R7).
 
