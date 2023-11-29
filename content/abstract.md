@@ -7,7 +7,7 @@ Moreover, the data is tightly coupled to the app, restricting the user from reus
 To solve these problems, organizations that seek efficiency and end-users who desire control over their data have a need for a technique to create forms that are more *controllable*, *reusable*, and *decentralized*.
 <!-- Task         -->
 Hence, we introduce the *Declarative Form Description Pipeline* (DFDP) that meets these requirements.
-DFDP achieves controllability through declarative form descriptions editable by end-users filling out the form.
+DFDP achieves controllability through declarative form descriptions that are editable by end-users filling out the form.
 Reusability is achieved by the app using a separate description of the fields contained in the form and the actions to be performed on events such as submission.
 Finally, the end-user retains ownership of their data by decoupling the app from the storage by building on top of the Solid decentralization environment.
 Concretely, DFDP employs a three-part view on Web Forms by decoupling a form description into the display, shape, and reasoning parts.
@@ -22,4 +22,6 @@ Our proposed pipeline enables organizations to save time by building similar for
 Similarly, end-users can save time by letting machines prefill the form with existing data.
 Additionally, DFDP empowers end-users to be in control of the app they use to fill out forms and the data they enter.
 <!-- Perspectives -->
-User study results provided insights to further improve usability by providing automatic suggestions based on field labels entered.
+User study results provide insights to further improve usability by providing automatic suggestions based on field labels entered.
+
+<span class="comment" data-author="RT">The abstract is in really good shape now, I like it! It's just a bit on the long side, so you could consider shortening it a bit more (e.g. the Task), but I don't think this is crucial.</span>
