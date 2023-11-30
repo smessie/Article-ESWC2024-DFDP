@@ -2,8 +2,8 @@
 {:#conclusion}
 
 In this article, we introduced decoupled Web forms considered as three parts by creating a Declarative Form Description Pipeline (DFDP).
-This work is not solely a theoretical approach.<span class="comment" data-author="RT">Instead of saying what it isn't, let's say what it is: "we provide a concrete and reusable implementation"</span>
-The implementations of the FormRenderer and FormCli prove that the display part is not tied to one rendering environment.<span class="comment" data-author="RT">Same here: "not tied" -> "independent of" or "loosely coupled"</span>
+We provide a concrete and reusable implementation.
+The implementations of the FormRenderer and FormCli prove that the display part is loosely coupled to the rendering environment.
 The FormGenerator shows how such declarative form descriptions can be produced.
 
 The introduced schema alignment and footprint tasks allows users to use different vocabularies than the app understands and allows them to execute declaratively defined policies on the occurrence of events.

@@ -30,7 +30,8 @@ Additionally, the data is stored on the server of the application, outside the u
 The [Solid protocol](cite:cites solid-protocol) provides a standardized interface by providing a set of standard, open, and interoperable data formats and protocols [](cite:cites solid).
 As a result, different applications can use this set of protocols to work with the same data, overcoming the problem of each app using its own interface only working with that server.
 Because Solid stores data in a personal data vault called a Solid pod, it solves the issue of data storage outside the user's control.
-However, many apps are still being built with assumptions about the data that is stored in the pod, and they are designed for one specific use case.
+However, many apps are still being built with assumptions about the data that is stored in the pod, like the storage location and used vocabulary.
+Additionally, they are designed for one specific use case.
 In this work, we push this decentralized architecture a step further with the introduction of a declarative Solid app that makes no assumptions about the interface and app itself.
 A schematic overview of the architecture is shown in [](#fig:renderer-architecture).
 First, a user that wants to create a form should build a declarative form description using a form generator.
@@ -59,22 +60,23 @@ The *data resource* structure mirrors the filled-out form's output, enabling aut
 ### Description of the Schema Alignment Tasks
 
 Unfortunately, the move to decentralization and decoupling comes with its own challenges.
-Two main challenges need to be tackled before this can be achieved <span class="comment" data-author="RT">There is something wrong with this sentence.</span>.
+Two main challenges need to be tackled before this can be achieved.
 To make the app understand any ontology and achieve a real decoupled solution, *schema alignment tasks* are introduced translating the form description into an ontology the app understands.
 The *conversion rules resource* from [](#fig:renderer-architecture) is used by the renderer app to perform this mapping.
 This resource consists of rules defining how to go from a part of the form description in the ontology equivalent to the one understood by the app, to the equivalent expression in that ontology the app understands.
 By passing along this resource to the app, the app does not need to understand the ontology the form description is written in, and any ontology can be used for which a mapping can be provided.
+As these conversion rules can be passed as a separate resource to the app, the end-user does not necessarily have to create them himself. 
+Ontology creators can provide mappings to similar ontologies, or app developers can provide mappings from equivalent ontologies to the one their app understands.
 The renderer app needs to apply these rules onto the form description using a reasoner to retrieve the form description in the language it understands.
 
-
-<span class="comment" data-author="RT">We can anticipate a reviewer comment here on who will create these mapping files, so let's give an answer to this already.</span>
 
 ### Description of the Footprint Tasks
 
 In addition to describing how the form should look, the form description should also declaratively describe what should happen in certain events such as submission.
 Therefore, the form description is extended with *policies*.
 The process of executing these policies is called the *footprint tasks* and is the second half of the reasoning part of the three-part view.
-To describe policies, two languages are needed: a *rule language* and a *policy language* describing what actually should happen when a policy is executed <span class="comment" data-author="RT">From reading this sentence, it's not clear what language you refer to with everything after "describing...".</span>.
-The rule premise contains the event, <span class="comment" data-author="RT">The following doesn't appear to be grammatically correct</span> the rule conclusion the policy.
+To describe policies, two languages are needed: a *rule language* and a *policy language*.
+The policy language describes what should actually happen when a policy is executed.
+The rule premise contains the event, the rule conclusion contains the policy.
 Policies should describe the client-side operations that need to be performed when a certain event occurs.
-This can be much more than just performing an HTTP request to the server. <span class="comment" data-author="RT">Such as?</span>
+This can be much more than just performing an HTTP request to the server, such as redirecting the user, performing an *N3 Patch* request, or sending a notification to someone's inbox.

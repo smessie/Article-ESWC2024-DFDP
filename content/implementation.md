@@ -32,11 +32,9 @@ Querying is done using [Comunica](cite:cites taelman_iswc_resources_comunica_201
 
 The policy we obtain is defined using a policy language.
 There are already existing ontologies that can be reused to describe policies, even though they were not designed for this purpose.
-[Hydra](cite:cites hydra) is an ontology that can be used to describe HTTP requests to be made.
-It is a vocabulary to describe Web APIs in Linked Data and its intended use is to describe the server side of the API in a machine-readable way.
-A major limitation of this vocabulary for our research is that it can only describe HTTP requests, while policies go beyond that.
-It should be possible to also describe other actions, such as redirects or N3 Patches on existing resources.
-<span class="comment" data-author="RT">Wait, so do you use Hydra or not? If not, then maybe you can omit it here, or at least make it more concise. (could be part of related work though if needed)</span>
+[Hydra](cite:cites hydra) is a vocabulary to describe Web APIs in Linked Data and its intended use is to describe the server side of the API in a machine-readable way.
+A major limitation for our research is that it can only describe HTTP requests, while policies go beyond that.
+Therefore, we chose to not use Hydra.
 
 The Function Ontology (FnO) [](cite:cites fno-paper) [](cite:cites fno-spec) is used to semantically define and describe implementation-independent functions, including their relations to related concepts such as parameters, and mappings to specific implementations and executions.
 As FnO allows to describe any kind of operation unlike e.g. Hydra which only allows for describing HTTP requests, a basic version of this existing ontology is reused to describe the policy.
@@ -61,7 +59,7 @@ The arguments of these policies, such as the URL to send the HTTP request to or 
   ] .
 } .
 </code></pre>
-<span class="comment" data-author="RT">The ex: prefix in here, does this mean that this is just a theoretical example? Or is it actually possible to send such an HTTP request in your solution?</span>
+<span class="todo">Replace `ex:` with existing vocabulary</span>
 <figcaption markdown="block">
 Example of N3 rule describing HTTP request policy to be executed on the form submission event.
 </figcaption>
@@ -99,7 +97,8 @@ Schema alignment tasks are performed by applying the conversion rules over the f
 N3 rules are used again to implement this together with the EYE-JS reasoner to apply them.
 The output of this reasoning step is the equivalent form description in the Solid-UI vocabulary, which is then parsed by the Comunica engine using SPARQL queries.
 
-<span class="comment" data-author="RT">I would consider placing the following in a dedicates sub(sub)section (but still within FormRenderer and FormCli).</span>
+
+#### Determining the Subject for the Produced RDF
 
 When dealing with a resource containing pre-existing data for form filling, it's straightforward to determine the subject URI for writing new data — it can be reused from the existing data.
 Furthermore, when no resource is provided or when multiple subjects within the resource conform to the form's structure and target class, determining the subject URI becomes ambiguous.
