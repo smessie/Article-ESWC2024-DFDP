@@ -4,6 +4,10 @@
 In this section, the proposed architecture and implementation will be evaluated.
 First, in [](#requirements-conformance), the conformance to the requirements will be analyzed.
 Second, a user study will be conducted in [](#user-study).
+A sustainability plan has been created to guarantee the maintenance of the DFDP's tools, both short-term and long-term.[^SustainabilityPlan]
+
+[^SustainabilityPlan]: The sustainability plan for the DFDP's tools can be found at [https://github.com/SolidLabResearch/FormGenerator/wiki/Sustainability-Plan](https://github.com/SolidLabResearch/FormGenerator/wiki/Sustainability-Plan).
+
 
 ### Conformance to the Requirements
 {:#requirements-conformance}
