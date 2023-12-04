@@ -37,29 +37,37 @@ A major limitation for our research is that it can only describe HTTP requests, 
 Therefore, we chose to not use Hydra.
 
 The Function Ontology (FnO) [](cite:cites fno-paper) [](cite:cites fno-spec) is used to semantically define and describe implementation-independent functions, including their relations to related concepts such as parameters, and mappings to specific implementations and executions.
-As FnO allows to describe any kind of operation unlike e.g. Hydra which only allows for describing HTTP requests, a basic version of this existing ontology is reused to describe the policy.
+As FnO allows to describe any kind of operation unlike e.g. Hydra which only allows for describing HTTP requests, a basic version of this existing ontology together with the [HTTP Vocabulary](cite:cites koch_http_2017) is reused to describe the policy.
+We have implemented a Policy ontology, which defines the missing classes and properties needed to define the policy. [^PolicyOntology]
 [](#lst:n3-form-policies-example) contains an example of a footprint task sending an HTTP request.
 The arguments of these policies, such as the URL to send the HTTP request to or to redirect to, should be defined by the user.
+
+[^PolicyOntology]: The Policy ontology can be found at [https://w3id.org/policy](https://w3id.org/policy).
 
 <figure id="lst:n3-form-policies-example" class="listing">
 <pre><code>
 @prefix ex:   <http://example.org/> .
-@prefix pol: <https://www.example.org/ns/policy#> .
+@prefix pol: <https://w3id.org/policy#> .
 @prefix fno: <https://w3id.org/function/ontology#>.
+@prefix http: <http://www.w3.org/2011/http#>.
 
 {
-  ?id ex:event ex:Submit.
+  ?id pol:event pol:Submit.
 } => {
   ex:HttpPolicy pol:policy [
     a fno:Execution ;
-    fno:executes ex:httpRequest ;
-    ex:method "POST" ;
-    ex:url <https://httpbin.org/post> ;
-    ex:contentType "application/ld+json"
+    fno:executes http:Request ;
+    http:methodName "POST" ;
+    http:requestURI <https://httpbin.org/post> ;
+    http:headers (
+      [
+        http:fieldName "Content-Type" ;
+        http:fieldValue "application/ld+json"
+      ]
+    )
   ] .
 } .
 </code></pre>
-<span class="todo">Replace `ex:` with existing vocabulary</span>
 <figcaption markdown="block">
 Example of N3 rule describing HTTP request policy to be executed on the form submission event.
 </figcaption>
