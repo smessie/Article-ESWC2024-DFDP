@@ -1,15 +1,12 @@
 ## Related Work
 {:#related-work}
 
-The idea of describing a form in RDF is not new.
-This section covers related work, including research with similar focuses and relevant technologies that can be applied or extended in our work.
-
 ### Standalone Technologies
 
 In 2003, [XForms](cite:cites boyer_xforms_nodate) was introduced as a standalone technology for collecting inputs from Web forms.
 The original specification became a W3C Recommendation in 2009 and is still the official version.
-Since 2010 they are working on the new version [XForms 2.0](cite:cites xforms).
-The split architecture of XForms separates presentation, content, and purpose, in a way that closely resembles the three-part display, shape, and reasoning architecture introduced in this paper.
+In 2010, work started on the new version [XForms 2.0](cite:cites xforms).
+The split architecture of XForms separates _presentation_, _content_, and _purpose_, in a way that closely resembles the three-part _display_, _shape_, and _reasoning architecture_ introduced in this paper.
 Web forms are specified using an XML model.
 Values can be limited by referencing XML elements, which use attributes to define type and other constraints.
 While an XML element for submission can specify the data destination and the required HTTP method, no reasoning capabilities are available in the specification.
@@ -31,14 +28,15 @@ A property shape comprises non-validating properties, ignored by SHACL processor
 The former can be utilized to provide supplementary information, such as for form construction, while the latter specify constraints on the values of the properties of the focus node.
 Examples are `sh:datatype` and `sh:minCount`.
 
-Solid-UI is the name for the User Interface widgets and utilities for Solid developed by the SolidOS team.
+_Solid-UI_ is the name for user interface widgets and utilities for Solid.
 Next to the building blocks for Solid-based apps, there also exists a [Solid-UI vocabulary](cite:cites solid-ui), which will be of interest in this paper.
 The vocabulary mainly focuses on the display part of forms.
 Next to that, the form field's semantic meaning is contained in the form description by using the `ui:property` predicate.
 Extra properties can be specified to define the field's behavior.
-The blog post by Hochstenbach, Wright, and Turdean on [*RDF forms for Solid*](cite:cites hochstenbach_rdf_2022) discusses the utilization of the Solid-UI ontology to define forms in RDF and presents a state-of-the-art declarative form renderer using this ontology.
+The Solid-UI ontology can be used to define forms in RDF with a declarative form renderer using this ontology [](cite:cites hochstenbach_rdf_2022).
 
-There were also other attempts to describe forms in RDF such as Daniël Beeke's [RDF-Form](cite:cites rdf-form).
+There were also other <span class="rephrase" data-author="RV">attempts</span> to describe forms in RDF such as [RDF-Form](cite:cites rdf-form).
+<span class="comment" data-author="RV">Careful calling other people's work <q>attempts</q></span>
 All these ontologies allow for describing the fields contained in a form in a semantic way.
 This corresponds to the display and shape parts of the three-part view.
 In addition, we want to describe footprints, i.e. what actions to perform in case of certain events like submission.
