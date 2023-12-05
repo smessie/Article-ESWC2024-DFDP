@@ -16,7 +16,7 @@ Fourth, reusing data across multiple applications is not feasible because data f
 <span class="comment" data-author="RV">This paragraph can go, if the references are in RelWork.</span>
 A requirement for solving these problems is to decouple the data from the application.
 With the use of [Solid](cite:cites solid) and Linked Data, several solutions have been proposed, but none of them fully describe a declarative form semantically going from elements to actions.
-A couple of notable exceptions ([](cite:cites berners-lee_linked_2019),[](cite:cites shapes)) exist,
+A couple of notable exceptions exist [](cite:cites berners-lee_linked_2019,shapes),
 but these works are mainly theoretical approaches to the problem.
 
 This paper tackles this problem by introducing a _DFDP (Declarative Form Description Pipeline)_ by looking at Web forms as a whole of 3 separate parts: *display*, *shape*, and *reasoning*.
