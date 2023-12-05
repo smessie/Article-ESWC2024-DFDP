@@ -2,6 +2,7 @@
 {:#implementation}
 
 We implemented three proof-of-concept apps in TypeScript/JavaScript.
+<span class="comment" data-author="RV">That's great—but be _very_ specific: what is the relationship of those apps to the previous sections? That should be immediately clear from the first sentence.</span>
 The FormGenerator app is an application programmed in the [Ember framework](cite:cites emberjs) generating a form description based on the form the user builds using drag-and-drop.
 The FormRenderer app and FormCli app are two apps that render a given form description in respectively a Web browser using HTML or a text-based command-line interface.
 
@@ -21,9 +22,7 @@ Implemented FormGenerator app.
 </figcaption>
 </figure>
 
-As mentioned earlier, describing footprints requires a rules language and a policy language.
-As rule language, [Notation3 (N3)](cite:cites n3) is used.
-Their N3 rules does exactly what is needed.
+As rule language, [Notation3 (N3)](cite:cites n3) is used as a rule and policy language for describing footprints.
 The rule premise allows for defining the event, while the rule conclusion defines the policy.
 We chose for N3 as they proved to be a working solution for our use case and the reasoning engine EYE implementing N3 is being developed at our lab.
 We therefore also made the decision to use the [EYE-JS library](cite:cites eye-js), a browser and node-distributed EYE reasoner via WebAssembly.
@@ -36,7 +35,7 @@ There are already existing ontologies that can be reused to describe policies, e
 A major limitation for our research is that it can only describe HTTP requests, while policies go beyond that.
 Therefore, we chose to not use Hydra.
 
-The Function Ontology (FnO) [](cite:cites fno-paper) [](cite:cites fno-spec) is used to semantically define and describe implementation-independent functions, including their relations to related concepts such as parameters, and mappings to specific implementations and executions.
+The [_Function Ontology (FnO)_](cite:cites fno-paper,fno-spec) is used to semantically define and describe implementation-independent functions, including their relations to related concepts such as parameters, and mappings to specific implementations and executions.
 As FnO allows to describe any kind of operation unlike e.g. Hydra which only allows for describing HTTP requests, a basic version of this existing ontology together with the [HTTP Vocabulary](cite:cites koch_http_2017) is reused to describe the policy.
 We have implemented a Policy ontology, which defines the missing classes and properties needed to define the policy. [^PolicyOntology]
 [](#lst:n3-form-policies-example) contains an example of a footprint task sending an HTTP request.
@@ -55,13 +54,13 @@ The arguments of these policies, such as the URL to send the HTTP request to or 
   ?id pol:event pol:Submit.
 } => {
   ex:HttpPolicy pol:policy [
-    a fno:Execution ;
-    fno:executes http:Request ;
-    http:methodName "POST" ;
-    http:requestURI <https://httpbin.org/post> ;
+    a fno:Execution;
+    fno:executes http:Request;
+    http:methodName "POST";
+    http:requestURI <https://httpbin.org/post>;
     http:headers (
       [
-        http:fieldName "Content-Type" ;
+        http:fieldName "Content-Type";
         http:fieldValue "application/ld+json"
       ]
     )
