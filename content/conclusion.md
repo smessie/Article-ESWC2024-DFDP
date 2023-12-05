@@ -13,7 +13,7 @@ Validation, auto-completion, and automatically suggesting bindings based on fiel
 
 Where users such as Alice found themselves in a centralized and strongly coupled network of service providers before,
 our DFDP tools empowers her with a decentralized and decoupled alternative.
-Alice can now decide where to store her filled in data by changing the form description, restoring her ownership over her data.
+Alice can now decide where to store her filled in data by changing the form description, restoring her control over her data.
 Moreover, she can now render the form in her own viewing environment thanks to the declarativity.
 In addition, the form can be prefilled automatically thanks to the semantics contained in that description.
 Previously, she couldn't reuse Bob's form, but now she can copy and modify it, saving time by not having to start from scratch.

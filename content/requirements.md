@@ -5,7 +5,7 @@ In this section, we discuss the main requirements for decentralized and declarat
 
 Alice, a Web-savvy user, owns a Solid pod she wants to fill with RDF data.
 She uses her favorite Web app *AliceForms* to create a form description she will use to produce RDF.
-*AliceForms* resembles Google Forms: the app allows creating forms in a user-friendly way with a limited data model but provides Alice the freedom where to publish the form description and the RDF data it produces, so she can keep ownership of the data she enters (in Google Forms this is all centralized).
+*AliceForms* resembles Google Forms: the app allows creating forms in a user-friendly way with a limited data model but provides Alice the freedom where to publish the form description and the RDF data it produces, so she can keep control over the data she enters (in Google Forms this is all centralized).
 Alice chooses to store her form description and the produced RDF data on her own Solid pod.
 
 When Alice wants to create RDF data, she opens the form description in a renderer app *HtmlForms* providing her with an HTML rendered version of the form description.
