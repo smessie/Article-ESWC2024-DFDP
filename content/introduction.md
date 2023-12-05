@@ -9,9 +9,9 @@ If a user requires a form similar to an existing one, created by someone else or
 Current Web forms are meant to be (1) used against one endpoint, (2) often used for one (Web) display, (3) with one particular workflow in mind, (4) without a means to send and receive the data in another way.
 First, this means that when a form is submitted, the data is always sent to the same location, and the user has no control over where the data is stored.
 Each application typically has a custom-built, non-standardized API, hindering operability between apps.
-Second, it is not feasible for form filling to use an alternative environment, like the command line, or to opt for a different website due to a preferred interface.
+Second, it is not possible for form filling to use an alternative environment, like the command line, or to opt for a different website due to a preferred interface.
 Third, form applications designed for customers to provide their shipping information during a purchase cannot usually be repurposed to e.g., allow them to submit a support request.
-Fourth, reusing data across multiple applications is not feasible because data from one application cannot be written or read by another.
+Fourth, reusing data across multiple applications is not possible because data from one application cannot be written or read by another.
 
 <span class="comment" data-author="RV">This paragraph can go, if the references are in RelWork.</span>
 A requirement for solving these problems is to decouple the data from the application.
