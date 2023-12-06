@@ -35,8 +35,7 @@ Next to that, the form field's semantic meaning is contained in the form descrip
 Extra properties can be specified to define the field's behavior.
 The Solid-UI ontology can be used to define forms in RDF with a declarative form renderer using this ontology [](cite:cites hochstenbach_rdf_2022).
 
-There were also other <span class="rephrase" data-author="RV">attempts</span> to describe forms in RDF such as [RDF-Form](cite:cites rdf-form).
-<span class="comment" data-author="RV">Careful calling other people's work <q>attempts</q></span>
+There were also other efforts to describe forms in RDF such as [RDF-Form](cite:cites rdf-form).
 All these ontologies allow for describing the fields contained in a form in a semantic way.
 This corresponds to the display and shape parts of the three-part view.
 In addition, we want to describe footprints, i.e. what actions to perform in case of certain events like submission.
