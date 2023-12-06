@@ -13,7 +13,6 @@ Second, it is not possible for form filling to use an alternative environment, l
 Third, form applications designed for customers to provide their shipping information during a purchase cannot usually be repurposed to e.g., allow them to submit a support request.
 Fourth, reusing data across multiple applications is not possible because data from one application cannot be written or read by another.
 
-<span class="comment" data-author="RV">This paragraph can go, if the references are in RelWork.</span>
 A requirement for solving these problems is to decouple the data from the application.
 With the use of [Solid](cite:cites solid) and Linked Data, several solutions have been proposed, but none of them fully describe a declarative form semantically going from elements to actions.
 A couple of notable exceptions exist [](cite:cites berners-lee_linked_2019,shapes),
