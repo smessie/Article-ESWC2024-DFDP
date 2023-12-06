@@ -1,8 +1,7 @@
 ## Implementation
 {:#implementation}
 
-We implemented three proof-of-concept apps in TypeScript/JavaScript.
-<span class="comment" data-author="RV">That's great—but be _very_ specific: what is the relationship of those apps to the previous sections? That should be immediately clear from the first sentence.</span>
+We implemented three proof-of-concept apps in TypeScript/JavaScript that first generate a form description and then use it to render the form in two different viewing environments.
 The FormGenerator app is an application programmed in the [Ember framework](cite:cites emberjs) generating a form description based on the form the user builds using drag-and-drop.
 The FormRenderer app and FormCli app are two apps that render a given form description in respectively a Web browser using HTML or a text-based command-line interface.
 
@@ -22,7 +21,8 @@ Implemented FormGenerator app.
 </figcaption>
 </figure>
 
-As rule language, [Notation3 (N3)](cite:cites n3) is used as a rule and policy language for describing footprints.
+Describing footprints requires a rule and a policy language.
+As rule language, [Notation3 (N3)](cite:cites n3) is used.
 The rule premise allows for defining the event, while the rule conclusion defines the policy.
 We chose for N3 as they proved to be a working solution for our use case and the reasoning engine EYE implementing N3 is being developed at our lab.
 We therefore also made the decision to use the [EYE-JS library](cite:cites eye-js), a browser and node-distributed EYE reasoner via WebAssembly.
