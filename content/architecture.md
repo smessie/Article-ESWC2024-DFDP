@@ -4,17 +4,15 @@
 <figure id="fig:eaen-currently-to-goal" class="halfwidth">
 <img src="img/currently-to-goal.png" alt="[Figure of shift from single structure to a three-part view]" />
 <figcaption markdown="block">
-Transition from <span class="rephrase" data-author="RV">traditional</span> single structure with all the data defined using a single vocabulary, to a three-part view: form (for display), shape (for validation), and footprint (for reasoning).
+Transition from a single structure that hard-couples data to the app to a three-part view: form (for display), shape (for validation), and footprint (for reasoning).
 </figcaption>
 </figure>
 
-A common way how Web applications store their data is by using one single structure.
-<span class="comment" data-author="RV">Wow wow, evidence? This is a bold claim. We will need to soften this.</span>
-This means that the data is stored in a fixed structure - a specific schema chosen by the app - as a hard-coupled part of the app, leaving it up to the app developer to decide where and how to store the data.
-As a result, it is not possible to use the data with another application that uses a different structure.
-<span class="comment" data-author="RV">Everything up to this point in the paragraph will have to go, I'm afraid. It's just not true or provable.</span>
+Today, many Web applications are built with their data stored in a fixed structure - a specific schema chosen by the app - as a hard-coupled part of the app [](cite:cites sambra2016solid).
+The app developer is left to decide where and how to store the data, resulting in poor data controllability for users [](cite:cites berners-lee_three_2017) and interoperability among apps [](cite:cites sambra2016solid).
 This is even the case for many Solid apps that assume the data is stored in a fixed location in the pod and assuming a specific vocabulary is used.
 Therefore, this paper proposes a three-part view on Solid Web forms.
+While end-users will still be able to create Web forms as they do today, such as with drag-and-drop interfaces, storing the data decentralized in three parts allows organizations and end-users to reuse forms and data, saving time.
 This shift from a single structure to a three-part view is shown schematically in [](#fig:eaen-currently-to-goal).
 On the left, the current situation with the data stored in a single structure as a hard-coupled part of the application.
 On the right, we propose a division into three parts: a form (for display), shape (for validation), and footprint (for reasoning) part.
@@ -41,15 +39,13 @@ Then, it can send that form description to another user to fill it out.
 The user wanting to fill out the form should use a form renderer to render the declarative form description.
 The user can additionally provide a conversion rules resource to map the form description onto another ontology and a data resource to automatically prefill the form.
 
-<span class="comment" data-author="RV">So, a <q>shift</q> is not always a good thing. In the sense that: people have always done forms the X way, and now we're changing everything. We need to be very careful with this. We need to be able to say: look, the first step is very similar to what they already do today, except its much less work. Otherwise, it risks reading a bit too much as <q>if _only_ everyone did Y, then the world would be so much better</q>, which isn't very well received by reviewers typically.</span>
-
 
 ### Description of the Display
 
 The previous problem of needing a separate app for each use case is solved by describing the user interface declaratively in the *form description resource*.
 This RDF resource contains both the display part and the footprint for the reasoning part.
 The display is the part responsible for rendering the form to the user.
-<span class="rephrase" data-author="RV">Web forms are typically HTML</span>, while RDF represents the semantics of the form, not how you represent it in HTML.
+Web forms are typically rendered using HTML, while RDF represents the semantics of the form, not how you represent it in HTML.
 By declaratively describing the form in RDF, we achieve the ability to render the same form description in any environment.
 There already exist ontologies that can be used for this purpose, such as [SHACL](cite:cites shacl), [Solid-UI](cite:cites solid-ui), and [RDF-Form](cite:cites rdf-form).
 By reusing these ontologies for the display part, we achieve maximum compatibility with existing form descriptions.
@@ -66,6 +62,7 @@ The *data resource* structure mirrors the filled-out form's output, enabling aut
 Unfortunately, the move to decentralization and decoupling comes with its own challenges.
 Two main challenges need to be tackled before this can be achieved.
 To allow the app to interpret multiple ontologies and hence achieve a decoupled solution, *schema alignment tasks* are introduced translating the form description into an ontology the app understands.
+This enables the application to treat two definitions that semantically describe the same thing as identical.
 The *conversion rules resource* from [](#fig:renderer-architecture) is used by the renderer app to perform this mapping.
 This resource consists of rules defining how to go from a part of the form description in the ontology equivalent to the one understood by the app, to the equivalent expression in that ontology the app understands.
 By passing along this resource to the app, the app does not need to understand the ontology the form description is written in, and any ontology can be used for which a mapping can be provided.
@@ -73,15 +70,12 @@ As these conversion rules can be passed as a separate resource to the app, the e
 Ontology creators can provide mappings to similar ontologies, or app developers can provide mappings from equivalent ontologies to the one their app understands.
 The renderer app needs to apply these rules onto the form description using a reasoner to retrieve the form description in the language it understands.
 
-<span class="comment" data-author="RV">There is potential to also talk about semantics in this paragraph.</span>
-
 
 ### Description of the Footprint Tasks
 
 In addition to describing how the form should look, the form description should also declaratively describe what should happen in certain events such as submission.
 Therefore, the form description is extended with *policies*.
-The process of executing these policies is called the *footprint tasks* and is <span class="rephrase" data-author="RV">the second half of the reasoning part of the three-part view</span>.
-<span class="comment" data-author="RV">That's getting a bit unnecessarily complex here</span>
+The process of executing these policies is called the *footprint tasks* and is the second application of reasoning next to schema alignment.
 To describe policies, two languages are needed: a *rule language* and a *policy language*.
 The policy language describes what should actually happen when a policy is executed.
 The rule premise contains the event, the rule conclusion contains the policy.

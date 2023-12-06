@@ -14,7 +14,7 @@ Third, form applications designed for customers to provide their shipping inform
 Fourth, reusing data across multiple applications is not possible because data from one application cannot be written or read by another.
 
 A requirement for solving these problems is to decouple the data from the application.
-With the use of [Solid](cite:cites solid) and Linked Data, several solutions have been proposed, but none of them fully describe a declarative form semantically going from elements to actions.
+With the use of [Solid](cite:cites solid,sambra2016solid) and Linked Data, several solutions have been proposed, but none of them fully describe a declarative form semantically going from elements to actions.
 A couple of notable exceptions exist [](cite:cites berners-lee_linked_2019,shapes),
 but these works are mainly theoretical approaches to the problem.
 
