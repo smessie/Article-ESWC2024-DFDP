@@ -43,6 +43,10 @@ The arguments of these policies, such as the URL to send the HTTP request to or 
 
 [^PolicyOntology]: The Policy ontology can be found at [https://w3id.org/policy](https://w3id.org/policy).
 
+When constructing the form, users must specify bindings for each field, which are URIs semantically describing the fields.
+Users must manually enter these bindings. To simplify this process, they can utilize prefixes, which are automatically expanded to full URIs via the [prefix.cc](https://prefix.cc) API.
+As an example, `ex:MyField` will become `http://example.org/MyField`.
+
 <figure id="lst:n3-form-policies-example" class="listing">
 <pre><code>
 @prefix ex:   <http://example.org/> .
@@ -71,11 +75,6 @@ The arguments of these policies, such as the URL to send the HTTP request to or 
 Example of N3 rule describing HTTP request policy to be executed on the form submission event.
 </figcaption>
 </figure>
-
-When constructing the form, users must specify bindings for each field, which are URIs semantically describing the fields.
-Users must manually enter these bindings. To simplify this process, they can utilize prefixes, which are automatically expanded to full URIs via the [prefix.cc](https://prefix.cc) API.
-As an example, `ex:MyField` will become `http://example.org/MyField`.
-<span class="comment" data-author="RT">I'm pretty sure there is some related work around guessing proper predicates for human-written labels. It would be good to look for those, and cite them if applicable in any way.</span>
 
 
 ### FormRenderer and FormCli
