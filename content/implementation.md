@@ -48,12 +48,10 @@ Users must manually enter these bindings. To simplify this process, they can uti
 As an example, `ex:MyField` will become `http://example.org/MyField`.
 
 <figure id="lst:n3-form-policies-example" class="listing">
-<pre><code>
-@prefix ex:   <http://example.org/> .
+<pre><code>@prefix ex:   <http://example.org/> .
 @prefix pol: <https://w3id.org/policy#> .
 @prefix fno: <https://w3id.org/function/ontology#>.
 @prefix http: <http://www.w3.org/2011/http#>.
-
 {
   ?id pol:event pol:Submit.
 } => {
