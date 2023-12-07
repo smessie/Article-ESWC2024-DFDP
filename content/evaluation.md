@@ -70,4 +70,4 @@ To mitigate a selection bias, we also recruited some non-students and participan
 We categorized feedback from all users for both applications and received generally positive results.
 Especially in the case of the FormRenderer, no participant noted any significant differences in terms of ease of use.
 Regarding the FormGenerator, 5 out of 8 participants rightly noting that as restaurant owners, they shouldn't need to be concerned with bindings.
-As a result, future research should consider the automatic suggestion of bindings based on the field label entered by the end-user.
+As a result, future research should consider the automatic suggestion of bindings based on the field label entered by the user.

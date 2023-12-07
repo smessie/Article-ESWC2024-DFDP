@@ -7,8 +7,8 @@ The FormGenerator shows how such declarative form descriptions can be produced.
 This enables the developer to use the same description for multiple viewing environments.
 We also provided them with tools they can build further upon to learn how to do so.
 
-Developers and researchers can use the FormRenderer tool to generate and insert data into a defined shape as specified by the form description.
-This reduces the risk of errors in data entry as users are only required to input raw data into the app's user interface.
+Developers and researchers can use the FormRenderer tool to insert data into a defined shape outlined in the form description, thus minimizing
+the risk of data entry errors since users are only responsible for inputting raw data into the app's interface.
 
 By using the DFDP, form developers can build new forms faster by reusing existing forms rather than starting from scratch.
 Additionally, by extending upon existing display ontologies such as Solid-UI and SHACL, there is no need for developers adopting the DFDP to start over again.
