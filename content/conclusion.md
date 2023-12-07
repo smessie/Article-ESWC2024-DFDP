@@ -24,6 +24,6 @@ The DFDP makes it easier for developers and researchers to substitute one app in
 Furthermore, existing form descriptions can still be used, making it easier for end-users to switch apps and adopt new versions, and for developers to publish new apps.
 Researchers can more easily build upon existing apps to extend them with new technologies in their future research.
 
-Such future research could focus on automatically suggesting bindings based on field names entered by the users, for which can be based on [other existing work](cite:cites exner2012entity).
+Such future research could focus on automatically suggesting bindings based on field names entered by the users, which can build on [_Entity Extraction_](cite:cites exner2012entity).
 Other directions for future work may involve streamlining the schema alignment and footprint tasks to make them more abstract for developers.
 Embedding schema alignment as a layer between the app and the data would enable developers to automatically consider semantically equivalent ontologies as the same, resulting in real interoperability without requiring extra work from the developers.
