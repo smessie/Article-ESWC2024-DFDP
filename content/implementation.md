@@ -41,7 +41,7 @@ We have implemented a Policy ontology, which defines the missing classes and pro
 [](#lst:n3-form-policies-example) contains an example of a footprint task sending an HTTP request.
 The arguments of these policies, such as the URL to send the HTTP request to or to redirect to, should be defined by the user.
 
-[^PolicyOntology]: The Policy ontology can be found at [https://w3id.org/policy](https://w3id.org/policy).
+[^PolicyOntology]: The Policy ontology can be found at [https://w3id.org/DFDP/policy](https://w3id.org/DFDP/policy).
 
 When constructing the form, users must specify bindings for each field, which are URIs semantically describing the fields.
 Users must manually enter these bindings. To simplify this process, they can utilize prefixes, which are automatically expanded to full URIs via the [prefix.cc](https://prefix.cc) API.
@@ -49,7 +49,7 @@ As an example, `ex:MyField` will become `http://example.org/MyField`.
 
 <figure id="lst:n3-form-policies-example" class="listing">
 <pre><code>@prefix ex:   <http://example.org/> .
-@prefix pol: <https://w3id.org/policy#> .
+@prefix pol: <https://w3id.org/DFDP/policy#> .
 @prefix fno: <https://w3id.org/function/ontology#>.
 @prefix http: <http://www.w3.org/2011/http#>.
 {
