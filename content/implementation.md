@@ -1,30 +1,30 @@
 ## Implementation
 {:#implementation}
 
-We implemented three proof-of-concept apps in TypeScript/JavaScript that first generate a form description and then use it to render the form in two different viewing environments.
-The FormGenerator app is an application programmed in the [Ember framework](cite:cites emberjs) generating a form description based on the form the user builds using drag-and-drop.
-The FormRenderer app and FormCli app are two apps that render a given form description in respectively a Web browser using HTML or a text-based command-line interface.
+We implemented three proof-of-concept applications in TypeScript/JavaScript that first generate a form description and then use it to render the form in two different viewing environments.
+The FormGenerator application is an application programmed in the [Ember framework](cite:cites emberjs) generating a form description based on the form the user builds using drag-and-drop.
+The FormRenderer application and FormCli application are two applications that render a given form description in respectively a Web browser using HTML or a text-based command-line interface.
 
 ### FormGenerator
 {:#implementation-formgenerator}
 
-The first app in the declarative form description pipeline is to generate the declarative form description.[^ImplementationFormGenerator]
-In [](#fig:FormGenerator) a screenshot of the implemented app can be seen where the user can provide policy values, next to the ability to define form fields using drag-and-drop.
+The first application in the declarative form description pipeline is to generate the declarative form description.[^ImplementationFormGenerator]
+In [](#fig:FormGenerator) a screenshot of the implemented application can be seen where the user can provide policy values, next to the ability to define form fields using drag-and-drop.
 Not all possible form elements are supported as it only functions as a proof of concept, but additional field types can be added similarly to the existing ones.
 
-[^ImplementationFormGenerator]: The source code of the FormGenerator app can be found at [https://github.com/SolidLabResearch/FormGenerator](https://github.com/SolidLabResearch/FormGenerator).
+[^ImplementationFormGenerator]: The source code of the FormGenerator application can be found at [https://github.com/SolidLabResearch/FormGenerator](https://github.com/SolidLabResearch/FormGenerator).
 
 <figure id="fig:FormGenerator" class="halfwidth">
 <img src="img/FormGenerator.png" alt="[Screenshot of FormGenerator application]" />
 <figcaption markdown="block">
-Implemented FormGenerator app.
+Implemented FormGenerator application.
 </figcaption>
 </figure>
 
 Describing footprints requires a rule and a policy language.
 As rule language, [Notation3 (N3)](cite:cites n3) is used.
 The rule premise allows for defining the event, while the rule conclusion defines the policy.
-We chose for N3 as they proved to be a working solution for our use case and the reasoning engine EYE implementing N3 is being developed at our lab.
+We chose N3 as it proved to be a working solution for our use case and the reasoning engine EYE implementing N3 is being developed at our lab.
 We therefore also made the decision to use the [EYE-JS library](cite:cites eye-js), a browser and node-distributed EYE reasoner via WebAssembly.
 By the use of reasoning, we obtain the rule conclusion which is then being parsed using a SPARQL query.
 Querying is done using [Comunica](cite:cites taelman_iswc_resources_comunica_2018), a knowledge graph querying framework.
@@ -80,23 +80,23 @@ Example of N3 rule describing HTTP request policy to be executed on the form sub
 <figure id="fig:FormRenderer" class="halfwidth">
 <img src="img/FormRenderer.png" alt="[Screenshot of FormRenderer application]" />
 <figcaption markdown="block">
-Implemented FormRenderer app.
+Implemented FormRenderer application.
 </figcaption>
 </figure>
 
 The next application in the pipeline is to render the declarative form description and let the user fill out that form.
 We implemented two versions in two different viewing environments to prove that the display part of the form description is independent of the viewing environment.[^ImplementationFormRenderer] [^ImplementationFormCli]
-The FormRenderer app is created in the [Vue.js framework](cite:cites vue) and functions in the Web browser.
-A screenshot of this app is shown in [](#fig:FormRenderer).
-The FormCli app operates as a command-line application, allowing usage without a GUI.
+The FormRenderer application is created in the [Vue.js framework](cite:cites vue) and functions in the Web browser.
+A screenshot of this application is shown in [](#fig:FormRenderer).
+The FormCli application operates as a command-line application, allowing usage without a GUI.
 The form questions are prompted to the user one after each other.
-While the FormRenderer app supports authenticating with a Solid identity provider, authentication is not implemented in the FormCli app as the Solid protocol lacks proper authentication for command-line applications.
+While the FormRenderer application supports authenticating with a Solid identity provider, authentication is not implemented in the FormCli application as the Solid protocol lacks proper authentication for command-line applications.
 We therefore consider this outside the scope of this research.
 
-[^ImplementationFormRenderer]: The source code of the FormRenderer app can be found at [https://github.com/<wbr/>SolidLabResearch/FormRenderer](https://github.com/SolidLabResearch/FormRenderer).
-[^ImplementationFormCli]: The source code of the FormCli app can be found at [https://github.com/<wbr/>SolidLabResearch/FormCli](https://github.com/SolidLabResearch/FormCli).
+[^ImplementationFormRenderer]: The source code of the FormRenderer application can be found at [https://github.com/<wbr/>SolidLabResearch/FormRenderer](https://github.com/SolidLabResearch/FormRenderer).
+[^ImplementationFormCli]: The source code of the FormCli application can be found at [https://github.com/<wbr/>SolidLabResearch/FormCli](https://github.com/SolidLabResearch/FormCli).
 
-Solid-UI is chosen as display ontology that the app understands as this is an ontology that is especially made for the purpose of defining user interfaces.
+Solid-UI is chosen as display ontology that the application understands as this is an ontology that is especially made for the purpose of defining user interfaces.
 Schema alignment tasks are performed by applying the conversion rules over the form description.
 N3 rules are used again to implement this together with the EYE-JS reasoner to apply them.
 The output of this reasoning step is the equivalent form description in the Solid-UI vocabulary, which is then parsed by the Comunica engine using SPARQL queries.
@@ -126,9 +126,9 @@ Not all ontologies for describing forms do have a property to define the subject
 This leaves us with options 1, 2, and 4 as the viable choices.
 Using a random UUID is a feasible solution, ensuring uniqueness, and serving as an ideal default subject URI.
 Prompting the user allows the user to enter a meaningful subject URI himself, which is also feasible.
-Focusing solely on this option requires users to understand subject URIs, potentially complicating app use for those new to the Semantic Web. Our goal is to ensure ease of use for all.
+Focusing solely on this option requires users to understand subject URIs, potentially complicating application use for those new to the Semantic Web. Our goal is to ensure ease of use for all.
 Using an existing subject is a good option, especially when there's a single subject, aligning with user expectations for data editing.
 With multiple subjects, selection becomes a challenge for users unfamiliar with the concept.
 We propose and implement a combination of the three last feasible options.
 Use a random UUID as the default subject URI, while enabling user selection from existing subjects or manual subject URI entry.
-Parsing the policies is done in the same way as in the FormGenerator app, described earlier in [](#implementation-formgenerator).
+Parsing the policies is done in the same way as in the FormGenerator application, described earlier in [](#implementation-formgenerator).

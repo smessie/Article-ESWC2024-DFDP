@@ -4,19 +4,19 @@
 In this section, we discuss the main requirements for decentralized and declarative forms on the Web using a use case involving two personas, "Alice" and "Bob", each with their own objectives about the forms they like to publish, but both requiring full control over where and how the resulting RDF is stored.
 
 Alice, a Web-savvy user, owns a Solid pod she wants to fill with RDF data.
-She uses her favorite Web app *AliceForms* to create a form description she will use to produce RDF.
-*AliceForms* resembles Google Forms: the app allows creating forms in a user-friendly way with a limited data model but provides Alice the freedom where to publish the form description and the RDF data it produces, so she can keep control over the data she enters (in Google Forms this is all centralized).
+She uses her favorite Web application *AliceForms* to create a form description she will use to produce RDF.
+*AliceForms* resembles Google Forms: the application allows forms to be created in a user-friendly way with a limited data model, but provides Alice with the choice of where to publish the form description and the RDF data it generates, so she can keep control over the data she enters (in Google Forms this is all centralized).
 Alice chooses to store her form description and the produced RDF data on her own Solid pod.
 
-When Alice wants to create RDF data, she opens the form description in a renderer app *HtmlForms* providing her with an HTML rendered version of the form description.
+When Alice wants to create RDF data, she opens the form description in a renderer application *HtmlForms* providing her with an HTML rendered version of the form description.
 When Alice fills out all the fields, the RDF data will be stored on her Solid pod.
-The *HtmlForms* app can be automatically pre-filled with RDF data to save Alice from repeatedly entering the same data.
+The *HtmlForms* application can be automatically pre-filled with RDF data to save Alice from repeatedly entering the same data.
 
 Bob, a friend of Alice, wants to invite her for lunch and tries to find an appropriate date.
-Bob uses his own Web app *BobForms* to create a form description he will send to Alice.
+Bob uses his own Web application *BobForms* to create a form description he will send to Alice.
 Bob configures the form description to send the resulting RDF data to his own Solid pod.
 Alice receives a link to Bob's form description and prefers command-line tools to perform tasks with low cognitive load.
-She uses her command-line app *TextForms* to open the form description.
+She uses her command-line application *TextForms* to open the form description.
 *TextForms* creates a text-based rendering of Bob's form description.
 She fills out the form and as a result the data as RDF data is sent to Bob's pod.
 
@@ -39,7 +39,7 @@ The requirements for each research question are discussed, and finally the summa
 
 - RQ2: How can machines **translate form descriptions** decoupled from the application into a vocabulary that the application understands?
 
-- RQ3: How can machines **perform more controllable and reusable actions** on the filled out data?
+- RQ3: How can machines **perform controllable and reusable actions** on the filled out data?
 
 
 ### Multiple Viewing Environments
@@ -95,7 +95,7 @@ Summarized requirements based on the research questions.
 </figcaption>
 </figure>
 
-The scenario shows the need to [FAIRly](cite:cites wilkinson2016fair) describe the form description independent of the application context. [^FAIR]
+The scenario shows the need to [FAIRly](cite:cites wilkinson2016fair) describe the form description independent of the application context.[^FAIR]
 The requirements of the previous scenario are grouped into three categories and summarized in [](#requirements-table).
 
 [^FAIR]: The review of the adherence to the [FAIR principles](cite:cites wilkinson2016fair) can be found at the Wiki of the GitHub repository at [https://github.com/SolidLabResearch/FormGenerator/wiki/<wbr/>Adherence-to-the-FAIR-Principles](https://github.com/SolidLabResearch/FormGenerator/wiki/Adherence-to-the-FAIR-Principles).

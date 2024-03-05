@@ -12,17 +12,17 @@ We create a sustainability plan has to guarantee the maintenance of the DFDP's 
 ### Conformance to the Requirements
 {:#requirements-conformance}
 
-In this section, we analyze the conformance of the implemented apps to the requirements defined in [](#requirements-table) under [](#requirements).
+In this section, we analyze the conformance of the implemented applications to the requirements defined in [](#requirements-table) under [](#requirements).
 
 The first research question is: "How can form developers create forms to declaratively control machines for producing RDF in **multiple viewing environments** (such as Web pages and text-based via a command line)?".
-The FormRenderer and FormCli apps showcase creating a form renderer application in multiple viewing environments (R4).
+The FormRenderer and FormCli applications showcase creating a form renderer application in multiple viewing environments (R4).
 The form was described declaratively (R1) as the display part is fully described using the already existing Solid-UI ontology.
 Data can be passed along to automatically prefill a form by machines using the form fields' bindings (R2), and users can interpret the field title to manually enter a value (R3).
 
 The second research question is: "How can machines **translate form descriptions** decoupled from the application into a vocabulary that the application understands?".
-N3 conversion rules can be passed along allowing reasoning to automatically translate the form description into the ontology the app understands (R5).
+N3 conversion rules can be passed along allowing reasoning to automatically translate the form description into the ontology the application understands (R5).
 
-The third research question is: "How can machines **perform more controllable and reusable actions** on the filled out data?".
+The third research question is: "How can machines **perform controllable and reusable actions** on the filled out data?".
 The form description also declaratively describes what should happen in case of a certain trigger (R6).
 Because this is described in a machine-readable way using RDF, a machine can interpret this and execute the right actions (R7).
 
@@ -34,20 +34,20 @@ Considering the information above, we can confidently assert that we cover all t
 
 To show that the user experience is not impacted due to the Semantic Web technologies used in the DFDP, we perform a user study.
 The goal of this user study is to see if next to the functional requirements, the implementations are also comprehensible for users.
-We define "comprehensible for users" as the ability for users to understand the app in such a way that they can use it correctly (i.e. accurately) without getting frustrated or giving up (i.e. in a reasonable time).
+We define "comprehensible for users" as the ability for users to understand the application in such a way that they can use it correctly (i.e. accurately) without getting frustrated or giving up (i.e. in a reasonable time).
 In what follows, we discuss the user experience by doing a qualitative analysis [](cite:cites Creswell_Creswell_2018) by the use of the [_think aloud method_](cite:cites van1994think) and open-ended interviews split up into two parts: form editing (evaluating the FormGenerator) and form usage (evaluating the FormRenderer).
-The FormCli app is not considered as this is a more complex version of the FormRenderer app.
+The FormCli application is not considered as this is a more complex version of the FormRenderer application.
 
 #### Method
 
 Potential participants were directly contacted by the author out of which 19 took part in the study.
-8 individuals with a technical background evaluated the FormGenerator app, aligning with its target audience, much like creating a Google Forms is intended for users with technical proficiency.
+8 individuals with a technical background evaluated the FormGenerator application, aligning with its target audience, much like creating a Google Forms is intended for users with technical proficiency.
 To meet this requirement, computer science students were primarily sought as participants.
 The 11 participants for the form usage part were people both with and without technical backgrounds with ages spanning from 18 to 52 years.
-This aligns with the target group of this and similar traditional apps [](cite:cites petrosyan2023distribution), assuming users are familiar with a computer and the Web.
+This aligns with the target group of this and similar traditional applications [](cite:cites petrosyan2023distribution), assuming users are familiar with a computer and the Web.
 Both groups were provided with simple scenarios instructing them to either generate a form for a restaurant review or fill out an earlier generated form, modeled to mimic normal day tasks.[^UserStudies]
 The FormGenerator participants were given a list of bindings to be used to create the form, fulfilling the assumption that they have knowledge of Linked Data.
-All necessary data elements were put in place for the FormRenderer app by giving the users a specific link autopopulating the input fields.
+All necessary data elements were put in place for the FormRenderer application by giving the users a specific link autopopulating the input fields.
 
 [^UserStudies]: The user study scenarios can be found at [https://github.com/SolidLabResearch/FormGenerator/wiki/User-Experience-Scenarios](https://github.com/SolidLabResearch/FormGenerator/wiki/User-Experience-Scenarios).
 

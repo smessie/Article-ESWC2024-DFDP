@@ -8,7 +8,8 @@ If a user requires a form similar to an existing one, created by someone else or
 
 Current Web forms are meant to be (1) used against one endpoint, (2) often used for one (Web) display, (3) with one particular workflow in mind, (4) without a means to send and receive the data in another way.
 First, this means that when a form is submitted, the data is always sent to the same location, and the user has no control over where the data is stored.
-Each application typically has a custom-built, non-standardized API, hindering operability between apps.
+The application developer is left to decide where and how to store the data, resulting in poor data controllability for users [](cite:cites berners-lee_three_2017).
+Each application typically has a custom-built, non-standardized API, hindering operability between applications [](cite:cites sambra2016solid).
 Second, it is not possible for form filling to use an alternative environment, like the command line, or to opt for a different website due to a preferred interface.
 Third, form applications designed for customers to provide their shipping information during a purchase cannot usually be repurposed to e.g., allow them to submit a support request.
 Fourth, reusing data across multiple applications is not possible because data from one application cannot be written or read by another.
@@ -26,7 +27,7 @@ Lastly, the reasoning part describes what to do with the filled-in data at certa
 These 3 parts provide a fully declarative description of the form, leaving no assumptions to be made by the application.
 In addition, the application needs to be able to understand any vocabulary used to express the description to fully decouple the description from the application.
 This necessitates schema alignment to map the description to the vocabulary the application understands.
-Only then will the data and the app be fully decoupled, as it cannot be assumed that all apps will use the same language to define data.
+Only then will the data and the application be fully decoupled, as it cannot be assumed that all applications will use the same language to define data.
 
 The remaining paper is structured as follows.
 [](#related-work) discusses related work, followed by a motivating example and a discussion of the requirements in [](#requirements).

@@ -6,7 +6,7 @@
 In 2003, [XForms](cite:cites boyer_xforms_nodate) was introduced as a standalone technology for collecting inputs from Web forms.
 The original specification became a W3C Recommendation in 2009 and is still the official version.
 In 2010, work started on the new version [XForms 2.0](cite:cites xforms).
-The split architecture of XForms separates _presentation_, _content_, and _purpose_, in a way that closely resembles the three-part _display_, _shape_, and _reasoning architecture_ introduced in this paper.
+The split architecture of XForms separates _presentation_, _content_, and _purpose_, in a way that closely resembles the three-part _display_, _shape_, and _reasoning_ architecture introduced in this paper.
 Web forms are specified using an XML model.
 Values can be limited by referencing XML elements, which use attributes to define type and other constraints.
 While an XML element for submission can specify the data destination and the required HTTP method, no reasoning capabilities are available in the specification.
@@ -29,7 +29,7 @@ The former can be utilized to provide supplementary information, such as for for
 Examples are `sh:datatype` and `sh:minCount`.
 
 _Solid-UI_ is the name for user interface widgets and utilities for Solid.
-Next to the building blocks for Solid-based apps, there also exists a [Solid-UI vocabulary](cite:cites solid-ui), which will be of interest in this paper.
+Next to the building blocks for Solid-based applications, there also exists a [Solid-UI vocabulary](cite:cites solid-ui), which will be of interest in this paper.
 The vocabulary mainly focuses on the display part of forms.
 Next to that, the form field's semantic meaning is contained in the form description by using the `ui:property` predicate.
 Extra properties can be specified to define the field's behavior.
@@ -41,5 +41,5 @@ This corresponds to the display and shape parts of the three-part view.
 In addition, we want to describe footprints, i.e. what actions to perform in case of certain events like submission.
 Footprints outline the way the data entered into the form should be handled, such as where it should be stored or what updates to other documents are required [](cite:cites shapes).
 Describing this information as footprints allows machines to interpret it, and actions are not tied to applications.
-As a result, different apps will store the data in the same way and real interoperability is achieved.
+As a result, different applications will store the data in the same way and real interoperability is achieved.
 As these ontologies do not provide a way to describe such footprints, they do not provide a complete solution for a fully declarative form description.
