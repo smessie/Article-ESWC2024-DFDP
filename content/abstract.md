@@ -1,37 +1,19 @@
 ## Abstract
 <!-- Context      -->
 Forms are key to bidirectional communication on the Web: without them, end-users would be unable to place online orders or file support tickets.
-Organizations often need multiple, highly similar forms, which currently requires multiple implementations.
-<span class="comment" data-author="BE">
-requires -> require
-</span>
-Moreover, the data is tightly coupled to the application, restricting the user from reusing it with other applications, or storing the data somewhere else.
-<span class="comment" data-author="BE">
-Not clear which kind of users are being restricted -- is it just the end-users, organisations, both?
-</span>
+Organizations often need multiple, highly similar forms, which currently require multiple implementations.
+Moreover, the data is tightly coupled to the application, restricting the end-user from reusing it with other applications, or storing the data somewhere else.
 <!-- Need         -->
 Organizations and end-users have a need for a technique to create forms that are more *controllable*, *reusable*, and *decentralized*.
 <!-- Task         -->
 To address this problem, we introduce the *Declarative Form Description Pipeline* (DFDP) that meets these requirements.
-DFDP achieves controllability through by end-users editable declarative form descriptions.
-<span class="comment" data-author="BE">
-controllability through by end-users editable -- "by" not needed & should be "end-users' editable"
-</span>
-Reusability is ensured through separate descriptions of the form fields and associated actions.
-Finally, by leveraging a decentralized environment like Solid, the application is decoupled from the storage, preserving end-user's control over their data.
-<span class="comment" data-author="BE">
-end-user's control -> end-users control
-</span>
-<span class="comment" data-author="BE">
-The need you identify is for both organisations and end-users, however I only see end-users mentioned in the task section of the abstract. Is it the case that non of tasks were for the benefit of organisations?
-</span>
+DFDP achieves controllability through end-users' editable declarative form descriptions.
+Reusability for organizations is ensured through separate descriptions of the form fields and associated actions.
+Finally, by leveraging a decentralized environment like Solid, the application is decoupled from the storage, preserving end-user control over their data.
 <!-- Object       -->
 In this paper, we introduce and explain how such a declarative form description can be created and used without assumptions about the viewing environment or data storage.
 <!-- Findings     -->
-We show how separate applications can independently work together and be interchanged by using a description containing all semantics by the use of a form, policy, and rule ontology.
-<span class="comment" data-author="BE">
-Not clear what you mean by "containing all semantics" -- is it an ontology that has form, policy and rule concepts or do you mean something else? The sentence could be mane more clear
-</span>
+We show how separate applications can interoperate and be interchanged by using a description that leaves no assumptions to the application developer by using a form, policy, and rule ontology.
 Furthermore, we prove how this approach solves the shortcomings of traditional Web forms.
 <!-- Conclusion   -->
 Our proposed pipeline enables organizations to save time by building similar forms without starting from scratch.
