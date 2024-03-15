@@ -4,9 +4,9 @@
 In this section, we evaluate the proposed architecture and implementation.
 First, we analyze conformance to the requirements in [](#requirements-conformance).
 Second, we describe the results of the user study in [](#user-study).
-We create a sustainability plan has to guarantee the maintenance of the DFDP's tools, both short-term and long-term.[^SustainabilityPlan]
+We created a sustainability plan to guarantee the maintenance of the DFDP's tools, both short-term and long-term.[^SustainabilityPlan]
 
-[^SustainabilityPlan]: The sustainability plan for the DFDP's tools can be found at [https://github.com/SolidLabResearch/FormGenerator/wiki/Sustainability-Plan](https://github.com/SolidLabResearch/FormGenerator/wiki/Sustainability-Plan).
+[^SustainabilityPlan]: The sustainability plan can be found at [https://github.com/SolidLabResearch/FormGenerator/wiki/<wbr/>Sustainability-Plan](https://github.com/SolidLabResearch/FormGenerator/wiki/Sustainability-Plan).
 
 
 ### Conformance to the Requirements
@@ -16,7 +16,7 @@ In this section, we analyze the conformance of the implemented applications to t
 
 The first research question is: "How can form developers create forms to declaratively control machines for producing RDF in **multiple viewing environments** (such as Web pages and text-based via a command line)?".
 The FormRenderer and FormCli applications showcase creating a form renderer application in multiple viewing environments (R4).
-The form was described declaratively (R1) as the display part is fully described using the already existing Solid-UI ontology.
+The form was described declaratively (R1) as the display part is fully described using the already existing UI ontology.
 Data can be passed along to automatically prefill a form by machines using the form fields' bindings (R2), and users can interpret the field title to manually enter a value (R3).
 
 The second research question is: "How can machines **translate form descriptions** decoupled from the application into a vocabulary that the application understands?".
@@ -49,7 +49,7 @@ Both groups were provided with simple scenarios instructing them to either gener
 The FormGenerator participants were given a list of bindings to be used to create the form, fulfilling the assumption that they have knowledge of Linked Data.
 All necessary data elements were put in place for the FormRenderer application by giving the users a specific link autopopulating the input fields.
 
-[^UserStudies]: The user study scenarios can be found at [https://github.com/SolidLabResearch/FormGenerator/wiki/User-Experience-Scenarios](https://github.com/SolidLabResearch/FormGenerator/wiki/User-Experience-Scenarios).
+[^UserStudies]: The user study scenarios can be found at [https://github.com/SolidLabResearch/FormGenerator/wiki/<wbr/>User-Experience-Scenarios](https://github.com/SolidLabResearch/FormGenerator/wiki/User-Experience-Scenarios).
 
 
 #### Threats to Validity
@@ -57,11 +57,11 @@ All necessary data elements were put in place for the FormRenderer application b
 As with any study, our evaluation carries threats to validity. We identified following external and internal threats [](cite:cites Creswell_Creswell_2018) because all participants were recruited from the same country and most of them are students at the same university.
 We identified the external threat *Interaction of selection and treatment*.
 However, we do assume that users of the form editing have more technical knowledge, so this lies in line with our intentions.
-For the form usage we also assume that the user has some basic knowledge about working with a computer and the Web.
+Additionally, basic computer and web proficiency are assumed for form usage.
 
 The internal threat *Selection* was also identified.
-Most participants have a certain technical knowledge, but this is intentional as it is a prerequisite for the form editing part.
-To provide equal knowledge of Linked Data, we offered possible bindings.
+While most participants possess technical knowledge, this is deliberate as it is a prerequisite for the form editing part.
+To ensure equal knowledge of Linked Data, we provided possible bindings.
 To mitigate a selection bias, we also recruited some non-students and participants from different ages.
 
 

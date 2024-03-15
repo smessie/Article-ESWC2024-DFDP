@@ -3,7 +3,7 @@
 
 Web forms are a part of our daily lives, whether we are taking a survey, filling out shipping information for an online order, or filling out an administrative request.
 End-users regularly have to re-enter the same data again, without the ability to prefill a similar form with pre-existing data.
-In addition, the data will almost always be stored on the service provider's server, and the user cannot access it again or choose to store it somewhere else.
+In addition, the data will almost always be stored on the service provider's server, and the user cannot access it again or choose to store it somewhere else (footprint).
 If a user requires a form similar to an existing one, created by someone else or with another application, they will often have to build a new form from the ground up without the ability to copy and modify an existing form.
 
 Current Web forms are meant to be (1) used against one endpoint, (2) often used for one (Web) display, (3) with one particular workflow in mind, (4) without a means to send and receive the data in another way.
@@ -21,13 +21,11 @@ but these works are mainly theoretical approaches to the problem.
 
 This paper tackles this problem by introducing a _DFDP (Declarative Form Description Pipeline)_ by looking at Web forms as a whole of 3 separate parts: *display*, *shape*, and *reasoning*.
 In the DFDP, a form generator outputs the form description that serves as input to a form renderer.
-To accomplish decentralization, the decentralized data storage technology [Solid](cite:cites solid) is used.
 The display part defines how the form should look element-wise. The shape part defines the expected data structure.
 Lastly, the reasoning part describes what to do with the filled-in data at certain events such as submission.
 These 3 parts provide a fully declarative description of the form, leaving no assumptions to be made by the application.
-In addition, the application needs to be able to understand any vocabulary used to express the description to fully decouple the description from the application.
-This necessitates schema alignment to map the description to the vocabulary the application understands.
-Only then will the data and the application be fully decoupled, as it cannot be assumed that all applications will use the same language to define data.
+In addition, the application needs to understand any vocabulary used to express the description to fully decouple the description from the application.
+This necessitates schema alignment to map the description to the vocabulary the application understands, also removing the assumption that all applications will use the same language.
 
 The remaining paper is structured as follows.
 [](#related-work) discusses related work, followed by a motivating example and a discussion of the requirements in [](#requirements).
