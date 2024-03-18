@@ -18,11 +18,14 @@ Alice, who prefers command-line tools, receives a link to Bob's form description
 Using her command-line application *TextForms*, Alice accesses the form description, which is then rendered in a text-based format.
 After completing the form, the data is sent as RDF data to Bob's data store.
 
-Alice loves Bob's form and decides to adapt it for her own needs, transitioning from an end-user to a form developer effortlessly.
+Alice loves Bob's form and decides to adapt it to her own needs, transitioning from an end-user to a form developer effortlessly.
 She opens the form description in *AliceForms* and modifies the RDF data model to suit her requirements.
 In addition, she incorporates logic to ensure that any submission sends RDF data to her personal data store and notifies Bob's data store Inbox.
 Furthermore, she configures a redirect to a custom page she has designed.
 As a result, the form description now includes additional fields and logic tailored to Alice's specifications.
+<span class="comment" data-author="BE">
+I don't know how you are in terms of space, but it could be nice to have a sequence diagram with the interactions in this example
+</span>
 
 In a perfect world, Alice and Bob can use a single ontology that describes the form definitions.
 However, many RDF data models describing the same type of data can exist.
@@ -42,7 +45,7 @@ The requirements for each research question are discussed, and finally the summa
 ### Multiple Viewing Environments
 
 Forms should have declarative descriptions (R1) to enable simple reusability.
-This streamlines the process of making some adjustments by parsing, adjusting and updating the description accordingly.
+This streamlines the process of making some adjustments by parsing, adjusting, and updating the description accordingly.
 XForms 2.0 does this by declaratively specifying the form in XML.
 Solid-UI Forms also succeeds in (R1) by expressing the form using Linked Data in the Turtle format.
 
@@ -52,6 +55,9 @@ Machine interpretability is attained in Solid-UI Forms because Linked Data is us
 XForms 2.0 also allows containing semantics in the form description using vocabularies, making it possible for machines to interpret the form.
 The widely used applications today, such as Google Forms and Microsoft Forms, do not allow the user to include semantics in the form, making them not machine-interpretable.
 Moreover, users do not have access to declarative descriptions of the form.
+<span class="comment" data-author="BE">
+which users?
+</span>
 
 To allow Alice to choose the application in which she fills out the form, regardless of the environment, the form description should be renderable in multiple viewing environments (R4).
 Although it may already be technically feasible, no current application offers this capability to fill out the form in different viewing environments.
@@ -68,6 +74,9 @@ Similarly, Solid-UI Forms only works with its UI ontology.
 
 Ensuring full declarativity in the form necessitates not only declarative descriptions for its elements but also for the actions triggered by specific events.
 Thus, it's crucial to have declarative policies (R6) alongside the execution of these footprint tasks (R7). 
+<span class="comment" data-author="BE">
+what is the the role of policies here? what do they help to achieve? what type of policies are useful?
+</span>
 XForms 2.0 only allows specifying the submission endpoint using the Submission XML element, but no other policies can be specified.
 Solid-UI Forms has only limited support to execute or specify any footprint tasks by the use of the extra layer [solid-ui-components](cite:cites zucker_solid_2023) currently under development.
 

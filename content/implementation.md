@@ -17,20 +17,26 @@ Describing footprints requires a rule and a policy language.
 As rule language, [Notation3 (N3)](cite:cites n3) is used.
 The rule premise defines the event, while the rule conclusion defines the policy.
 We chose N3 as it proved to be a working solution for our use case and the reasoning engine EYE implementing N3 is being developed at our lab.
+<span class="comment" data-author="BE">
+The justification could be stronger -- what does N3 have that other rule languages don't have and is needed for this use case?
+</span>
 We therefore also made the decision to use the [EYE-JS library](cite:cites eye-js), a browser and node-distributed EYE reasoner via WebAssembly.
-By the use of reasoning, we obtain the rule conclusion which is then being parsed using a SPARQL query.
+By the use of reasoning, we obtain the rule conclusion which is then parsed using a SPARQL query.
 Querying is done using [Comunica](cite:cites taelman_iswc_resources_comunica_2018), a knowledge graph querying framework.
 
 The policy we obtain is defined using a policy language.
 There are already existing ontologies that can be reused to describe policies, even though they were not designed for this purpose.
 [Hydra](cite:cites hydra) is a vocabulary to describe Web APIs in Linked Data and its intended use is to describe the server side of the API in a machine-readable way.
-A major limitation for our research is that it can only describe HTTP requests, while policies go beyond that.
+A major limitation of our research is that it can only describe HTTP requests, while policies go beyond that.
 Therefore, we chose to not use Hydra.
 
 The [_Function Ontology (FnO)_](cite:cites fno-paper) is used to semantically define and describe implementation-independent functions, including their relations to related concepts such as parameters, and mappings to specific implementations and executions.
-As FnO allows to describe any kind of operation unlike e.g. Hydra which only allows for describing HTTP requests, a basic version of this existing ontology together with the [HTTP Vocabulary](cite:cites koch_http_2017) is reused to describe the policy.
-A *Policy ontology* has been developed that defines the missing classes and properties needed to define the policy. [^PolicyOntology]
+As FnO allows the description of any kind of operation unlike e.g. Hydra which only allows the description of HTTP requests, a basic version of this existing ontology together with the [HTTP Vocabulary](cite:cites koch_http_2017) is reused to describe the policy.
+A *Policy ontology* has been developed that defines the missing classes and properties needed to define a policy. [^PolicyOntology]
 [](#lst:n3-form-policies-example) contains an example of a footprint task sending an HTTP request.
+<span class="comment" data-author="BE">
+What methodology was used to create the ontology?
+</span>
 
 [^PolicyOntology]: The Policy ontology can be found at [https://w3id.org/DFDP/policy](https://w3id.org/DFDP/policy).
 
@@ -71,18 +77,23 @@ Example of N3 rule describing HTTP request policy to be executed on the form sub
 The next application in the pipeline renders the declarative form description and lets the user fill out that form.
 We implemented two versions in two different viewing environments to prove that the display part of the form description is independent of the viewing environment.[^ImplementationFormRenderer] [^ImplementationFormCli]
 The FormCli application operates as a command-line application, allowing usage without a GUI.
-The form questions are prompted to the user one after each other.
+The form questions are prompted to the user one after the other.
 While the FormRenderer application supports authenticating with a Solid identity provider, authentication is not implemented in the FormCli application as the Solid protocol lacks proper authentication for command-line applications.
 We therefore consider this outside the scope of this research.
 
 [^ImplementationFormRenderer]: The FormRenderer source code can be found at [https://github.com/<wbr/>SolidLabResearch/FormRenderer](https://github.com/SolidLabResearch/FormRenderer) and the live version at [https://solidlabresearch.github.io/FormRenderer/](https://solidlabresearch.github.io/FormRenderer/).
 [^ImplementationFormCli]: The FormCli source code can be found at [https://github.com/<wbr/>SolidLabResearch/FormCli](https://github.com/SolidLabResearch/FormCli).
+<span class="comment" data-author="BE">
+Why not have w3id's for the source codes of the apps as well?
+</span>
 
 The UI ontology is chosen as the application's display ontology as it is designed specifically for defining user interfaces.
 Schema alignment is achieved by applying conversion rules to the form description.
 The implementation uses N3 rules together with the EYE-JS reasoner to apply them.
 The resulting form description in the UI ontology is parsed by the Comunica engine via SPARQL queries.
-
+<span class="comment" data-author="BE">
+An example of the alignment / conersion rules can be given --  given the lack of space it can be provided in the repo and then provide a link here?
+</span>
 
 #### Determining the Subject for the Produced RDF
 
@@ -102,15 +113,15 @@ Various solutions were explored to address this problem.
 
 6. Specifying the subject URI in the form description.
 
-Blank nodes are often an unsuitable solution since they lack a URI, making it impossible to reference the data using a valid URI or to link to from other resources.
+Blank nodes are often an unsuitable solution since they lack a URI, making it impossible to reference the data using a valid URI or to link to/from other resources.
 Using the URI to which the data is posted is also not a good solution, as this URI is not necessarily meaningful or even a unique URI.
-Not all ontologies for describing forms do have a property to define the subject URI, eliminating option 6.
+Not all ontologies for describing forms have a property to define the subject URI, eliminating option 6.
 This leaves us with options 1, 2, and 4 as the viable choices.
 Using a random UUID is a feasible solution, ensuring uniqueness, and serving as an ideal default subject URI.
 Prompting the user enables them to enter a relevant subject URI themselves, which is also feasible.
 Focusing solely on this option requires users to understand subject URIs, potentially complicating application use for those new to the Semantic Web. Our goal is to ensure ease of use for all.
 Using an existing subject is a good option, especially when there's a single subject, aligning with user expectations for data editing.
 With multiple subjects, selection becomes a challenge for users unfamiliar with the concept.
-We propose and implement a combination of the three last feasible options.
+We propose and implement a combination of the three feasible options.
 Use a random UUID as the default subject URI, while enabling user selection from existing subjects or manual subject URI entry.
 Parsing the policies is done in the same way as in the FormGenerator application, described earlier in [](#implementation-formgenerator).

@@ -1,7 +1,7 @@
 ## Architecture
 {:#architecture}
 
-As outlined in the [Introduction](#introduction), many Web applications tightly integrate data with the application itself, limiting user control over data and hindering interoperability between applications.
+As outlined in the [Introduction](#introduction), many Web applications tightly integrate data with the application itself, limiting end-user control over data and hindering interoperability between applications.
 This issue persists even in Solid applications, where data is often assumed to reside in fixed locations within the pod and to adhere to specific vocabularies.
 Therefore, this paper proposes dividing data into three parts: a form for display, a shape for validation, and a footprint for reasoning.
 This approach moves away from the current scenario where data is stored as an integral, tightly coupled part of the application.
@@ -17,14 +17,17 @@ However, many applications are still being built with assumptions about the data
 Additionally, they are designed for one specific use case.
 In this work, we push this decentralized architecture a step further with the introduction of a declarative application that makes no assumptions about the interface and application itself.
 A schematic overview of the architecture is shown in [](#fig:renderer-architecture).
-First, a user that wants to create a form builds a declarative form description using a form generator.
-Then, the user sends a form description link to another user who can fill it out using a form renderer. 
+First, a user who wants to create a form builds a declarative form description using a form generator.
+Then, the user sends a form description link to another user who can fill it out using a form renderer.
 A conversion rules resource maps the form description onto the renderer's ontology, while a data resource pre-fills the form automatically.
 
 <figure id="fig:renderer-architecture">
 <img src="img/stage-2.svg" alt="[Figure of high level architecture of declarative applications]" />
 <figcaption markdown="block">
 A generic form renderer application can dynamically build an application for multiple viewing environments without assuming the interface and application design using the 3 inputs on the right and a reasoner to apply schema alignment and footprint tasks.
+<span class="comment" data-author="BE">
+not clear from either this or from the 'requirements' section what is the connection between footprint tasks and the reasoner
+</span>
 </figcaption>
 </figure>
 
@@ -65,6 +68,9 @@ Therefore, the form description is extended with *policies*.
 The process of executing these policies is called the *footprint tasks* and is the second application of reasoning next to schema alignment.
 To describe policies, two languages are needed: a *rule language* and a *policy language*.
 The policy language describes what should actually happen when a policy is executed.
-The rule premise contains the event, the rule conclusion contains the policy.
+The rule premise contains the event and the rule conclusion contains the policy.
 Policies should describe the client-side operations that need to be performed when a certain event occurs.
 This can be much more than just performing an HTTP request to the server, such as redirecting the user, performing an *N3 Patch* request, or sending a notification to someone's inbox.
+<span class="comment" data-author="BE">
+what user?
+</span>

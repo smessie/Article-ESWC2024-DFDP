@@ -33,7 +33,7 @@ Considering the information above, we can confidently assert that we cover all t
 {:#user-study}
 
 To show that the user experience is not impacted due to the Semantic Web technologies used in the DFDP, we perform a user study.
-The goal of this user study is to see if next to the functional requirements, the implementations are also comprehensible for users.
+The goal of this user study is to see if next to the functional requirements, the implementations are also comprehensible for end-users.
 We define "comprehensible for users" as the ability for users to understand the application in such a way that they can use it correctly (i.e. accurately) without getting frustrated or giving up (i.e. in a reasonable time).
 In what follows, we discuss the user experience by doing a qualitative analysis [](cite:cites Creswell_Creswell_2018) by the use of the [_think aloud method_](cite:cites van1994think) and open-ended interviews split up into two parts: form editing (evaluating the FormGenerator) and form usage (evaluating the FormRenderer).
 The FormCli application is not considered as this is a more complex version of the FormRenderer application.
@@ -54,7 +54,7 @@ All necessary data elements were put in place for the FormRenderer application b
 
 #### Threats to Validity
 
-As with any study, our evaluation carries threats to validity. We identified following external and internal threats [](cite:cites Creswell_Creswell_2018) because all participants were recruited from the same country and most of them are students at the same university.
+As with any study, our evaluation carries threats to validity. We identified the following external and internal threats [](cite:cites Creswell_Creswell_2018) because all participants were recruited from the same country and most of them are students at the same university.
 We identified the external threat *Interaction of selection and treatment*.
 However, we do assume that users of the form editing have more technical knowledge, so this lies in line with our intentions.
 Additionally, basic computer and web proficiency are assumed for form usage.
@@ -69,5 +69,5 @@ To mitigate a selection bias, we also recruited some non-students and participan
 
 We categorized feedback from all users for both applications and received generally positive results.
 Especially in the case of the FormRenderer, no participant noted any significant differences in terms of ease of use.
-Regarding the FormGenerator, 5 out of 8 participants rightly noting that as restaurant owners, they shouldn't need to be concerned with bindings.
+Regarding the FormGenerator, 5 out of 8 participants rightly noted that as restaurant owners, they shouldn't need to be concerned with bindings.
 As a result, future research should consider the automatic suggestion of bindings based on the field label entered by the user.

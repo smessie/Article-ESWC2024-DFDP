@@ -13,7 +13,7 @@ Finally, by leveraging a decentralized environment like Solid, the application i
 <!-- Object       -->
 In this paper, we introduce and explain how such a declarative form description can be created and used without assumptions about the viewing environment or data storage.
 <!-- Findings     -->
-We show how separate applications can interoperate and be interchanged by using a description that contains all details for form rendering and data submission decisions by using a form, policy, and rule ontology.
+We show how separate applications can interoperate and be interchanged by using a description that contains details for form rendering and data submission decisions using a form, policy, and rule ontology.
 Furthermore, we prove how this approach solves the shortcomings of traditional Web forms.
 <!-- Conclusion   -->
 Our proposed pipeline enables organizations to save time by building similar forms without starting from scratch.
