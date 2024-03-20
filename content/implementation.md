@@ -11,15 +11,12 @@ The FormRenderer application and FormCli application are two applications that r
 The first application in the pipeline generates the declarative form description.[^ImplementationFormGenerator]
 The live version[^ImplementationFormGenerator] demonstrates how form developers can define policies and form fields using a drag-and-drop interface.
 
-[^ImplementationFormGenerator]: The FormGenerator source code can be found at [https://github.com/SolidLabResearch/FormGenerator](https://github.com/SolidLabResearch/FormGenerator) and the live version at [https://solidlabresearch.github.io/FormGenerator/](https://solidlabresearch.github.io/FormGenerator/).
+[^ImplementationFormGenerator]: The FormGenerator source code can be found at [https://w3id.org/DFDP/FormGenerator/source](https://w3id.org/DFDP/FormGenerator/source) and the live version at [https://w3id.org/DFDP/FormGenerator/app](https://w3id.org/DFDP/FormGenerator/app).
 
 Describing footprints requires a rule and a policy language.
 As rule language, [Notation3 (N3)](cite:cites n3) is used.
 The rule premise defines the event, while the rule conclusion defines the policy.
 We chose N3 as it proved to be a working solution for our use case and the reasoning engine EYE implementing N3 is being developed at our lab.
-<span class="comment" data-author="BE">
-The justification could be stronger -- what does N3 have that other rule languages don't have and is needed for this use case?
-</span>
 We therefore also made the decision to use the [EYE-JS library](cite:cites eye-js), a browser and node-distributed EYE reasoner via WebAssembly.
 By the use of reasoning, we obtain the rule conclusion which is then parsed using a SPARQL query.
 Querying is done using [Comunica](cite:cites taelman_iswc_resources_comunica_2018), a knowledge graph querying framework.
@@ -32,11 +29,13 @@ Therefore, we chose to not use Hydra.
 
 The [_Function Ontology (FnO)_](cite:cites fno-paper) is used to semantically define and describe implementation-independent functions, including their relations to related concepts such as parameters, and mappings to specific implementations and executions.
 As FnO allows the description of any kind of operation unlike e.g. Hydra which only allows the description of HTTP requests, a basic version of this existing ontology together with the [HTTP Vocabulary](cite:cites koch_http_2017) is reused to describe the policy.
-A *Policy ontology* has been developed that defines the missing classes and properties needed to define a policy. [^PolicyOntology]
+A *Policy ontology* has been developed using the [LOT Methodology](cite:cites poveda-villalon_lot_2022) defining the missing classes and properties required for policy definition. [^PolicyOntology]
+The ontology enables the description of events and the corresponding actions to be taken.
+The ontology was implemented using Protégé as the ontology development environment, using the OWL language.
+The ontology's source is available on GitHub, and the ontology itself is published using GitHub pages. 
+A w3id is used to provide a permanent identifier for the ontology, which includes both human-readable documentation and a machine-readable file accessible via the URI using content negotiation.
+Hosting the source on GitHub facilitates easy maintenance, and contributions can be made through pull requests and the issue tracker.
 [](#lst:n3-form-policies-example) contains an example of a footprint task sending an HTTP request.
-<span class="comment" data-author="BE">
-What methodology was used to create the ontology?
-</span>
 
 [^PolicyOntology]: The Policy ontology can be found at [https://w3id.org/DFDP/policy](https://w3id.org/DFDP/policy).
 
@@ -81,19 +80,15 @@ The form questions are prompted to the user one after the other.
 While the FormRenderer application supports authenticating with a Solid identity provider, authentication is not implemented in the FormCli application as the Solid protocol lacks proper authentication for command-line applications.
 We therefore consider this outside the scope of this research.
 
-[^ImplementationFormRenderer]: The FormRenderer source code can be found at [https://github.com/<wbr/>SolidLabResearch/FormRenderer](https://github.com/SolidLabResearch/FormRenderer) and the live version at [https://solidlabresearch.github.io/FormRenderer/](https://solidlabresearch.github.io/FormRenderer/).
-[^ImplementationFormCli]: The FormCli source code can be found at [https://github.com/<wbr/>SolidLabResearch/FormCli](https://github.com/SolidLabResearch/FormCli).
-<span class="comment" data-author="BE">
-Why not have w3id's for the source codes of the apps as well?
-</span>
+[^ImplementationFormRenderer]: The FormRenderer source code can be found at [https://w3id.org/DFDP/FormRenderer/source](https://w3id.org/DFDP/FormRenderer/source) and the live version at [https://w3id.org/DFDP/FormRenderer/app](https://w3id.org/DFDP/FormRenderer/app).
+[^ImplementationFormCli]: The FormCli source code can be found at [https://w3id.org/DFDP/FormCli/source](https://w3id.org/DFDP/FormCli/source).
 
 The UI ontology is chosen as the application's display ontology as it is designed specifically for defining user interfaces.
-Schema alignment is achieved by applying conversion rules to the form description.
+Schema alignment is achieved by applying conversion rules to the form description.[^ConversionRulesExample]
 The implementation uses N3 rules together with the EYE-JS reasoner to apply them.
 The resulting form description in the UI ontology is parsed by the Comunica engine via SPARQL queries.
-<span class="comment" data-author="BE">
-An example of the alignment / conersion rules can be given --  given the lack of space it can be provided in the repo and then provide a link here?
-</span>
+
+[^ConversionRulesExample]: An example of SHACL to UI ontology conversion rules can be found at [https://solidlabresearch.github.io/FormRenderer/shacl-to-ui.n3](https://solidlabresearch.github.io/FormRenderer/shacl-to-ui.n3).
 
 #### Determining the Subject for the Produced RDF
 

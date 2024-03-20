@@ -4,7 +4,8 @@
 As outlined in the [Introduction](#introduction), many Web applications tightly integrate data with the application itself, limiting end-user control over data and hindering interoperability between applications.
 This issue persists even in Solid applications, where data is often assumed to reside in fixed locations within the pod and to adhere to specific vocabularies.
 Therefore, this paper proposes dividing data into three parts: a form for display, a shape for validation, and a footprint for reasoning.
-This approach moves away from the current scenario where data is stored as an integral, tightly coupled part of the application.
+Reasoning is used to determine the policy that needs to be executed based on the event specified in the footprint along with its associated policy.
+This three-part approach moves away from the current scenario where data is stored as an integral, tightly coupled part of the application.
 While end-users can continue to create web forms using familiar methods, such as drag-and-drop interfaces, storing the data decentralized in three parts allows organizations and end-users to reuse forms and data, saving time.
 As considerable research has been conducted on RDF data validation [](cite:cites tomaszuk2017rdf,prud2014shape,arndt2017using,boneva2017semantics) and several implementations exist [](cite:cites slabbinck_communitysolidservershape-validator-component_nodate,zazuko_rdf-validate-shacl_2023,bergwinkl_shacl-engine_2023), this part is not covered in this paper.
 
@@ -25,9 +26,6 @@ A conversion rules resource maps the form description onto the renderer's ontolo
 <img src="img/stage-2.svg" alt="[Figure of high level architecture of declarative applications]" />
 <figcaption markdown="block">
 A generic form renderer application can dynamically build an application for multiple viewing environments without assuming the interface and application design using the 3 inputs on the right and a reasoner to apply schema alignment and footprint tasks.
-<span class="comment" data-author="BE">
-not clear from either this or from the 'requirements' section what is the connection between footprint tasks and the reasoner
-</span>
 </figcaption>
 </figure>
 
@@ -70,7 +68,4 @@ To describe policies, two languages are needed: a *rule language* and a *policy 
 The policy language describes what should actually happen when a policy is executed.
 The rule premise contains the event and the rule conclusion contains the policy.
 Policies should describe the client-side operations that need to be performed when a certain event occurs.
-This can be much more than just performing an HTTP request to the server, such as redirecting the user, performing an *N3 Patch* request, or sending a notification to someone's inbox.
-<span class="comment" data-author="BE">
-what user?
-</span>
+This can be much more than just performing an HTTP request to the server, such as redirecting the end-user who filled out the form, performing an *N3 Patch* request, or sending a notification to someone's inbox.
