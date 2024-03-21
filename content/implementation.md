@@ -9,9 +9,16 @@ The FormRenderer application and FormCli application are two applications that r
 {:#implementation-formgenerator}
 
 The first application in the pipeline generates the declarative form description.[^ImplementationFormGenerator]
-The live version[^ImplementationFormGenerator] demonstrates how form developers can define policies and form fields using a drag-and-drop interface.
+In [](#fig:FormGenerator) a screenshot of the implemented application can be seen, showing how form developers can define policies and form fields using a drag-and-drop interface.
 
 [^ImplementationFormGenerator]: The FormGenerator source code can be found at [https://w3id.org/DFDP/FormGenerator/source](https://w3id.org/DFDP/FormGenerator/source) and the live version at [https://w3id.org/DFDP/FormGenerator/app](https://w3id.org/DFDP/FormGenerator/app).
+
+<figure id="fig:FormGenerator" class="halfwidth">
+ <img src="img/FormGenerator.png" alt="[Screenshot of FormGenerator application]" />
+ <figcaption markdown="block">
+ Implemented FormGenerator application.
+ </figcaption>
+ </figure>
 
 Describing footprints requires a rule and a policy language.
 As rule language, [Notation3 (N3)](cite:cites n3) is used.
@@ -73,8 +80,16 @@ Example of N3 rule describing HTTP request policy to be executed on the form sub
 
 ### FormRenderer and FormCli
 
+<figure id="fig:FormRenderer" class="halfwidth">
+ <img src="img/FormRenderer.png" alt="[Screenshot of FormRenderer application]" />
+ <figcaption markdown="block">
+ Implemented FormRenderer application.
+ </figcaption>
+</figure>
+
 The next application in the pipeline renders the declarative form description and lets the user fill out that form.
 We implemented two versions in two different viewing environments to prove that the display part of the form description is independent of the viewing environment.[^ImplementationFormRenderer] [^ImplementationFormCli]
+The FormRenderer application, as shown in the screenshot in [](#fig:FormRenderer), functions in the Web browser.
 The FormCli application operates as a command-line application, allowing usage without a GUI.
 The form questions are prompted to the user one after the other.
 While the FormRenderer application supports authenticating with a Solid identity provider, authentication is not implemented in the FormCli application as the Solid protocol lacks proper authentication for command-line applications.
