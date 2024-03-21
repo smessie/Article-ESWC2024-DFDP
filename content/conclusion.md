@@ -7,6 +7,7 @@ Additionally, they can reuse existing data to prefill forms and choose their pre
 This decoupling of applications and data ensures greater flexibility and autonomy for end-users.
 For organizations, DFDP enables better data management in terms of reusability, allowing for easy adoption and customization of existing forms without requiring additional assumptions from developers.
 This, in turn, improves cost-efficiency and promotes streamlined workflows.
+The DFDP enables the embedding of semantics into the input data, improving the alignment of data across different related forms in a dataspace.
 Overall, DFDP marks a significant step forward in enhancing data management practices with its declarative and decoupled Web forms for both end-users and organizations.
 
 Future research could focus on automatically suggesting bindings based on field names entered by the users, which can build on [_Entity Extraction_](cite:cites exner2012entity).
