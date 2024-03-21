@@ -31,7 +31,7 @@ These 3 parts provide a fully declarative description of the form, leaving no as
 In addition, the application needs to understand any vocabulary used to express the description to fully decouple the description from the application.
 This necessitates schema alignment to map the description to the vocabulary the application understands, also removing the assumption that all applications will use the same language.
 
-In the context of dataspaces, declarative form descriptions demonstrate their relevance by not only having a well-defined data model but also by declaratively defining the form as an interface to prompt the user for data input.
+In the context of dataspaces, declarative form descriptions demonstrate their relevance by complementing the existing well-defined data model within dataspaces with a declarative definition of the form as an interface that prompts the user for data input.
 For instance, within the health dataspace, each hospital can use its own form for medical data entry. By embedding semantics into the inserted data, alignment across all hospitals' data within the dataspace can be achieved.
 
 The remaining paper is structured as follows.
