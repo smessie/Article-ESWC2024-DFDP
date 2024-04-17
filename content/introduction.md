@@ -10,7 +10,10 @@ Current Web forms are meant to be (1) used against one endpoint, (2) often use
 First, this means that when a form is submitted, the data is always sent to the same location, and the user has no control over where the data is stored.
 The application developer is left to decide where and how to store the data, resulting in poor data control for users [](cite:cites berners-lee_three_2017).
 Each application typically has a custom-built, non-standardized API, hindering operability between applications [](cite:cites sambra2016solid).
-Second, it is not possible for form filling to use an alternative environment, like the command line, or to opt for a different website due to a preferred interface.
+Second, it is not possible for form filling to use an alternative environment, with disparate display contexts, or to opt for a different website due to a preferred interface.
+Such an alternative environment may be subtle, such as a dedicated version for mobile, or a version that integrates seamlessly into a company's ecosystem.
+For the sake of clarity, we will use an extreme example of a command line and a Web view to illustrate this problem in the remainder of the paper. 
+This will enable us to make a clear and intuitive distinction between the different apps with alternative viewing environments.
 Third, form applications designed for one specific use case cannot typically be repurposed for another.
 For example, a form for customers to provide their shipping information during a purchase cannot usually be repurposed to e.g., allow them to submit a support request.
 Fourth, reusing data across multiple applications is not possible because data from one application cannot be written or read by another.

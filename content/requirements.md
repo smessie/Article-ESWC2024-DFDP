@@ -4,7 +4,14 @@
 In this section, we discuss the main requirements for decentralized and declarative Web forms using a use case involving two personas, "Alice" and "Bob", each with their own objectives about the forms they like to publish, but both requiring full control over where and how the resulting RDF is stored.
 
 Alice, a Web-savvy user, owns a personal data store for storing RDF data.
-To populate it, she uses *AliceForms*, her preferred Web application, which shares similarities with Google Forms.
+Her motivations for doing so can be manifold.
+For instance, she may be a researcher seeking to include a list of her publications within her personal data store as an integral part of her curriculum vitae (CV).
+In many cases, companies request CVs without providing a tailored form for their creation.
+Rather than relying on a pre-existing CV application with a fixed data structure, Alice prefers to use her AliceForms.
+This allows her to employ an existing CV data model while also incorporating her own metadata.
+Consequently, companies will retrieve more rich data.
+
+To populate her data store, she thus uses *AliceForms*, her preferred Web application, which shares similarities with Google Forms.
 *AliceForms* enables the creation of forms in a user-friendly manner with a simplified data model.
 Importantly, Alice retains control over where the form description and resulting RDF data are published, ensuring control over the data she enters - an option not available in centralized platforms like Google Forms.
 
@@ -58,8 +65,6 @@ The declarative form description should be machine-interpretable (R2), allowing 
 Additionally, it should be human-interpretable (R3) so that humans can manually fill out the form, which of course all state-of-the-art applications fulfill.
 Machine interpretability is attained in Solid-UI Forms because Linked Data is used with the UI ontology, which semantically describes the elements' meanings.
 XForms 2.0 also allows containing semantics in the form description using vocabularies, making it possible for machines to interpret the form.
-The widely used applications today, such as Google Forms and Microsoft Forms, do not allow the user to include semantics in the form, making them not machine-interpretable.
-Moreover, neither form designers nor form respondents have access to declarative descriptions of the form.
 
 To allow Alice to choose the application in which she fills out the form, regardless of the environment, the form description should be renderable in multiple viewing environments (R4).
 Although it may already be technically feasible, no current application offers this capability to fill out the form in different viewing environments.

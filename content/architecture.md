@@ -25,7 +25,7 @@ A conversion rules resource maps the form description onto the renderer's ontolo
 <figure id="fig:renderer-architecture">
 <img src="img/stage-2.svg" alt="[Figure of high level architecture of declarative applications]" />
 <figcaption markdown="block">
-A generic form renderer application can dynamically build an application for multiple viewing environments without assuming the interface and application design using the 3 inputs on the right and a reasoner to apply schema alignment and footprint tasks.
+A generic form renderer application can dynamically build an application for multiple viewing environments without assuming the interface and application design using the 3 inputs on the right and a reasoner to apply schema alignment and footprint tasks, to eventually store the enduser's filled in data in any data store, e.g. a Solid pod, as displayed on the left.
 </figcaption>
 </figure>
 
