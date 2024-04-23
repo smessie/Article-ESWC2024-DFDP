@@ -14,7 +14,7 @@
   <meta name="citation_author" content="Ruben Taelman" />
   <meta name="citation_author" content="Ruben Verborgh" />
   
-  <meta name="citation_publication_date" content="2024/04/17" />
+  <meta name="citation_publication_date" content="2024/04/23" />
 </head>
 
 <body prefix="dctypes: http://purl.org/dc/dcmitype/ pimspace: http://www.w3.org/ns/pim/space# rsa: http://www.w3.org/ns/auth/rsa# cert: http://www.w3.org/ns/auth/cert# wgs: http://www.w3.org/2003/01/geo/wgs84_pos# biblio: http://purl.org/net/biblio# bibo: http://purl.org/ontology/bibo/ book: http://purl.org/NET/book/vocab# ov: http://open.vocab.org/terms/ doap: http://usefulinc.com/ns/doap# dbr: http://dbpedia.org/resource/ dbp: http://dbpedia.org/property/ sio: http://semanticscience.org/resource/ opmw: http://www.opmw.org/ontology/ deo: http://purl.org/spar/deo/ doco: http://purl.org/spar/doco/ cito: http://purl.org/spar/cito/ fabio: http://purl.org/spar/fabio/ solid: http://www.w3.org/ns/solid/terms# acl: http://www.w3.org/ns/auth/acl# dio: https://w3id.org/dio# lsc: http://linkedscience.org/lsc/ns#" typeof="schema:CreativeWork sioc:Post prov:Entity lsc:Research">
@@ -87,47 +87,47 @@ User study results provide insights to further improve usability by providing au
 <div datatype="rdf:HTML" property="schema:description">
       <h2 property="schema:name">Introduction</h2>
 
-      <p>Web forms are a part of our daily lives, whether we are taking a survey, filling out shipping information for an online order, or filling out an administrative request.
-End-users regularly have to re-enter the same data again, without the ability to prefill a similar form with pre-existing data.
+      <p>Web forms are a part of our daily lives: taking a survey, filling out shipping information for an online order, or filling out an administrative request.
+End-users regularly have to re-enter the same data, without the ability to prefill a similar form with pre-existing data.
 In addition, the data will almost always be stored on the service provider’s server, and the end-user cannot access it again or choose to store it somewhere else.
 If an end-user requires a form similar to an existing one, created by someone else or with another application, they will often have to build a new one from the ground up without the ability to copy and modify an existing form.</p>
 
-      <p>Current Web forms are meant to be (1) used against one endpoint, (2) often used for one (Web) display, (3) with one particular workflow in mind, and (4) without a means to send and receive the data in another way.
-First, this means that when a form is submitted, the data is always sent to the same location, and the user has no control over where the data is stored.
-The application developer is left to decide where and how to store the data, resulting in poor data control for users <span class="references">[<a href="#ref-1">1</a>]</span>.
-Each application typically has a custom-built, non-standardized API, hindering operability between applications <span class="references">[<a href="#ref-2">2</a>]</span>.
-Second, it is not possible for form filling to use an alternative environment, with disparate display contexts, or to opt for a different website due to a preferred interface.
-Such an alternative environment may be subtle, such as a dedicated version for mobile, or a version that integrates seamlessly into a company’s ecosystem.
+      <p>Current Web forms are meant to be used (1) with one endpoint, (2) for one (Web) display, (3) with one workflow in mind, and (4) without a means to send and receive the data in another way.
+First, when a form is submitted, the data is sent to the same location, and the user has no control over where the data is stored.
+Typically, the application developer decides where and how to store the data – resulting in poor data control for users <span class="references">[<a href="#ref-1">1</a>]</span> – and
+each application has a custom non-standardized API – hindering operability between applications <span class="references">[<a href="#ref-2">2</a>]</span>.
+Second, during form filling, it is not possible to use an alternative environment, with disparate display contexts, or to opt for a different website due to a preferred interface.
+Such an alternative environment may be subtle (e.g. a dedicated mobile version, or a version that integrates seamlessly into a company’s ecosystem).
 For the sake of clarity, we will use an extreme example of a command line and a Web view to illustrate this problem in the remainder of the paper. 
-This will enable us to make a clear and intuitive distinction between the different apps with alternative viewing environments.
-Third, form applications designed for one specific use case cannot typically be repurposed for another.
-For example, a form for customers to provide their shipping information during a purchase cannot usually be repurposed to e.g., allow them to submit a support request.
-Fourth, reusing data across multiple applications is not possible because data from one application cannot be written or read by another.</p>
+Third, form applications designed for one specific use case cannot typically be repurposed for another, e.g.
+a shipping information form for customers during a purchase cannot usually be repurposed to submit a support request.
+Fourth, it is not possible to reuse data across multiple applications as data from one application cannot be written or read by another.</p>
 
-      <p>A requirement for solving these problems is to decouple the data from the application.
-With the use of <a property="schema:citation http://purl.org/spar/cito/cites" href="https://solidproject.org">Solid</a> <span class="references">[<a href="#ref-3">3</a>, <a href="#ref-2">2</a>]</span> and Linked Data, several solutions have been proposed, but none of them fully describe a declarative form semantically going from elements to actions.
-A couple of notable exceptions exist <span class="references">[<a href="#ref-4">4</a>, <a href="#ref-5">5</a>]</span>,
-but these works are mainly theoretical approaches to the problem.
+      <p>A requirement for solving these problems is decoupling the data from the application.
 Solid is a specification for decentralized data storage that is decoupled from the application.
-This allows the form description to be stored separately from the form renderer application, which in turn improves end-user control over their data.</p>
+This allows the form description to be stored separately from the form renderer application, which in turn improves end-user control over their data.
+Several solutions have been proposed using <a property="schema:citation http://purl.org/spar/cito/cites" href="https://solidproject.org">Solid</a> <span class="references">[<a href="#ref-3">3</a>, <a href="#ref-2">2</a>]</span> and Linked Data, but none of them fully semantically describe a declarative form from elements to actions.
+A couple of notable exceptions exist <span class="references">[<a href="#ref-4">4</a>, <a href="#ref-5">5</a>]</span>,
+but these works are mainly theoretical approaches to the problem.</p>
 
-      <p>This paper tackles this problem by introducing a <em>DFDP (Declarative Form Description Pipeline)</em> by looking at Web forms as a whole of 3 separate parts: <em>display</em>, <em>shape</em>, and <em>reasoning</em>.
-In the DFDP, a form generator outputs the form description that serves as input to a form renderer.
-The display part defines how the form should look element-wise. The shape part defines the expected data structure.
-Lastly, the reasoning part exists of footprint and schema alignment.
-The term <em>footprint</em> is used to describe what to do with the filled-in data at certain events such as submission.
-These 3 parts provide a fully declarative description of the form, leaving no assumptions to be made by the application.
-In addition, the application needs to understand any vocabulary used to express the description to fully decouple the description from the application.
-This necessitates schema alignment to map the description to the vocabulary the application understands, also removing the assumption that all applications will use the same language.</p>
+      <p>We introduce the <em>Declarative Form Description Pipeline</em> (DFDP), looking at forms as 3 parts: <em>display</em>, <em>shape</em>, and <em>reasoning</em>.
+In the DFDP, a <em>form generator</em> outputs the form description that serves as input to a <em>form renderer</em>.
+<em>Display</em> defines how the form elements should look, <em>shape</em> defines the expected data structure, and
+<em>reasoning</em> does footprint and schema alignment.
+We use a <em>footprint</em> to describe what to do with the filled-in data at certain events (e.g. submission).
+These 3 parts provide a fully declarative description of the form.
+To fully decouple description from application, the application needs to understand any form expression vocabulary.
+This necessitates schema alignment to map the description to a vocabulary the application understands, and removes the assumption that all applications will use the same language.</p>
 
-      <p>In the context of dataspaces, declarative form descriptions demonstrate their relevance by complementing the existing well-defined data model within dataspaces with a declarative definition of the form as an interface that prompts the user for data input.
-For instance, within the health dataspace, each hospital can use its own form for medical data entry. By embedding semantics into the inserted data, alignment across all hospitals’ data within the dataspace can be achieved.</p>
+      <p>In the context of dataspaces, declarative form descriptions demonstrate their relevance by complementing the existing well-defined dataspaces data model with a declarative definition of the form as an interface that prompts the user for data input.
+For instance, within the health dataspace, each hospital can use its own form for medical data entry.
+By embedding semantics into the inserted data, alignment across all hospitals’ data can be achieved.</p>
 
-      <p>The remaining paper is structured as follows.
-<a href="#related-work">Section 2</a> discusses related work, followed by a motivating example and a discussion of the requirements in <a href="#requirements">Section 3</a>.
-<a href="#architecture">Section 4</a> introduces the architecture, after which we discuss its implementation in <a href="#implementation">Section 5</a>.
-In <a href="#evaluation">Section 6</a>, our presented solution is evaluated.
-Finally, we present conclusions and future work in <a href="#conclusion">Section 7</a>.</p>
+      <p>The paper is structured as follows.
+We first discuss related work (<a href="#related-work">Section 2</a>) and present a motivating example and requirements (<a href="#requirements">Section 3</a>).
+We then introduce the architecture and discuss its implementation (<a href="#architecture">Section 4</a> and <a href="#implementation">Section 5</a>).
+We evaluate in <a href="#evaluation">Section 6</a> 
+and present conclusions and future work (<a href="#conclusion">Section 7</a>).</p>
 
     </div>
 </section>
@@ -138,30 +138,29 @@ Finally, we present conclusions and future work in <a href="#conclusion">Section
 
       <h3 id="standalone-technologies">Standalone Technologies</h3>
 
-      <p>In 2003, <a property="schema:citation http://purl.org/spar/cito/cites" href="https://www.w3.org/TR/xforms/">XForms</a> <span class="references">[<a href="#ref-6">6</a>]</span> was introduced as a standalone technology for collecting inputs from Web forms.
-The original specification became a W3C Recommendation in 2009 and is still the official version.
-In 2010, work started on the new version <a property="schema:citation http://purl.org/spar/cito/cites" href="https://www.w3.org/community/xformsusers/wiki/XForms_2.0">XForms 2.0</a> <span class="references">[<a href="#ref-7">7</a>]</span>.
-The split architecture of XForms separates <em>presentation</em>, <em>content</em>, and <em>purpose</em>, in a way that closely resembles the three-part <em>display</em>, <em>shape</em>, and <em>reasoning</em> architecture introduced in this paper.
+      <p><a property="schema:citation http://purl.org/spar/cito/cites" href="https://www.w3.org/TR/xforms/">XForms</a> <span class="references">[<a href="#ref-6">6</a>]</span> was introduced in 2003 as a standalone technology for collecting inputs from Web forms.
+The specification became a W3C Recommendation in 2009.
+In 2010, work started on <a property="schema:citation http://purl.org/spar/cito/cites" href="https://www.w3.org/community/xformsusers/wiki/XForms_2.0">XForms 2.0</a> <span class="references">[<a href="#ref-7">7</a>]</span>.
+The XForms architecture separates <em>presentation</em>, <em>content</em>, and <em>purpose</em>, in a way that closely resembles the <em>display</em>, <em>shape</em>, and <em>reasoning</em> architecture introduced in this paper.
 Web forms are structured using XML, with elements and attributes specifying constraints.
 XForms lacks reasoning capabilities and Semantic Web functionalities for producing and understanding RDF data, limiting its potential in our research focus.</p>
 
-      <p>An alternative technology for form-based editing and presentation of RDF data is <a property="schema:citation http://purl.org/spar/cito/cites" href="https://rdforms.org/#!index.md">RDForms</a> <span class="references">[<a href="#ref-8">8</a>]</span>.
-The solution comprises two main components: the <em>RDForms library</em> for parsing, serializing, and manipulating RDF graphs, and <em>RDForms templates</em> ensuring correct RDF expression production and manipulation. However, the system lacks reasoning capabilities.
+      <p>An alternative technology for form-based RDF data editing and presentation is <a property="schema:citation http://purl.org/spar/cito/cites" href="https://rdforms.org">RDForms</a> <span class="references">[<a href="#ref-8">8</a>]</span>,
+comprising two main components: the <em>RDForms library</em> parse, serialize, and manipulate RDF graphs, and <em>RDForms templates</em> ensure correct RDF expression production and manipulation. However, the system lacks reasoning capabilities.
 In this paper, we propose adding schema alignment and event-driven actions to achieve a fully decoupled declarative form solution.</p>
 
       <h3 id="ontologies">Ontologies</h3>
 
-      <p><a property="schema:citation http://purl.org/spar/cito/cites" href="https://www.w3.org/TR/shacl/">SHACL</a> <span class="references">[<a href="#ref-9">9</a>]</span>, or Shapes Constraint Language, is a W3C recommendation used for defining and validating RDF graphs based on conditions declared in shapes.
+      <p>The Shapes Constraint Language <a property="schema:citation http://purl.org/spar/cito/cites" href="https://www.w3.org/TR/shacl/">(SHACL)</a> <span class="references">[<a href="#ref-9">9</a>]</span> is a W3C Recommendation to define and validate RDF graphs based on conditions declared in shapes.
 These shapes serve as descriptions of the data graphs they validate and can also define display fields for forms.
-Property shapes include non-validating properties, used for supplementary information like form construction, and validating properties, specifying constraints such as datatype and minimum count.</p>
+Property shapes include non-validating properties (e.g. for supplementary form construction information), and validating properties (e.g. for specifying datatype and minimum count constraints).</p>
 
-      <p><em>Solid-UI</em> encompasses user interface widgets and utilities tailored for Solid applications.
-In addition to providing foundational components, a <a property="schema:citation http://purl.org/spar/cito/cites" href="https://www.w3.org/ns/ui#">UI ontology</a> <span class="references">[<a href="#ref-10">10</a>]</span> exists, particularly relevant to this paper. 
-This vocabulary primarily addresses form display aspects and associates semantic meaning with form fields via the <code>ui:property</code> predicate. 
+      <p><em>Solid-UI</em> introduces foundational components for user interface widgets and utilities tailored for Solid applications, and a <a property="schema:citation http://purl.org/spar/cito/cites" href="https://www.w3.org/ns/ui#">UI ontology</a> <span class="references">[<a href="#ref-10">10</a>]</span>. 
+Solid-UI Forms primarily addresses form display aspects and associates semantic meaning with form fields via the <code>ui:property</code> predicate. 
 Additional properties can be employed to specify field behavior.</p>
 
-      <p>Other efforts, like <a property="schema:citation http://purl.org/spar/cito/cites" href="https://rdf-form.danielbeeke.nl">RDF-Form</a> <span class="references">[<a href="#ref-11">11</a>]</span>, also aimed to describe forms in RDF, enabling semantic representation of form fields, addressing display and shape aspects in the three-part view.
-Additionally, we aim to describe footprints, outlining actions for events like submission, such as data storage location or required updates to other documents <span class="references">[<a href="#ref-5">5</a>]</span>.
+      <p>Other efforts (e.g. <a property="schema:citation http://purl.org/spar/cito/cites" href="https://rdf-form.danielbeeke.nl">RDF-Form</a> <span class="references">[<a href="#ref-11">11</a>]</span>) also describe forms in RDF, enabling semantic representation of form fields, addressing display and shape aspects in the three-part view.
+Additionally, we aim to describe footprints that outline actions for events (e.g. submission), such as data storage location or required updates to other documents <span class="references">[<a href="#ref-5">5</a>]</span>.
 Describing this as footprints enables machine interpretation, ensuring actions aren’t bound to specific applications.
 Consequently, data handling becomes standardized across applications, fostering real interoperability.
 However, existing ontologies lack a mechanism for describing footprints, leaving a gap in achieving a fully declarative form description solution.</p>
@@ -176,20 +175,19 @@ However, existing ontologies lack a mechanism for describing footprints, leaving
       <p>In this section, we discuss the main requirements for decentralized and declarative Web forms using a use case involving two personas, “Alice” and “Bob”, each with their own objectives about the forms they like to publish, but both requiring full control over where and how the resulting RDF is stored.</p>
 
       <p>Alice, a Web-savvy user, owns a personal data store for storing RDF data.
-Her motivations for doing so can be manifold.
-For instance, she may be a researcher seeking to include a list of her publications within her personal data store as an integral part of her curriculum vitae (CV).
-In many cases, companies request CVs without providing a tailored form for their creation.
-Rather than relying on a pre-existing CV application with a fixed data structure, Alice prefers to use her AliceForms.
+She is a researcher seeking to include a list of her publications within her personal data store as an integral part of her CV.
+Companies typically request CVs without providing a tailored form for their creation.
+Rather than relying on a pre-existing CV application with a fixed data structure, Alice prefers to use her own rendering.
 This allows her to employ an existing CV data model while also incorporating her own metadata.
-Consequently, companies will retrieve more rich data.</p>
+Consequently, companies will retrieve richer data.</p>
 
-      <p>To populate her data store, she thus uses <em>AliceForms</em>, her preferred Web application, which shares similarities with Google Forms.
-<em>AliceForms</em> enables the creation of forms in a user-friendly manner with a simplified data model.
-Importantly, Alice retains control over where the form description and resulting RDF data are published, ensuring control over the data she enters - an option not available in centralized platforms like Google Forms.</p>
+      <p>To create a form to populate her data store, Alice uses <em>AliceForms</em>, which shares similarities with Google Forms.
+<em>AliceForms</em> enables form creation in a user-friendly manner with a simplified data model.
+Importantly, Alice retains control over where the form description and resulting RDF data are stored, ensuring control over the data she enters — an option not available in centralized platforms like Google Forms.</p>
 
-      <p>When Alice wants to create RDF data, she opens the form description in a renderer application <em>HtmlForms</em> providing her with an HTML rendered version of the form description.
-When Alice fills out all the fields, the RDF data will be stored in her data store.
-The <em>HtmlForms</em> application can be automatically pre-filled with RDF data to save Alice from repeatedly entering the same data.</p>
+      <p>When Alice wants to create RDF data, she opens the form description in the renderer application <em>HtmlForms</em>, providing her with an HTML rendered version of the form description.
+When Alice fills out the form, the RDF data will be stored in her data store.
+<em>HtmlForms</em> can be automatically prefilled with RDF data to save Alice from repeatedly entering the same data.</p>
 
       <p>Bob, a friend of Alice, wants to invite her for lunch and is searching for a suitable date.
 He uses his Web application <em>BobForms</em> to generate a form description, configuring it to save the resulting RDF data to his data store.
@@ -197,12 +195,12 @@ Alice, who prefers command-line tools, receives a link to Bob’s form descripti
 Using her command-line application <em>TextForms</em>, Alice accesses the form description, which is then rendered in a text-based format.
 After completing the form, the data is sent as RDF data to Bob’s data store.</p>
 
-      <p>Alice loves Bob’s form and decides to adapt it to her own needs, transitioning from an end-user to a form developer effortlessly.
+      <p>Alice loves Bob’s form and decides to adapt it to her own needs, effortlessly transitioning from an end-user to a form developer.
 She opens the form description in <em>AliceForms</em> and modifies the RDF data model to suit her requirements.
-In addition, she incorporates logic to ensure that any submission sends RDF data to her personal data store and notifies Bob’s data store Inbox.
+She incorporates logic to ensure that any submission sends RDF data to her data store and notifies Bob’s data store Inbox.
 Furthermore, she configures a redirect to a custom page she has designed.
 As a result, the form description now includes additional fields and logic tailored to Alice’s specifications.
-A sequence diagram of this example is included in <a href="#fig:interactions-motivating-example">Fig. 1</a> to model the interactions taking place.</p>
+A sequence diagram of this example is included in <a href="#fig:interactions-motivating-example">Fig. 1</a>.</p>
 
       <figure id="fig:interactions-motivating-example">
 <img src="img/sequence-diagram-motivating-example.svg" alt="[Sequence diagram showing the interactions in the motivating example]" />
@@ -211,17 +209,17 @@ A sequence diagram of this example is included in <a href="#fig:interactions-mot
         </figcaption>
 </figure>
 
-      <p>In a perfect world, Alice and Bob can use a single ontology that describes the form definitions.
-However, many RDF data models describing the same type of data can exist.
-To be truly interoperable, applications such as <em>HtmlForms</em> and <em>TextForms</em> should contain some schema alignment capabilities to provide a translation between differences in expressing a form definition.</p>
+      <p>In a perfect world, Alice and Bob use a single form definition ontology.
+However, many RDF data models describe the same type of data.
+To be truly interoperable, applications such as <em>HtmlForms</em> and <em>TextForms</em> should contain some schema alignment capabilities to provide a translation between different form definition expressions.</p>
 
-      <p>In this paper, we examine the following three research questions to address the issues raised by the above scenario.
-In the remainder of this section, each research question will be further explained and compared to the current state of the art.
-The requirements for each research question are discussed, and finally the summarized requirements are presented in <a href="#requirements-table">Table 1</a>.</p>
+      <p>In this paper, we examine the following three research questions (RQs) to address the issues raised by the above scenario.
+We then further explain each RQ, comparing it to the current state of the art.
+Each RQ’s requirements are discussed, and summarized in <a href="#requirements-table">Table 1</a>.</p>
 
       <ul>
         <li>
-          <p>RQ1: How can form developers create forms to declaratively control machines for producing RDF in <strong>multiple viewing environments</strong> (such as Web pages and text-based via a command line)?</p>
+          <p>RQ1: How can form developers create forms to declaratively control machines for producing RDF in <strong>multiple viewing environments</strong> (e.g. Web pages vs text-based command line)?</p>
         </li>
         <li>
           <p>RQ2: How can machines <strong>translate form descriptions</strong> decoupled from the application into a vocabulary that the application understands?</p>
@@ -233,31 +231,31 @@ The requirements for each research question are discussed, and finally the summa
 
       <h3 id="multiple-viewing-environments">Multiple Viewing Environments</h3>
 
-      <p>Forms should have declarative descriptions (R1) to enable simple reusability.
-This streamlines the process of making some adjustments by parsing, adjusting, and updating the description accordingly.
+      <p>To enable simple reusability, forms need declarative descriptions (R1).
+This streamlines making adjustments by parsing, adjusting, and updating the description accordingly.
 XForms 2.0 does this by declaratively specifying the form in XML.
-Solid-UI Forms also succeeds in (R1) by expressing the form using Linked Data in the Turtle format.</p>
+In Solid-UI, forms are expressed using Linked Data in the Turtle format.</p>
 
-      <p>The declarative form description should be machine-interpretable (R2), allowing machines to interpret the form and automatically prefill data. 
-Additionally, it should be human-interpretable (R3) so that humans can manually fill out the form, which of course all state-of-the-art applications fulfill.
-Machine interpretability is attained in Solid-UI Forms because Linked Data is used with the UI ontology, which semantically describes the elements’ meanings.
-XForms 2.0 also allows containing semantics in the form description using vocabularies, making it possible for machines to interpret the form.</p>
+      <p>To allow machines interpreting the form and automatically prefill data, the declarative form description must be machine-interpretable (R2). 
+Solid-UI’s ontology semantically describes the elements’ meanings, attaining machine interpretability.
+XForms 2.0 allows containing semantics in the form description using vocabularies, making it possible for machines to interpret the form.
+Additionally, the form description should be human-interpretable (R3) to manually fill out the form, a requirement that all state-of-the-art applications fulfil.</p>
 
-      <p>To allow Alice to choose the application in which she fills out the form, regardless of the environment, the form description should be renderable in multiple viewing environments (R4).
-Although it may already be technically feasible, no current application offers this capability to fill out the form in different viewing environments.</p>
+      <p>To allow Alice to choose the application in which she fills out the form, regardless of the environment, the form description must be renderable in multiple viewing environments (R4).
+No current application offers this capability.</p>
 
       <h3 id="schema-alignment-tasks">Schema Alignment Tasks</h3>
 
-      <p>To enable different applications to render the same form description, schema alignment (R5) is required to create independence between the application’s vocabulary and the form description’s vocabulary.
-Currently, no state-of-the-art application supports this. XForms 2.0 only works with its own XForms vocabulary and is formatted in XML.
-Similarly, Solid-UI Forms only works with its UI ontology.</p>
+      <p>To enable different applications to render the same form description, schema alignment is needed (R5) to decouple the application’s vocabulary and the form description’s vocabulary.
+Currently, no state-of-the-art application supports this: XForms 2.0 only works with its own XForms vocabulary, formatted in XML and
+Solid-UI Forms only works with its UI ontology.</p>
 
       <h3 id="footprint-tasks">Footprint Tasks</h3>
 
-      <p>Ensuring full declarativity in the form necessitates not only declarative descriptions for its elements but also for the actions triggered by specific events.
+      <p>A fully declarative form necessitates not only declarative descriptions for its elements, but also for the actions triggered by specific events.
 Thus, it is crucial to have declarative policies (R6) that describe the actions to be taken, along with the execution of these footprint tasks (R7).
 XForms 2.0 only allows specifying the submission endpoint using the Submission XML element, but no other policies can be specified.
-Solid-UI Forms has only limited support to execute or specify any footprint tasks by the use of the extra layer <a property="schema:citation http://purl.org/spar/cito/cites" href="https://github.com/jeff-zucker/solid-ui-components">solid-ui-components</a> <span class="references">[<a href="#ref-12">12</a>]</span> currently under development.</p>
+Solid-UI Forms has only limited support to execute or specify any footprint tasks by the use of the extra layer <a property="schema:citation http://purl.org/spar/cito/cites" href="https://github.com/jeff-zucker/solid-ui-components">solid-ui-components</a> <span class="references">[<a href="#ref-12">12</a>]</span>, currently under development.</p>
 
       <h3 id="requirements-summary">Requirements Summary</h3>
 
@@ -277,23 +275,23 @@ The requirements of the previous scenario are grouped into three categories and 
           <tbody>
             <tr>
               <td>R1</td>
-              <td>Multiple Viewing Environments</td>
+              <td>Multiple View Environments</td>
               <td>Declarative description of the form</td>
             </tr>
             <tr>
               <td>R2</td>
-              <td> Multiple Viewing Environments</td>
+              <td> Multiple View Environments</td>
               <td>Machine-interpretable description</td>
             </tr>
             <tr>
               <td>R3</td>
-              <td> Multiple Viewing Environments</td>
+              <td> Multiple View Environments</td>
               <td>Human-interpretable description</td>
             </tr>
             <tr>
               <td>R4</td>
-              <td>Multiple Viewing Environments</td>
-              <td>Same form description can be rendered in <br />multiple viewing environments</td>
+              <td>Multiple View Environments</td>
+              <td>Render one form description in multiple view environments</td>
             </tr>
             <tr>
               <td>R5</td>
@@ -344,7 +342,7 @@ In this work, we push this decentralized architecture a step further with the in
 A schematic overview of the architecture is shown in <a href="#fig:renderer-architecture">Fig. 2</a>.
 First, a user who wants to create a form builds a declarative form description using a form generator.
 Then, the user sends a form description link to another user who can fill it out using a form renderer.
-A conversion rules resource maps the form description onto the renderer’s ontology, while a data resource pre-fills the form automatically.</p>
+A conversion rules resource maps the form description onto the renderer’s ontology, while a data resource prefills the form automatically.</p>
 
       <figure id="fig:renderer-architecture">
 <img src="img/stage-2.svg" alt="[Figure of high level architecture of declarative applications]" />
@@ -398,7 +396,7 @@ This can be much more than just performing an HTTP request to the server, such a
 <div datatype="rdf:HTML" property="schema:description">
       <h2 property="schema:name">Implementation</h2>
 
-      <p>We implemented three applications in TypeScript/JavaScript.
+      <p>We implemented three applications in TypeScript.
 The FormGenerator application generates a form description based on the form the user builds using drag-and-drop.
 The FormRenderer application and FormCli application are two applications that render a given form description in respectively a Web browser using HTML or a text-based command-line interface.</p>
 
@@ -547,7 +545,7 @@ We created a sustainability plan to guarantee the maintenance of the DFDP’s t
 
       <p>In this section, we analyze the conformance of the implemented applications to the requirements defined in <a href="#requirements-table">Table 1</a> under <a href="#requirements">Section 3</a>.</p>
 
-      <p>The first research question is: “How can form developers create forms to declaratively control machines for producing RDF in <strong>multiple viewing environments</strong> (such as Web pages and text-based via a command line)?”.
+      <p>The first research question is: “How can form developers create forms to declaratively control machines for producing RDF in <strong>multiple viewing environments</strong> (e.g. Web pages vs text-based command line)?”.
 The FormRenderer and FormCli applications showcase creating a form renderer application in multiple viewing environments (R4).
 The form was described declaratively (R1) as the display part is fully described using the already existing UI ontology.
 Data can be passed along to automatically prefill a form by machines using the form fields’ bindings (R2), and users can interpret the field title to manually enter a value (R3).</p>
@@ -686,11 +684,11 @@ Ruben Taelman is a postdoctoral fellow of the Research Foundation – Flanders (
   <dt id="ref-5">[5]</dt>
   <dd resource="https://ruben.verborgh.org/blog/2019/06/17/shaping-linked-data-apps/" typeof="schema:CreativeWork">Verborgh, R.: Shaping Linked Data apps. <a href="https://ruben.verborgh.org/blog/2019/06/17/shaping-linked-data-apps/">https:/​/​ruben.verborgh.org/blog/2019/06/17/shaping-linked-data-apps/</a> (2022).</dd>
   <dt id="ref-6">[6]</dt>
-  <dd resource="https://www.w3.org/TR/xforms/" typeof="schema:CreativeWork">Boyer, J.M.: XForms 1.1. <a href="https://www.w3.org/TR/xforms/">https:/​/​www.w3.org/TR/xforms/</a></dd>
+  <dd resource="https://www.w3.org/TR/xforms/" typeof="schema:CreativeWork">Boyer, J.M.: XForms 1.1. <a href="https://www.w3.org/TR/xforms/">https:/​/​www.w3.org/TR/xforms/</a> (2009).</dd>
   <dt id="ref-7">[7]</dt>
   <dd resource="https://www.w3.org/community/xformsusers/wiki/XForms_2.0" typeof="schema:CreativeWork">Bruchez, E., Couthures, A., Steven, P.: XForms 2.0 - XForms Users Community Group. <a href="https://www.w3.org/community/xformsusers/wiki/XForms_2.0">https:/​/​www.w3.org/community/xformsusers/wiki/XForms_2.0</a> (2022).</dd>
   <dt id="ref-8">[8]</dt>
-  <dd resource="https://rdforms.org/#!index.md" typeof="schema:CreativeWork">MetaSolutions: RDForms - RDF in HTML-forms. <a href="https://rdforms.org/#!index.md">https:/​/​rdforms.org/#!index.md</a></dd>
+  <dd resource="https://rdforms.org" typeof="schema:CreativeWork">MetaSolutions: RDForms - RDF in HTML-forms. <a href="https://rdforms.org">https:/​/​rdforms.org</a> (2008).</dd>
   <dt id="ref-9">[9]</dt>
   <dd resource="https://www.w3.org/TR/shacl/" typeof="schema:CreativeWork">Knublauch, H., Kontokostas, D.: Shapes Constraint Language (SHACL). <a href="https://www.w3.org/TR/shacl/">https:/​/​www.w3.org/TR/shacl/</a> (2022).</dd>
   <dt id="ref-10">[10]</dt>
