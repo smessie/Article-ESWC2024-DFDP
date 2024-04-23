@@ -20,7 +20,7 @@ In this work, we push this decentralized architecture a step further with the in
 A schematic overview of the architecture is shown in [](#fig:renderer-architecture).
 First, a user who wants to create a form builds a declarative form description using a form generator.
 Then, the user sends a form description link to another user who can fill it out using a form renderer.
-A conversion rules resource maps the form description onto the renderer's ontology, while a data resource pre-fills the form automatically.
+A conversion rules resource maps the form description onto the renderer's ontology, while a data resource prefills the form automatically.
 
 <figure id="fig:renderer-architecture">
 <img src="img/stage-2.svg" alt="[Figure of high level architecture of declarative applications]" />

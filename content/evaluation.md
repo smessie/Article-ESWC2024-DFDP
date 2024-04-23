@@ -14,7 +14,7 @@ We created a sustainability plan to guarantee the maintenance of the DFDP's too
 
 In this section, we analyze the conformance of the implemented applications to the requirements defined in [](#requirements-table) under [](#requirements).
 
-The first research question is: "How can form developers create forms to declaratively control machines for producing RDF in **multiple viewing environments** (such as Web pages and text-based via a command line)?".
+The first research question is: "How can form developers create forms to declaratively control machines for producing RDF in **multiple viewing environments** (e.g. Web pages vs text-based command line)?".
 The FormRenderer and FormCli applications showcase creating a form renderer application in multiple viewing environments (R4).
 The form was described declaratively (R1) as the display part is fully described using the already existing UI ontology.
 Data can be passed along to automatically prefill a form by machines using the form fields' bindings (R2), and users can interpret the field title to manually enter a value (R3).

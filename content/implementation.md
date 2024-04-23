@@ -1,7 +1,7 @@
 ## Implementation
 {:#implementation}
 
-We implemented three applications in TypeScript/JavaScript.
+We implemented three applications in TypeScript.
 The FormGenerator application generates a form description based on the form the user builds using drag-and-drop.
 The FormRenderer application and FormCli application are two applications that render a given form description in respectively a Web browser using HTML or a text-based command-line interface.
 
